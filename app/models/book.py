@@ -4,7 +4,8 @@ from .db import db, environment, SCHEMA
 class Book(db.Model):
     __tablename__ = 'books'
     if environment == "production":
-      __table_args__ = {'schema': SCHEMA}
+        __table_args__ = {'schema': SCHEMA}
+        
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100), nullable=False)
     author = db.Column(db.String(75), nullable=False)
