@@ -122,7 +122,7 @@ def seed_books():
     db.session.add(fish)
     db.session.add(escape)
     db.session.add(library)
-
+    db.session.commit()
 def undo_books():
     if environment == "production":
         db.session.execute(f"TRUNCATE table {SCHEMA}.books RESTART IDENTITY CASCADE;")

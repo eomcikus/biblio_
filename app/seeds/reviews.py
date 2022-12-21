@@ -76,19 +76,19 @@ def seed_reviews():
     r_13 = Review(
         review="Fish in a Tree is an amazing read aloud. Follow Ally through her struggles in school and see what the magic of a great teacher and hard work making all the difference. This book is a great reminder that all minds learn differently!!",
         stars=4.5, 
-        book=13,
+        book_id=13,
         user_id=2
     )
     r_14 = Review(
         review="Escape from Mr. Lemoncello's library is the ultimate wild ride for the gamer in your life! Help the characters solve the puzzles to escape before it's too late.",
         stars=4.2,
-        book=14,
+        book_id=14,
         user_id=3
     )
     r_15 = Review(
         review="The Not So Quiet Library is a fun book for younger kids!",
         stars=4.0,
-        book=15,
+        book_id=15,
         user_id=4  
     )
     db.session.add(r_1)
@@ -105,7 +105,8 @@ def seed_reviews():
     db.session.add(r_12)
     db.session.add(r_13)
     db.session.add(r_14)
-    db.session.add(r_15)
+    db.session.add(r_15)    
+    db.session.commit()
 
 
 def undo_reviews():
