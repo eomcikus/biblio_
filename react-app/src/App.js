@@ -8,13 +8,14 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
-import  AllBooks  from './components/Books/allbooks'
+import AllBooks from './components/Books/allbooks'
+import OneBook from './components/Books/currentbook';
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    (async() => {
+    (async () => {
       await dispatch(authenticate());
       setLoaded(true);
     })();
@@ -35,7 +36,7 @@ function App() {
           <SignUpForm />
         </Route>
         <ProtectedRoute path='/users' exact={true} >
-          <UsersList/>
+          <UsersList />
         </ProtectedRoute>
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
@@ -43,8 +44,11 @@ function App() {
         <Route path='/' exact={true} >
           <h1>My Home Page</h1>
         </Route>
-        <Route path='/books'>
+        <Route path='/books' exact={true}>
           <AllBooks />
+        </Route>
+        <Route path='/books/:bookId' >
+          <OneBook />
         </Route>
       </Switch>
     </BrowserRouter>
