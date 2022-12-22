@@ -42,7 +42,6 @@ def add_a_book():
 @login_required
 def delete_a_book(id):
     book_to_delete = Book.query.get(id)
-    print('back here==========================', book_to_delete)
     db.session.delete(book_to_delete)
     db.session.commit()
-    return 'message' 'Book successfully deleted.'
+    return 'message: Book successfully deleted.'
