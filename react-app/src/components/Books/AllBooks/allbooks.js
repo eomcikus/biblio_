@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react'
 import { getBooks } from '../../../store/books';
-
+import BookCard from './bookcard';
 const AllBooks = () => {
     const dispatch = useDispatch()
     const books = useSelector(state => state.books.allBooks)
@@ -13,8 +13,8 @@ const AllBooks = () => {
     return (
         <div>
             {booksArray.map(book => (
-                <div key={book.id}>
-                    {book.title}
+                <div>
+                    <BookCard key={book.id} book={book} />
                 </div>
             ))}
         </div>

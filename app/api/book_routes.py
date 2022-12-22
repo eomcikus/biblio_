@@ -38,6 +38,16 @@ def add_a_book():
         db.session.commit()
         return new_book.to_dict()
 
+@book_routes.route('<id>/edit', methods=['PUT'])
+@login_required
+def edit_book(id):
+    form = BookForm()
+    if form.validate_on_submit():
+        book_to_edit = Book.query.get(id)
+        book.title = book_to_edit['title']
+
+
+
 @book_routes.route('/<id>', methods=['DELETE'])
 @login_required
 def delete_a_book(id):

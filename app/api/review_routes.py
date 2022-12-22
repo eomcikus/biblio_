@@ -22,4 +22,7 @@ def add_review():
             'review': form.data['review'],
             'stars': form.data['stars'],
         })
+        db.session.add(new_review)
+        db.session.commit()
+        return new_review.to_dict()
 
