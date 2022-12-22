@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, request
 from ..models import Book, db, User
 from ..forms import ReviewForm, BookForm 
 from flask_login import login_required
@@ -25,6 +25,7 @@ def get_one_book(id):
 @login_required
 def add_a_book():
     form = BookForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         new_book = Book(
             title = form.data['title'],
@@ -41,6 +42,7 @@ def add_a_book():
 @login_required
 def delete_a_book(id):
     book_to_delete = Book.query.get(id)
+    print('back here==========================', book_to_delete)
     db.session.delete(book_to_delete)
     db.session.commit()
-    return {'message': 'Book successfully deleted.'}
+    return 'message' 'Book successfully deleted.'

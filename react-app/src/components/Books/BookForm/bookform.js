@@ -1,8 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom';
-import { createBook } from '../../store/books';
-
+import { createBook } from '../../../store/books';
+import './bookform.css'
 export const FEBookForm = () => {
     const dispatch = useDispatch()
     const history = useHistory()
@@ -22,11 +22,13 @@ export const FEBookForm = () => {
             thumbnail
         }
         let createdBook = await dispatch(createBook(payload))
-        if (createdBook){
+        if (createdBook) {
             history.push('/')
         }
     }
-    const cancel = () => {
+    const cancel = async (e) => {
+        // e.stopPropogation()
+        // e.preventDefault()
         setTitle('')
         setAuthor('')
         setSummary('')
@@ -34,8 +36,8 @@ export const FEBookForm = () => {
         setThumbnail('')
     }
     return (
-        <section>
-            <form onSubmit={handleSubmit}>
+        <section className='form-section'>
+            <form onSubmit={handleSubmit} className='book-form'>
                 <input
                     type="text"
                     placeholder="Title"
@@ -72,8 +74,10 @@ export const FEBookForm = () => {
                     onChange={e => setThumbnail(e.target.value)}
                 />
                 <button
-                onSubmit={handleSubmit}>Submit</button>
-                <button onSubmit={cancel}>Cancel</button>
+                    type='submit'
+                    onSubmit={handleSubmit}>Submit</button>
+                <button type='button'
+                onSubmit={cancel}>Cancel</button>
             </form>
         </section>
     )

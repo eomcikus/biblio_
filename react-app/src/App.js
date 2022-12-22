@@ -8,9 +8,10 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
-import AllBooks from './components/Books/allbooks'
+import AllBooks from './components/Books/AllBooks/allbooks'
 import OneBook from './components/Books/currentbook';
-import { FEBookForm } from './components/Books/bookform';
+import { FEBookForm } from './components/Books/BookForm/bookform';
+import DeleteBook from './components/Books/deletebook';
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
@@ -51,10 +52,12 @@ function App() {
         </Route>
         <Route path='/books/:bookId' >
           <OneBook />
+          <DeleteBook />
         </Route>
         {/* <Route path='/books/add' exact={true}>
           <FEBookForm />
         </Route> */}
+
       </Switch>
     </BrowserRouter>
   );

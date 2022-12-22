@@ -1,0 +1,13 @@
+input {
+    color: rgb(126, 99, 154);
+    width: 100%;
+    align-items: center;
+    margin: 4px;
+    /* border: 1px red solid; */
+}
+
+.form-section {
+    display: flex;
+    flex-direction: column;
+    width: 60%
+}

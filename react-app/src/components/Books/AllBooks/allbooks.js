@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react'
-import { getBooks } from '../../store/books';
+import { getBooks } from '../../../store/books';
 
 const AllBooks = () => {
     const dispatch = useDispatch()
@@ -10,14 +10,14 @@ const AllBooks = () => {
     useEffect(() => {
         dispatch(getBooks())
     }, [dispatch])
- return (
-    <div> 
-        {booksArray.map(book => (
-            <div key={book.id}>
-                {book.title}
+    return (
+        <div>
+            {booksArray.map(book => (
+                <div key={book.id}>
+                    {book.title}
                 </div>
-        ))}
-    </div>
- )
+            ))}
+        </div>
+    )
 }
 export default AllBooks

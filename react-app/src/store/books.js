@@ -43,8 +43,11 @@ export const getOneBook = (bookId) => async (dispatch) => {
 }
 
 export const createBook = (form) => async (dispatch) => {
-    const response = await fetch('/api/books', {
+    const response = await fetch(`/api/books/add`, {
         method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
         body: JSON.stringify({
             title: form.title,
             author: form.author,
@@ -52,9 +55,6 @@ export const createBook = (form) => async (dispatch) => {
             author_about: form.author_about,
             thumbnail: form.thumbnail
         }),
-        headers: {
-            'Content-Type': 'application/json'
-        }
     })
     if (response.ok){
         const newBook = await response.json()
@@ -64,12 +64,14 @@ export const createBook = (form) => async (dispatch) => {
 }
 
 export const deleteBook = (bookId) => async (dispatch) => {
-    const response = await fetch(`api/books/${bookId}`, {
+    const response = await fetch(`/api/books/${bookId}`, {
         method: 'DELETE'
     })
     if (response.ok){
         dispatch(delBook(bookId))
+        return response.json()
     }
+    // return response.json()
 }
 let initialState = {
     allBooks: {},
@@ -96,6 +98,11 @@ export const booksReducer = (state = initialState, action) => {
         case CREATE: {
             newState = { ...state, currentBook: {...state.currentBook}}
             newState.allBooks[action.book.id] = action.book
+            return newState
+        }
+        case DELETE: {
+            newState = {...state, allBooks: {...state.allBooks}, currentBook: {...state.currentBook}}
+            delete newState[action.bookId]
             return newState
         }
         default: return state
