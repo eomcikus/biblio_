@@ -7,14 +7,16 @@ const OneBook = () => {
     const dispatch = useDispatch()
     const { bookId } = useParams()
     const book = useSelector(state => state.books.currentBook.book)
-    console.log(book)
+
     useEffect(() => {
         dispatch(getOneBook(bookId))
-    }, [bookId, dispatch])
+    }, [dispatch, bookId])
 
+    if (!book) return null
     return (
         <div>
             {book.title}
+            {book.author}
         </div>
     )
 }

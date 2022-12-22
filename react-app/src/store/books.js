@@ -2,6 +2,7 @@
 const LOAD = '/books/LOAD'
 const VIEWONE = '/books/VIEWONE'
 const CREATE = '/books/CREATE'
+const DELETE = '/books/DELETE'
 //actions
 const load = books => ({
     type: LOAD,
@@ -18,6 +19,11 @@ const create = book => ({
     book
 })
 
+const delBook = bookId => ({
+    type: DELETE,
+    bookId
+})
+
 //thunks
 export const getBooks = () => async (dispatch) => {
     const response = await fetch('/api/books')
@@ -29,16 +35,23 @@ export const getBooks = () => async (dispatch) => {
 
 export const getOneBook = (bookId) => async (dispatch) => {
     const response = await fetch(`/api/books/${bookId}`)
+    console.log('in the thunk')
     if (response.ok){
         const book = await response.json()
         dispatch(view(book))
     }
 }
 
-export const createBook = (book) => async (dispatch) => {
+export const createBook = (form) => async (dispatch) => {
     const response = await fetch('/api/books', {
         method: 'POST',
-        body: JSON.stringify(book),
+        body: JSON.stringify({
+            title: form.title,
+            author: form.author,
+            summary: form.summary,
+            author_about: form.author_about,
+            thumbnail: form.thumbnail
+        }),
         headers: {
             'Content-Type': 'application/json'
         }
@@ -46,6 +59,16 @@ export const createBook = (book) => async (dispatch) => {
     if (response.ok){
         const newBook = await response.json()
         dispatch(create(newBook))
+        return newBook
+    }
+}
+
+export const deleteBook = (bookId) => async (dispatch) => {
+    const response = await fetch(`api/books/${bookId}`, {
+        method: 'DELETE'
+    })
+    if (response.ok){
+        dispatch(delBook(bookId))
     }
 }
 let initialState = {
@@ -68,6 +91,11 @@ export const booksReducer = (state = initialState, action) => {
         case VIEWONE: {
             newState = { allBooks: {}, currentBook: {}}
             newState.currentBook = {...action.book}
+            return newState
+        }
+        case CREATE: {
+            newState = { ...state, currentBook: {...state.currentBook}}
+            newState.allBooks[action.book.id] = action.book
             return newState
         }
         default: return state

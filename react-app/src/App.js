@@ -10,6 +10,7 @@ import User from './components/User';
 import { authenticate } from './store/session';
 import AllBooks from './components/Books/allbooks'
 import OneBook from './components/Books/currentbook';
+import { FEBookForm } from './components/Books/bookform';
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
@@ -46,10 +47,14 @@ function App() {
         </Route>
         <Route path='/books' exact={true}>
           <AllBooks />
+          <FEBookForm />
         </Route>
         <Route path='/books/:bookId' >
           <OneBook />
         </Route>
+        {/* <Route path='/books/add' exact={true}>
+          <FEBookForm />
+        </Route> */}
       </Switch>
     </BrowserRouter>
   );
