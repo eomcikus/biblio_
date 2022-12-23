@@ -59,7 +59,7 @@ def edit_book():
 # @login_required
 def delete_a_book(id):
     book_to_delete = Book.query.get(id)
-    print('------------------------->', book_to_delete)
+
     db.session.delete(book_to_delete)
     db.session.commit()
-    return {'message: Book successfully deleted.'}
+    return jsonify({'message': 'Book successfully deleted.'})

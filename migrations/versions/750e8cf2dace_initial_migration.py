@@ -1,8 +1,8 @@
-"""create tables
+"""Initial migration.
 
-Revision ID: e99dbb8fb344
+Revision ID: 750e8cf2dace
 Revises: 
-Create Date: 2022-12-21 12:01:55.233270
+Create Date: 2022-12-23 14:02:58.682810
 
 """
 from alembic import op
@@ -12,7 +12,7 @@ environment = os.getenv("FLASK_ENV")
 SCHEMA = os.environ.get("SCHEMA")
 
 # revision identifiers, used by Alembic.
-revision = 'e99dbb8fb344'
+revision = '750e8cf2dace'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -30,8 +30,7 @@ def upgrade():
     sa.UniqueConstraint('username')
     )
     if environment == "production":
-        op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA}")
-
+        op.execute(f"ALTER TABLE todos_tags SET SCHEMA {SCHEMA};")
     op.create_table('books',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('title', sa.String(length=100), nullable=False),
@@ -42,8 +41,7 @@ def upgrade():
     sa.PrimaryKeyConstraint('id')
     )
     if environment == "production":
-        op.execute(f"ALTER TABLE books SET SCHEMA {SCHEMA}")
-        
+        op.execute(f"ALTER TABLE todos_tags SET SCHEMA {SCHEMA};")
     op.create_table('reviews',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('review', sa.String(length=4000), nullable=False),
@@ -55,7 +53,7 @@ def upgrade():
     sa.PrimaryKeyConstraint('id')
     )
     if environment == "production":
-        op.execute(f"ALTER TABLE reviews SET SCHEMA {SCHEMA}")
+        op.execute(f"ALTER TABLE todos_tags SET SCHEMA {SCHEMA};")
     # ### end Alembic commands ###
 
 

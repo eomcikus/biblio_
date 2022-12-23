@@ -12,6 +12,7 @@ import AllBooks from './components/Books/AllBooks/allbooks'
 import OneBook from './components/Books/currentbook';
 import { FEBookForm } from './components/Books/BookForm/bookform';
 import DeleteBook from './components/Books/deletebook';
+import EditBook from './components/Books/EditBook';
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
@@ -53,6 +54,9 @@ function App() {
         <Route path='/books/:bookId' >
           <OneBook />
           <DeleteBook />
+        </Route>
+        <Route path='/edit/:bookId' >
+          <EditBook />
         </Route>
         {/* <Route path='/books/add' exact={true}>
           <FEBookForm />

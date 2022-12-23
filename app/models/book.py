@@ -13,7 +13,7 @@ class Book(db.Model):
     author_about = db.Column(db.String(5000))
     thumbnail = db.Column(db.String(5000))
 
-    reviews = db.relationship('Review', back_populates='books')
+    reviews = db.relationship('Review', back_populates='books', cascade='all' )
 
     def to_dict(self):
         return {

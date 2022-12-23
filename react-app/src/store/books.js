@@ -3,6 +3,7 @@ const LOAD = '/books/LOAD'
 const VIEWONE = '/books/VIEWONE'
 const CREATE = '/books/CREATE'
 const DELETE = '/books/DELETE'
+const EDIT = '/books/EDIT'
 //actions
 const load = books => ({
     type: LOAD,
@@ -24,6 +25,10 @@ const delBook = bookId => ({
     bookId
 })
 
+const edit = bookId => ({
+    type: EDIT,
+    bookId
+})
 //thunks
 export const getBooks = () => async (dispatch) => {
     const response = await fetch('/api/books')
@@ -65,13 +70,33 @@ export const createBook = (form) => async (dispatch) => {
 
 export const deleteBook = (bookId) => async (dispatch) => {
     const response = await fetch(`/api/books/delete/${bookId}`, {
-        method: 'DELETE'
+        method: 'DELETE',
+        
     })
     if (response.ok){
         dispatch(delBook(bookId))
     }
     return await response.json()
 }
+
+// export const editBook = (bookId) = async (dispatch) => {
+//     const response = await fetch(`/api/${bookId}/edit`, {
+//         method: 'PUT',
+//         headers: {
+//             'Content-Type': 'application/json'
+//         },
+//         // body: JSON.stringify({
+//         //     title: form.title,
+//         //     author: form.author,
+//         //     summary: form.summary,
+//         //     author_about: form.author_about,
+//         //     thumbnail: form.thumbnail
+//         // }),
+//     })
+//     if (response.ok){
+//         dispatch(edit(bookId))
+//     }
+// }
 let initialState = {
     allBooks: {},
     currentBook: {}

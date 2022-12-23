@@ -16,6 +16,7 @@ const EditBook = () => {
 
     const handleSubmit = () => {
         const payload = {
+            id: currentBook.id,
             title, 
             author,
             summary, 
@@ -25,7 +26,8 @@ const EditBook = () => {
         let editedBook;
         editedBook = dispatch(createBook(payload))
         if (editedBook){
-            history.push('/books')
+            // history.push('/books')
+            console.log('it worked homie')
         }
     }
     return (
@@ -70,9 +72,11 @@ const EditBook = () => {
                 <button
                     type='submit'
                     onSubmit={handleSubmit}>Submit</button>
-                <button type='button'
-                onSubmit={cancel}>Cancel</button>
+                {/* <button type='button'
+                onSubmit={cancel}>Cancel</button> */}
         </form>
         </section>
     )
 }
+
+export default EditBook;
