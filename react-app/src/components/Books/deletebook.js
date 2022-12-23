@@ -5,11 +5,14 @@ import { useParams, useHistory } from 'react-router-dom'
 
 const DeleteBook = () => {
     const { bookId } = useParams()
+    
     const history = useHistory()
     const dispatch = useDispatch()
-    const handleDelete =  (e) =>{
-        e.preventDefault()
-        dispatch(deleteBook(bookId))
+    const handleDelete =   (e) =>{
+        e.stopPropagation()
+        console.log('BOOKID', bookId)
+        const deleted = dispatch(deleteBook(bookId))
+        console.log(deleted)
         history.push('/books')
     }
     return (

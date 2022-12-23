@@ -64,14 +64,13 @@ export const createBook = (form) => async (dispatch) => {
 }
 
 export const deleteBook = (bookId) => async (dispatch) => {
-    const response = await fetch(`/api/books/${bookId}`, {
+    const response = await fetch(`/api/books/delete/${bookId}`, {
         method: 'DELETE'
     })
     if (response.ok){
         dispatch(delBook(bookId))
-        return response.json()
     }
-    // return response.json()
+    return await response.json()
 }
 let initialState = {
     allBooks: {},
@@ -101,7 +100,7 @@ export const booksReducer = (state = initialState, action) => {
             return newState
         }
         case DELETE: {
-            newState = {...state, allBooks: {...state.allBooks}, currentBook: {...state.currentBook}}
+            newState = {...state}
             delete newState[action.bookId]
             return newState
         }

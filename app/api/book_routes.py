@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify, request
+from flask import Blueprint, jsonify, request, json
 from ..models import Book, db, User
 from ..forms import ReviewForm, BookForm 
 from flask_login import login_required
@@ -40,18 +40,26 @@ def add_a_book():
 
 @book_routes.route('<id>/edit', methods=['PUT'])
 @login_required
-def edit_book(id):
+def edit_book():
     form = BookForm()
     if form.validate_on_submit():
-        book_to_edit = Book.query.get(id)
+        book_to_edit = json.loads(request.data.decode('UTF-8'))
+        book = Book.query.get(book_to_edit['id'])
         book.title = book_to_edit['title']
+        book.author = book_to_edit['author']
+        book.summary = book_to_edit['summary']
+        book.author_about = book_to_edit['author_about']
+        book.thumbnail = book_to_edit['thumbnail']
+        db.session.commit()
+        updatedbook = book.to_dict()
+        return updatedbook
 
 
-
-@book_routes.route('/<id>', methods=['DELETE'])
-@login_required
+@book_routes.route('/delete/<id>', methods=['DELETE'])
+# @login_required
 def delete_a_book(id):
     book_to_delete = Book.query.get(id)
+    print('------------------------->', book_to_delete)
     db.session.delete(book_to_delete)
     db.session.commit()
-    return 'message: Book successfully deleted.'
+    return {'message: Book successfully deleted.'}
