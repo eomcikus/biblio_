@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react'
 import { getOneBook } from '../../store/books';
 import { useParams } from 'react-router-dom'
-
+import './currentbook.css'
 const OneBook = () => {
     const dispatch = useDispatch()
     const { bookId } = useParams()
@@ -14,9 +14,15 @@ const OneBook = () => {
 
     if (!book) return null
     return (
-        <div>
-            {book.title}
-            {book.author}
+        <div className='current-book-container'>
+            <img className='current-book-thumbnail' src={book.thumbnail} />
+            <div className='current-book-info'>
+                {book.title} <p></p>
+               by: {book.author}
+            </div>
+            <div className='current-book-summary'>
+                {book.summary}
+            </div>
         </div>
     )
 }
