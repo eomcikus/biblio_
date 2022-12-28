@@ -56,9 +56,9 @@ function App() {
           <DeleteBook />
           <EditBook />
         </Route>
-        <Route path='/edit/:bookId' >
+        {/* <Route path='/books/edit/:bookId' >
           <EditBook />
-        </Route>
+        </Route> */}
         {/* <Route path='/books/add' exact={true}>
           <FEBookForm />
         </Route> */}

@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom';
-import { createBook } from '../../../store/books';
+import { createBook, getBooks } from '../../../store/books';
 import './bookform.css'
 export const FEBookForm = () => {
     const dispatch = useDispatch()
@@ -23,7 +23,9 @@ export const FEBookForm = () => {
         }
         let createdBook = await dispatch(createBook(payload))
         if (createdBook) {
-            history.push('/')
+            await dispatch(getBooks())
+            history.push('/books')
+            return
         }
     }
     const cancel = async (e) => {

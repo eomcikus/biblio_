@@ -38,13 +38,14 @@ def add_a_book():
         db.session.commit()
         return new_book.to_dict()
 
-@book_routes.route('<id>/edit', methods=['PUT'])
+@book_routes.route('/edit/<id>', methods=['PUT'])
 @login_required
-def edit_book():
+def edit_book(id):
     form = BookForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         book_to_edit = json.loads(request.data.decode('UTF-8'))
-        book = Book.query.get(book_to_edit['id'])
+        book = Book.query.get(id)
         book.title = book_to_edit['title']
         book.author = book_to_edit['author']
         book.summary = book_to_edit['summary']
@@ -52,11 +53,12 @@ def edit_book():
         book.thumbnail = book_to_edit['thumbnail']
         db.session.commit()
         updatedbook = book.to_dict()
+        print('--------------------', updatedbook)
         return updatedbook
 
 
 @book_routes.route('/delete/<id>', methods=['DELETE'])
-# @login_required
+@login_required
 def delete_a_book(id):
     book_to_delete = Book.query.get(id)
 

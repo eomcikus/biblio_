@@ -41,7 +41,7 @@ export const getBooks = () => async (dispatch) => {
 export const getOneBook = (bookId) => async (dispatch) => {
     const response = await fetch(`/api/books/${bookId}`)
     console.log('in the thunk')
-    if (response.ok){
+    if (response.ok) {
         const book = await response.json()
         dispatch(view(book))
     }
@@ -61,7 +61,7 @@ export const createBook = (form) => async (dispatch) => {
             thumbnail: form.thumbnail
         }),
     })
-    if (response.ok){
+    if (response.ok) {
         const newBook = await response.json()
         dispatch(create(newBook))
         return newBook
@@ -71,43 +71,42 @@ export const createBook = (form) => async (dispatch) => {
 export const deleteBook = (bookId) => async (dispatch) => {
     const response = await fetch(`/api/books/delete/${bookId}`, {
         method: 'DELETE',
-        
+
     })
-    if (response.ok){
+    if (response.ok) {
         dispatch(delBook(bookId))
     }
     return await response.json()
 }
 
-// export const editBook = (bookId) = async (dispatch) => {
-//     const response = await fetch(`/api/${bookId}/edit`, {
-//         method: 'PUT',
-//         headers: {
-//             'Content-Type': 'application/json'
-//         },
-//         // body: JSON.stringify({
-//         //     title: form.title,
-//         //     author: form.author,
-//         //     summary: form.summary,
-//         //     author_about: form.author_about,
-//         //     thumbnail: form.thumbnail
-//         // }),
-//     })
-//     if (response.ok){
-//         dispatch(edit(bookId))
-//     }
-// }
-let initialState = {
-    allBooks: {},
-    currentBook: {}
-}
+export const editBook = (form) => async (dispatch) => {
+    const response = await fetch(`/api/books/edit/${form.id}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            id: form.id,
+            title: form.title,
+            author: form.author,
+            summary: form.summary,
+            author_about: form.author_about,
+            thumbnail: form.thumbnail
+        }),
+    })
+    if (response.ok)
+        dispatch(edit(form.id))
+        return await response.json()
+    }
+
+let initialState = { allBooks: {} }
 //reducer. 
 export const booksReducer = (state = initialState, action) => {
     let newState;
     switch (action.type) {
         case LOAD: {
-            // return {...state, ...action.books.books}
-            newState = { allBooks: {}, currentBook: {} }
+            // return {...state, ...action.books.books} }
+            newState = {allBooks: {}}
             newState.allBooks = {}
             action.books.books.forEach(book => {
                 newState.allBooks[book.id] = book
@@ -115,18 +114,23 @@ export const booksReducer = (state = initialState, action) => {
             return newState
         }
         case VIEWONE: {
-            newState = { allBooks: {}, currentBook: {}}
-            newState.currentBook = {...action.book}
+            newState = { ...state }
+            newState.allBooks = { ...action.book.book }
             return newState
         }
         case CREATE: {
-            newState = { ...state, currentBook: {...state.currentBook}}
-            newState.allBooks[action.book.id] = action.book
+            newState = { ...state } 
+            newState.allBooks[action.book.id] = action.book.book
             return newState
         }
         case DELETE: {
-            newState = {...state}
-            delete newState[action.bookId]
+            newState = { ...state }
+            delete newState.allBooks[action.bookId]
+            return newState
+        }
+        case EDIT: {
+            newState = { ...state }
+            newState.allBooks[action.bookId]= action.bookId
             return newState
         }
         default: return state

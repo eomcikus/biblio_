@@ -10,7 +10,7 @@ const AllBooks = () => {
     console.log(booksArray)
     useEffect(() => {
         dispatch(getBooks())
-    }, [dispatch])
+    }, [dispatch, ])
     return (
         <div className='allbooks-container'>
             {booksArray.map(book => (

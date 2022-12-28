@@ -1,35 +1,38 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react'
-import { createBook, getOneBook } from '../../store/books';
-import { useParams } from 'react-router-dom'
+import { createBook, editBook, getOneBook } from '../../store/books';
+import { useHistory, useParams } from 'react-router-dom'
 
 
 const EditBook = () => {
     const dispatch = useDispatch()
+    const history = useHistory()
     const { bookId } = useParams()
-    const currentBook = useSelector(state => state.books.currentBook)
-    const [title, setTitle] = useState(currentBook.title)
-    const [author, setAuthor] = useState(currentBook.author)
-    const [summary, setSummary] = useState(currentBook.summary)
-    const [author_about, setAuthor_about] = useState(currentBook.author_about)
-    const [thumbnail, setThumbnail] = useState(currentBook.thumbnail)
+    const book = useSelector(state => state.books.allBooks)
+    console.log(book, 'current book')
+    const [title, setTitle] = useState(book.title)
+    const [author, setAuthor] = useState(book.author)
+    const [summary, setSummary] = useState(book.summary)
+    const [author_about, setAuthor_about] = useState(book.author_about)
+    const [thumbnail, setThumbnail] = useState(book.thumbnail)
 
     useEffect(() => {
         dispatch(getOneBook(bookId))
     }, [dispatch, bookId])
 
     useEffect(() => {
-        setTitle(currentBook.title)
-        setAuthor(currentBook.author)
-        setSummary(currentBook.summary)
-        setAuthor_about(currentBook.author_about)
-        setThumbnail(currentBook.thumbnail)
-    }, [currentBook])
+        setTitle(book.title)
+        setAuthor(book.author)
+        setSummary(book.summary)
+        setAuthor_about(book.author_about)
+        setThumbnail(book.thumbnail)
+    }, [book])
 
-    
-    const handleSubmit = () => {
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
         const payload = {
-            id: currentBook.id,
+            id: book.id,
             title, 
             author,
             summary, 
@@ -37,10 +40,10 @@ const EditBook = () => {
             thumbnail
         }
         let editedBook;
-        editedBook = dispatch(createBook(payload))
+        editedBook = await dispatch(editBook(payload))
         if (editedBook){
-            // history.push('/books')
-            console.log('it worked homie')
+            history.push('/books')
+
         }
     }
     return (
@@ -49,35 +52,35 @@ const EditBook = () => {
             <form onSubmit={handleSubmit} className='book-form'>
                 <input
                     type="text"
-                    placeholder="Title"
+                    // placeholder="Title"
                     required
                     value={title}
                     onChange={e => setTitle(e.target.value)}
                 />
                 <input
                     type="text"
-                    placeholder="Author"
+                    // placeholder="Author"
                     required
                     value={author}
                     onChange={e => setAuthor(e.target.value)}
                 />
                 <input
                     type="text"
-                    placeholder="Summary"
+                    // placeholder="Summary"
                     required
                     value={summary}
                     onChange={e => setSummary(e.target.value)}
                 />
                 <input
                     type="text"
-                    placeholder="About the author"
+                    // placeholder="About the author"
                     required
                     value={author_about}
                     onChange={e => setAuthor_about(e.target.value)}
                 />
                 <input
                     type="text"
-                    placeholder="Cover of Book"
+                    // placeholder="Cover of Book"
                     required
                     value={thumbnail}
                     onChange={e => setThumbnail(e.target.value)}
@@ -86,7 +89,7 @@ const EditBook = () => {
                     type='submit'
                     onSubmit={handleSubmit}>Submit Changes</button>
                 {/* <button type='button'
-                onSubmit={cancel}>Cancel</button> */}
+                onSubmit={cancel}>Cancel</button>  */}
         </form>
         </section>
     )
