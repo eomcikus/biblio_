@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react'
-import { createBook } from '../../store/books';
+import { createBook, getOneBook } from '../../store/books';
 import { useParams } from 'react-router-dom'
 
 
@@ -14,6 +14,19 @@ const EditBook = () => {
     const [author_about, setAuthor_about] = useState(currentBook.author_about)
     const [thumbnail, setThumbnail] = useState(currentBook.thumbnail)
 
+    useEffect(() => {
+        dispatch(getOneBook(bookId))
+    }, [dispatch, bookId])
+
+    useEffect(() => {
+        setTitle(currentBook.title)
+        setAuthor(currentBook.author)
+        setSummary(currentBook.summary)
+        setAuthor_about(currentBook.author_about)
+        setThumbnail(currentBook.thumbnail)
+    }, [currentBook])
+
+    
     const handleSubmit = () => {
         const payload = {
             id: currentBook.id,
@@ -71,7 +84,7 @@ const EditBook = () => {
                 />
                 <button
                     type='submit'
-                    onSubmit={handleSubmit}>Submit</button>
+                    onSubmit={handleSubmit}>Submit Changes</button>
                 {/* <button type='button'
                 onSubmit={cancel}>Cancel</button> */}
         </form>

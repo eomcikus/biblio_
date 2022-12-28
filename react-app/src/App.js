@@ -54,6 +54,7 @@ function App() {
         <Route path='/books/:bookId' >
           <OneBook />
           <DeleteBook />
+          <EditBook />
         </Route>
         <Route path='/edit/:bookId' >
           <EditBook />
