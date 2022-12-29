@@ -1,5 +1,5 @@
 //Definitions
-const LOAD = 'reviews/LOAD'
+const LOAD = '/reviews/LOAD'
 
 //Actions
 const load = reviews => ({
@@ -8,11 +8,13 @@ const load = reviews => ({
 })
 
 //Thunks
-export const getReviews = (book_id) => async dispatch => {
-    const response = await fetch(`/api/spots/${book_id}/reviews`)
-    if (response.ok){
+export const getReviews = (bookId) => async dispatch => {
+    console.log('at least here')
+    const response = await fetch(`/api/books/${bookId}/reviews`)
+    if (response.ok) {
         const data = await response.json()
-        dispatch(load(data.Reviews))
+        console.log('data', data)
+        dispatch(load(data.book_reviews))
     } else {
         return null;
     }
@@ -20,16 +22,22 @@ export const getReviews = (book_id) => async dispatch => {
 
 let initialState = {
     book: {},
-    user: {}
+    reviews: {}
 }
 
 //Reducer
 export const reviewReducer = (state = initialState, action) => {
     let newState;
-    switch(action.type){
-        case LOAD : {
-            newState = { book: {}, user: {} }
-            
+    switch (action.type) {
+        case LOAD: {
+            newState = { book: {}, reviews: {} }
+            action.reviews.forEach(review => {
+                newState.reviews[review.id] = review
+            })
+            return newState;
+            // if (!action.reviews){
+            //     return state.reviews
+            // }
         }
         default: return state
     }

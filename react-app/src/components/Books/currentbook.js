@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react'
 import { getOneBook } from '../../store/books';
 import  EditBook  from './EditBook'
+import { Reviews } from '../Reviews/Reviews';
 import { useParams } from 'react-router-dom'
 import './currentbook.css'
 const OneBook = () => {
@@ -26,6 +27,7 @@ console.log('one book', book)
             </div>
             <div>
                 <EditBook book={book} />
+                <Reviews book={book} />
             </div>
         </div>
     )

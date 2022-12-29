@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, request, json
-from ..models import Book, db, User
+from ..models import Book, db, User, Review
 from ..forms import ReviewForm, BookForm 
 from flask_login import login_required
 
@@ -65,3 +65,12 @@ def delete_a_book(id):
     db.session.delete(book_to_delete)
     db.session.commit()
     return jsonify({'message': 'Book successfully deleted.'})
+
+@book_routes.route('/<int:id>/reviews')
+def get_reviews_by_id(id):
+    """ query all reviews and return them in a list of dictionaries ordered by id num
+    """
+    # print('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')
+    book_reviews = Review.query.filter(Review.book_id == id)
+    # print('-----------------------------', book_reviews)
+    return {'book_reviews': [review.to_dict() for review in book_reviews]}
