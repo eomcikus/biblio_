@@ -14,6 +14,7 @@ import { FEBookForm } from './components/Books/BookForm/bookform';
 import DeleteBook from './components/Books/deletebook';
 import EditBook from './components/Books/EditBook';
 import { Reviews } from './components/Reviews/Reviews';
+import  ReviewForm  from './components/Reviews/ReviewForm'
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
@@ -57,6 +58,10 @@ function App() {
           <DeleteBook />
           {/* <EditBook /> */}
           {/* <Reviews /> */}
+          <ReviewForm />
+        </Route>
+        <Route path='/reviews/add' exact={true}>
+          <ReviewForm />
         </Route>
         {/* <Route path='/books/edit/:bookId' >
           <EditBook />

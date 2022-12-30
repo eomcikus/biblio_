@@ -93,11 +93,14 @@ export const editBook = (form) => async (dispatch) => {
             author_about: form.author_about,
             thumbnail: form.thumbnail
         }),
+
     })
-    if (response.ok)
+    if (response.ok) {
         dispatch(edit(form.id))
         return await response.json()
     }
+
+}
 
 let initialState = { allBooks: {} }
 //reducer. 
@@ -105,21 +108,22 @@ export const booksReducer = (state = initialState, action) => {
     let newState;
     switch (action.type) {
         case LOAD: {
-            // return {...state, ...action.books.books} }
-            newState = {allBooks: {}}
+            newState = { allBooks: {} }
             newState.allBooks = {}
             action.books.books.forEach(book => {
                 newState.allBooks[book.id] = book
             })
             return newState
+        
         }
+    
         case VIEWONE: {
             newState = { ...state }
             newState.allBooks = { ...action.book.book }
             return newState
         }
         case CREATE: {
-            newState = { ...state } 
+            newState = { ...state }
             newState.allBooks[action.book.id] = action.book.book
             return newState
         }
@@ -130,9 +134,10 @@ export const booksReducer = (state = initialState, action) => {
         }
         case EDIT: {
             newState = { ...state }
-            newState.allBooks[action.bookId]= action.bookId
+            newState.allBooks[action.bookId] = action.bookId
             return newState
         }
+    
         default: return state
     }
 }

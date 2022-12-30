@@ -1,15 +1,12 @@
-import './bookcard.css'
+
 import {NavLink} from 'react-router-dom'
-const BookCard = ({ book }) => {
+const ReviewCard = ({ review }) => {
     return (
-        <div className='bookcard-container'>
-        <NavLink to={`/books/${book.id}`}
-            className='bookcard-container'>
-                <img className='thumbnail' src={book.thumbnail} />
-            </NavLink>
+        <div className='reviewcard-container'>
+            {review.review}
             </div>
     )
 
 }
 
-export default BookCard
+export default ReviewCard

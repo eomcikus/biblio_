@@ -9,10 +9,11 @@ const OneBook = () => {
     const dispatch = useDispatch()
     const { bookId } = useParams()
     const book = useSelector(state => state.books.allBooks)
-console.log('one book', book)
+    const reviews = useSelector(state => state.reviews)
+// console.log('one book', book)
     useEffect(() => {
         dispatch(getOneBook(bookId))
-    }, [dispatch, bookId])
+    }, [dispatch, bookId, reviews])
 
     if (!book) return null
     return (

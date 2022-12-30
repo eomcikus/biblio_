@@ -2,7 +2,7 @@ from flask import Blueprint, jsonify, request, json
 from ..models import Book, db, User, Review
 from ..forms import ReviewForm, BookForm 
 from flask_login import login_required
-
+from .auth_routes import validation_errors_to_error_messages
 book_routes = Blueprint('books', __name__)
 
 @book_routes.route('/')
@@ -66,7 +66,7 @@ def delete_a_book(id):
     db.session.commit()
     return jsonify({'message': 'Book successfully deleted.'})
 
-@book_routes.route('/<int:id>/reviews')
+@book_routes.route('/<int:id>/reviews', methods=['GET', 'POST'])
 def get_reviews_by_id(id):
     """ query all reviews and return them in a list of dictionaries ordered by id num
     """
@@ -74,3 +74,20 @@ def get_reviews_by_id(id):
     book_reviews = Review.query.filter(Review.book_id == id)
     # print('-----------------------------', book_reviews)
     return {'book_reviews': [review.to_dict() for review in book_reviews]}
+
+@book_routes.route('/reviews/add', methods=['POST'])
+@login_required
+def add_review():
+    form = ReviewForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        new_review = Review(
+            review = form.data['review'],
+            stars = form.data['stars'],
+            book_id = form.data['book_id'],
+            user_id = form.data['user_id'],
+        )
+        db.session.add(new_review)
+        db.session.commit()
+        return new_review.to_dict()
+    return {'errors': validation_errors_to_error_messages(form.errors)}

@@ -2,6 +2,7 @@ import { getReviews } from "../../store/reviews";
 import {useSelector, useDispatch } from 'react-redux'
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
+import ReviewForm from "./ReviewForm";
 export const Reviews = () => {
     const {bookId} = useParams()
     const dispatch = useDispatch()
@@ -13,7 +14,10 @@ export const Reviews = () => {
         dispatch(getReviews(bookId))
     }, [dispatch])
     return (
+        <>
         <div>{reviewsforBook.map(review => <div> {review.review}</div>)}</div>
+        <ReviewForm />
+        </>
 //    <div></div>
         )
 }
