@@ -15,6 +15,7 @@ import DeleteBook from './components/Books/deletebook';
 import EditBook from './components/Books/EditBook';
 import { Reviews } from './components/Reviews/Reviews';
 import  ReviewForm  from './components/Reviews/ReviewForm'
+import DeleteReview from './components/Reviews/DeleteReview';
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
@@ -59,10 +60,11 @@ function App() {
           {/* <EditBook /> */}
           {/* <Reviews /> */}
           <ReviewForm />
+          <DeleteReview />
         </Route>
-        <Route path='/reviews/add' exact={true}>
+        {/* <Route path='/reviews/add' exact={true}>
           <ReviewForm />
-        </Route>
+        </Route> */}
         {/* <Route path='/books/edit/:bookId' >
           <EditBook />
         </Route> */}

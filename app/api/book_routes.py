@@ -91,3 +91,11 @@ def add_review():
         db.session.commit()
         return new_review.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}
+
+@book_routes.route('/reviews/<id>/delete', methods=['DELETE'])
+@login_required
+def delete_review(id):
+    review_to_delete = Review.query.get(id)
+    db.session.delete(review_to_delete)
+    db.session.commit()
+    return {'message': 'Review successfully deleted'}

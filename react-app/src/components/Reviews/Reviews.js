@@ -16,7 +16,7 @@ export const Reviews = () => {
     return (
         <>
         <div>{reviewsforBook.map(review => <div> {review.review}</div>)}</div>
-        <ReviewForm />
+        {/* <ReviewForm /> */}
         </>
 //    <div></div>
         )

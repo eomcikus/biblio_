@@ -1,6 +1,7 @@
 //Definitions
 const LOAD = '/reviews/LOAD'
 const ADD = '/reviews/ADD'
+const DELETE = '/reviews/DELETE'
 //Actions
 const load = reviews => ({
     type: LOAD,
@@ -12,6 +13,10 @@ const add = review => ({
     review
 })
 
+const removeR = reviewId => ({
+    type: DELETE,
+    reviewId
+})
 //Thunks
 export const getReviews = (bookId) => async dispatch => {
     console.log('at least here')
@@ -45,6 +50,16 @@ export const addReview = (form, bookId) => async dispatch => {
     }
 }
 
+export const removeReview = (reviewId) => async (dispatch) => {
+    const response = await fetch(`/api/books/reviews/${reviewId}/delete`, {
+        method: 'DELETE'
+    })
+    if (response.ok) {
+        dispatch(removeR(reviewId))
+    }
+}
+
+
 let initialState = {
     reviews: {}
 }
@@ -67,6 +82,11 @@ export const reviewReducer = (state = initialState, action) => {
             newState = { ...state, reviews: { ...state.reviews } }
             newState.reviews[action.review.id] = action.review
             return newState;
+        }
+        case DELETE: {
+            newState = { ...state, reviews: { ...state.reviews } }
+            delete newState.reviews[action.reviewId]
+            return newState
         }
         default: return state
     }
