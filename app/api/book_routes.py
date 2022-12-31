@@ -99,3 +99,20 @@ def delete_review(id):
     db.session.delete(review_to_delete)
     db.session.commit()
     return {'message': 'Review successfully deleted'}
+
+@book_routes.route('/reviews/edit/<id>', methods=['PUT'])
+@login_required
+def edit_review(id):
+    form = Review.Form()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        review_to_edit = json.loads(request.data.decode('UTF-8'))
+        review = Review.query.get(id)
+        review.review = review_to_edit['review']
+        review.stars = review_to_edit['stars']
+        review.user_id = review_to_edit['user_id']
+        review.book_id = review_to_edit['book_id']
+        db.session.commit()
+        updatedreview = review.to_dict()
+        print('--------------------', updatedreview)
+        return updatedreview

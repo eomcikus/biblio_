@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import { useHistory, useParams } from 'react-router-dom';
 // import { addReview } from '../../../store/reviews';
 import { getReviews, addReview } from '../../store/reviews';
-
+import EditReview from './EditReview';
 const ReviewForm = () => {
     const dispatch = useDispatch()
     const history = useHistory()
@@ -41,6 +41,7 @@ const ReviewForm = () => {
                     onChange={e => setStars(e.target.value)} />
                 <button type='submit'
                 onSubmit={handleSubmit}>Submit Review</button>
+                <EditReview />
             </form>
         </section>
     )

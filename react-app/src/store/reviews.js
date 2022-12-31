@@ -2,6 +2,7 @@
 const LOAD = '/reviews/LOAD'
 const ADD = '/reviews/ADD'
 const DELETE = '/reviews/DELETE'
+const EDIT = '/reviews/EDIT'
 //Actions
 const load = reviews => ({
     type: LOAD,
@@ -15,6 +16,11 @@ const add = review => ({
 
 const removeR = reviewId => ({
     type: DELETE,
+    reviewId
+})
+
+const editR = reviewId => ({
+    type: EDIT,
     reviewId
 })
 //Thunks
@@ -59,6 +65,29 @@ export const removeReview = (reviewId) => async (dispatch) => {
     }
 }
 
+export const editReview = (form) => async (dispatch) => {
+    const response = await fetch(`/api/books/reviews/edit/${form.id}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body:
+            JSON.stringify({
+                id: form.id,
+                review: form.review,
+                stars: form.stars,
+                user_id: form.user_id,
+                book_id: form.book_id
+            })
+
+    })
+    if (response.ok) {
+        // const updatedReview = await response.json()
+        dispatch(editR(form.id))
+        return await response.json()
+
+    }
+}
 
 let initialState = {
     reviews: {}
@@ -86,6 +115,11 @@ export const reviewReducer = (state = initialState, action) => {
         case DELETE: {
             newState = { ...state, reviews: { ...state.reviews } }
             delete newState.reviews[action.reviewId]
+            return newState
+        }
+        case EDIT: {
+            newState = { ...state, reviews: { ...state.reviews } }
+            newState.reviews[action.reviewId] = action.reviewId
             return newState
         }
         default: return state
