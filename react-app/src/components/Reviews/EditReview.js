@@ -9,17 +9,17 @@ const EditReview = () => {
     const history = useHistory()
     const {bookId} = useParams()
     const currentReviews = useSelector(state=> Object.values(state.reviews.reviews))
-    console.log('currentrev', currentReviews)
     const user = useSelector(state => state.session.user)
     const userReview = currentReviews.find(review => review.user_id === user.id)
-    console.log(userReview)
+
     const [review, setReview] = useState(userReview.review)
     const [stars, setStars] = useState(userReview.stars)
-
     useEffect(() => {
         setReview(userReview.review)
         setStars(userReview.stars)
     }, [userReview])
+    if (!userReview) return null
+    if (!review) return null
     const handleSubmit = async (e) => {
         e.preventDefault()
         const payload = {

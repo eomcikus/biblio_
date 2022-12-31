@@ -41,7 +41,7 @@ const ReviewForm = () => {
                     onChange={e => setStars(e.target.value)} />
                 <button type='submit'
                 onSubmit={handleSubmit}>Submit Review</button>
-                <EditReview />
+                {/* <EditReview /> */}
             </form>
         </section>
     )

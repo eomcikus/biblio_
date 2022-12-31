@@ -19,7 +19,7 @@ const OneBook = () => {
     return (
         <div className='current-book-container'>
             <img className='current-book-thumbnail' src={book.thumbnail} />
-            <div className='current-book-info'>
+            <div className='current-book-title'>
                 {book.title} <p></p>
                by: {book.author}
             </div>

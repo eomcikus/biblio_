@@ -61,7 +61,7 @@ function App() {
           {/* <EditBook /> */}
           {/* <Reviews /> */}
           <ReviewForm />
-          <EditReview />
+          {/* <EditReview /> */}
           <DeleteReview />
         </Route>
         {/* <Route path='/reviews/add' exact={true}>

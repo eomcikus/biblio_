@@ -13,6 +13,7 @@ export const Reviews = () => {
     useEffect(() => {
         dispatch(getReviews(bookId))
     }, [dispatch])
+    
     return (
         <>
         <div>{reviewsforBook.map(review => <div> {review.review}</div>)}</div>
