@@ -4,6 +4,7 @@ const ReviewCard = ({ review }) => {
     return (
         <div className='reviewcard-container'>
             {review.review}
+            {review.stars}
             </div>
     )
 
