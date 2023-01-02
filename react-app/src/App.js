@@ -3,18 +3,18 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
-import NavBar from './components/NavBar';
+import NavBar from './components/NavBar/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
 import AllBooks from './components/Books/AllBooks/allbooks'
-import OneBook from './components/Books/currentbook';
+import OneBook from './components/Books/CurrentBook/currentbook';
 import { FEBookForm } from './components/Books/BookForm/bookform';
-import DeleteBook from './components/Books/deletebook';
-import EditBook from './components/Books/EditBook';
+import DeleteBook from './components/Books/DeleteBook/deletebook';
+import EditBook from './components/Books/UpdateBook/EditBook';
 import { Reviews } from './components/Reviews/Reviews';
-import  ReviewForm  from './components/Reviews/ReviewForm'
+import ReviewForm from './components/Reviews/ReviewForm'
 import DeleteReview from './components/Reviews/DeleteReview';
 import EditReview from './components/Reviews/EditReview';
 function App() {

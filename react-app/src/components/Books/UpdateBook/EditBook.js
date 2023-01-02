@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react'
-import { createBook, editBook, getOneBook } from '../../store/books';
+import { createBook, editBook, getOneBook } from '../../../store/books';
 import { useHistory, useParams } from 'react-router-dom'
 
 
@@ -33,22 +33,22 @@ const EditBook = () => {
         e.preventDefault()
         const payload = {
             id: book.id,
-            title, 
+            title,
             author,
-            summary, 
+            summary,
             author_about,
             thumbnail
         }
         let editedBook;
         editedBook = await dispatch(editBook(payload))
-        if (editedBook){
+        if (editedBook) {
             history.push('/books')
 
         }
     }
     return (
-     
-            <section className='form-section'>
+
+        <section className='form-section'>
             <form onSubmit={handleSubmit} className='book-form'>
                 <input
                     type="text"
@@ -90,7 +90,7 @@ const EditBook = () => {
                     onSubmit={handleSubmit}>Submit Changes</button>
                 {/* <button type='button'
                 onSubmit={cancel}>Cancel</button>  */}
-        </form>
+            </form>
         </section>
     )
 }

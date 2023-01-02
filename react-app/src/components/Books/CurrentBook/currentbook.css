@@ -1,0 +1,35 @@
+.current-book-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.current-book-thumbnail {
+    height: 300px;
+    width: 275px;
+    border-radius: 0px 10px 10px 0px;
+}
+.current-book-thumb-container {
+    width: 33%;
+    flex-direction: column;
+    height: 100%;
+    padding: 50px;
+}
+.current-book-title:not(.current-book-summary) {
+
+    /* width: 100%; */
+    font-size: 48px;
+    font-weight: 500;
+    padding-bottom: 20px;
+}
+.current-book-author {
+    font-size: 24px;
+    padding-bottom: 15px;
+
+}
+.current-book-summary {
+    font-size: 16px;
+    font-family:'Montserrat';
+    font-weight: bolder;
+    /* border: 1px red solid; */
+}

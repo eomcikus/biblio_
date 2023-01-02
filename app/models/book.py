@@ -1,5 +1,5 @@
 from .db import db, environment, SCHEMA
-
+# from ..models import Review
 
 class Book(db.Model):
     __tablename__ = 'books'
@@ -22,5 +22,9 @@ class Book(db.Model):
             "author": self.author,
             "summary": self.summary,
             "author_about": self.author_about,
-            "thumbnail": self.thumbnail
+            "thumbnail": self.thumbnail,
+            # "star_avg": self.star_avg
         }
+    # def star_avg(id):
+    #     reviews = Review.query.filter(id == Review.book_id).all()
+    #     if reviews == 0:

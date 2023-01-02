@@ -19,6 +19,19 @@ def get_one_book(id):
     Query all books and return one book as a dictionary
     """
     book = Book.query.get(id)
+    # reviews = Review.query.filter(Review.book_id == id).all()
+    # # go through all reviews and key into review.star
+    # # add review.star += total
+    # # 
+    # review_length = len(reviews)
+    # avg = 0
+    # for review in reviews:
+    #     avg += review.stars
+    #     print(avg) 
+    # book.star_avg = avg/review_length
+    # print(';;;;;;;;;;;', avg)
+    # print('---------------------', review_length)
+    # print('======================', reviews)
     return {'book': book.to_dict()}
 
 @book_routes.route('/add', methods=['POST'])
@@ -116,3 +129,8 @@ def edit_review(id):
         updatedreview = review.to_dict()
         print('--------------------', updatedreview)
         return updatedreview
+
+@book_routes.route('/reviews/current', methods=['GET'])
+@login_required
+def get_review_by_user_id():
+    reviews = Review.query.all()

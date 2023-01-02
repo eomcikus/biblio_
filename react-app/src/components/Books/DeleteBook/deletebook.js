@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react'
-import { deleteBook } from '../../store/books';
+import { deleteBook } from '../../../store/books';
 import { useParams, useHistory } from 'react-router-dom'
 
 const DeleteBook = () => {
