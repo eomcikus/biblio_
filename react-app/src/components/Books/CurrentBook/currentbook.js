@@ -7,6 +7,7 @@ import { Reviews } from '../../Reviews/Reviews';
 import { useParams } from 'react-router-dom'
 import './currentbook.css'
 import DeleteBook from '../DeleteBook/deletebook';
+// import  EditReview  from '../../Reviews/EditReview'
 const OneBook = () => {
     const dispatch = useDispatch()
     const { bookId } = useParams()
@@ -46,8 +47,9 @@ const OneBook = () => {
                 </div>
                 <div>
                     <EditBook book={book} />
-                    <Reviews book={book} />
                     <DeleteBook book={book} />
+                    <Reviews book={book} />
+                    {/* <EditReview book={book} /> */}
                     {/* <DeleteBookButton book={book} /> */}
                 </div>
             </div>

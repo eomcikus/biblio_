@@ -9,7 +9,7 @@ const EditBook = () => {
     const history = useHistory()
     const { bookId } = useParams()
     const book = useSelector(state => state.books.allBooks)
-    console.log(book, 'current book')
+    // console.log(book, 'current book')
     const [title, setTitle] = useState(book.title)
     const [author, setAuthor] = useState(book.author)
     const [summary, setSummary] = useState(book.summary)

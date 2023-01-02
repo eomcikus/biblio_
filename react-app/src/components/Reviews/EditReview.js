@@ -11,7 +11,7 @@ const EditReview = () => {
     const currentReviews = useSelector(state=> Object.values(state.reviews.reviews))
     const user = useSelector(state => state.session.user)
     const userReview = currentReviews.find(review => review.user_id === user.id)
-
+    console.log(userReview)
     const [review, setReview] = useState(userReview.review)
     const [stars, setStars] = useState(userReview.stars)
     useEffect(() => {
@@ -36,8 +36,22 @@ const EditReview = () => {
     }
 
         return (
+            <>
+            <section>
+            <form onSubmit={handleSubmit}>
+                <input type='text'
+                    value={review}
+                    onChange={e => setReview(e.target.value)} />
+                <input
+                    type='number'
+                    min={1}
+                    max={5}
+                    value={stars}
+                    onChange={e => setStars(e.target.value)} />
             <button onSubmit={handleSubmit}>Edit Review</button>
-
+            </form> 
+        </section>
+</>
         )
 }
 

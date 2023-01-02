@@ -1,0 +1,16 @@
+.nav-home{
+    font-family: 'Montserrat';
+    text-decoration: none;
+}
+.nav-mybooks{
+    font-family: 'Montserrat';
+    text-decoration: none;
+}
+.navbar-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+    font-family: 'Montserrat'
+}

@@ -3,34 +3,55 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from '../auth/LogoutButton';
 import './navbar.css'
+import logo from './kidlit.png'
 const NavBar = () => {
   return (
-    <nav>
-      <ul>
-        <li>
-          <NavLink to='/' exact={true} activeClassName='active'>
+    <nav className='navbar-container'>
+      
+      <div><NavLink to='/'><img src={logo} /></NavLink></div> 
+        <div>
+          <NavLink to='/books' 
+          exact={true} 
+          activeClassName='active' 
+          className='nav-home'>
             Home
           </NavLink>
-        </li>
-        <li>
-          <NavLink to='/login' exact={true} activeClassName='active'>
+        </div>
+        <div>
+          <NavLink to='/user/books'
+          exact={true}
+          className='nav-mybooks'>
+            My Books
+          </NavLink>
+        </div>
+        {/* <div>
+          <NavLink to='/login' 
+          exact={true} 
+          activeClassName='active'
+          className='nav-login'>
             Login
           </NavLink>
-        </li>
-        <li>
-          <NavLink to='/sign-up' exact={true} activeClassName='active'>
+        </div> */}
+        {/* <div>
+          <NavLink 
+          to='/sign-up' 
+          exact={true} 
+          activeClassName='active'>
             Sign Up
           </NavLink>
-        </li>
-        <li>
-          <NavLink to='/users' exact={true} activeClassName='active'>
+        </div> */}
+        {/* <div>
+          <NavLink 
+          to='/users' 
+          exact={true} 
+          activeClassName='active'>
             Users
           </NavLink>
-        </li>
-        <li>
+        </div> */}
+        <div>
           <LogoutButton />
-        </li>
-      </ul>
+        </div>
+
     </nav>
   );
 }
