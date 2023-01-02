@@ -7,21 +7,23 @@ import { Reviews } from '../../Reviews/Reviews';
 import { useParams } from 'react-router-dom'
 import './currentbook.css'
 import DeleteBook from '../DeleteBook/deletebook';
-// import  EditReview  from '../../Reviews/EditReview'
+import  EditReview  from '../../Reviews/EditReview'
 const OneBook = () => {
     const dispatch = useDispatch()
     const { bookId } = useParams()
     const book = useSelector(state => state.books.allBooks)
     const reviews = useSelector(state => state.reviews)
+    const user = useSelector(state => state.session.user)
     const reviewsArr = useSelector(state => Object.values(state.reviews.reviews))
+    const userReview = reviewsArr.filter(review => user.id === review.user_id)
     console.log(reviews)
     useEffect(() => {
         dispatch(getOneBook(bookId))
     }, [dispatch, bookId, reviews])
 
-    if (reviewsArr.length){
+    if (reviewsArr.length) {
         let total = 0
-        
+
         reviewsArr.forEach(review => {
             total += review.stars
         })
@@ -48,8 +50,11 @@ const OneBook = () => {
                 <div>
                     <EditBook book={book} />
                     <DeleteBook book={book} />
-                    <Reviews book={book} />
-                    {/* <EditReview book={book} /> */}
+                    {user && userReview && (
+
+                        <EditReview review={userReview} /> 
+                        )}
+                        <Reviews book={book} />
                     {/* <DeleteBookButton book={book} /> */}
                 </div>
             </div>

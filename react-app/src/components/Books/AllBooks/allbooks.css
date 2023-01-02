@@ -1,6 +1,7 @@
 .allbooks-container {
     display: flex;
     flex-direction: row;
-    width: 700px;
+    width: 100%;
     overflow:scroll;
+    
 }
