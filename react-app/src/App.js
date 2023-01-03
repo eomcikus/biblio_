@@ -55,7 +55,7 @@ function App() {
           <AllBooks />
           <FEBookForm />
         </Route>
-        <Route path='/books/:bookId' >
+        <Route path='/books/:bookId' exact={true}>
           <OneBook />
           <DeleteBook />
           {/* <EditBook /> */}
@@ -67,12 +67,12 @@ function App() {
         {/* <Route path='/reviews/add' exact={true}>
           <ReviewForm />
         </Route> */}
-        {/* <Route path='/books/edit/:bookId' >
-          <EditBook />
-        </Route> */}
-        {/* <Route path='/books/add' exact={true}>
-          <FEBookForm />
-        </Route> */}
+        <Route path='/books/reviews/edit/:reviewId' exact={true}>
+          <EditReview />
+        </Route>
+        <Route path='/books/reviews' exact={true}>
+          <Reviews />
+        </Route>
 
       </Switch>
     </BrowserRouter>

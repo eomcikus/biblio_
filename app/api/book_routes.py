@@ -78,6 +78,13 @@ def delete_a_book(id):
     db.session.delete(book_to_delete)
     db.session.commit()
     return jsonify({'message': 'Book successfully deleted.'})
+# @book_routes.route('/reviews', methods=["GET"])
+# def get_all_reviews():
+#     """
+#     query all reviews and return them in a list of dictionaries
+#     """
+#     all_reviews = Review.query.all()
+#     return {all_reviews: [review.to_dict() for review in all_reviews]}
 
 @book_routes.route('/<int:id>/reviews', methods=['GET', 'POST'])
 def get_reviews_by_id(id):
@@ -116,11 +123,12 @@ def delete_review(id):
 @book_routes.route('/reviews/edit/<id>', methods=['PUT'])
 @login_required
 def edit_review(id):
-    form = Review.Form()
+    form = ReviewForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         review_to_edit = json.loads(request.data.decode('UTF-8'))
         review = Review.query.get(id)
+        # review.id = review_to_edit['id']
         review.review = review_to_edit['review']
         review.stars = review_to_edit['stars']
         review.user_id = review_to_edit['user_id']
@@ -129,6 +137,7 @@ def edit_review(id):
         updatedreview = review.to_dict()
         print('--------------------', updatedreview)
         return updatedreview
+    return {'errors': validation_errors_to_error_messages(form.errors)}
 
 @book_routes.route('/reviews/current', methods=['GET'])
 @login_required

@@ -16,6 +16,7 @@ const OneBook = () => {
     const user = useSelector(state => state.session.user)
     const reviewsArr = useSelector(state => Object.values(state.reviews.reviews))
     const userReview = reviewsArr.filter(review => user.id === review.user_id)
+    console.log('userreview', userReview)
     console.log(reviews)
     useEffect(() => {
         dispatch(getOneBook(bookId))
@@ -50,10 +51,10 @@ const OneBook = () => {
                 <div>
                     <EditBook book={book} />
                     <DeleteBook book={book} />
-                    {user && userReview && (
+                    {/* {user && userReview && ( */}
 
-                        <EditReview review={userReview} /> 
-                        )}
+                        {/* <EditReview review={userReview} />  */}
+                        {/* )} */}
                         <Reviews book={book} />
                     {/* <DeleteBookButton book={book} /> */}
                 </div>
