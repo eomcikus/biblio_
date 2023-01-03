@@ -13,8 +13,8 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
-    books = db.Relationship('Book', back_populates='user')
-    reviews = db.Relationship('Review', back_populates='users')
+    books = db.relationship('Book', back_populates='users')
+    reviews = db.relationship('Review', back_populates='users')
 
     @property
     def password(self):
