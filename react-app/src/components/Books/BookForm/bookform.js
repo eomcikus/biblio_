@@ -11,7 +11,7 @@ export const FEBookForm = () => {
     const [summary, setSummary] = useState('')
     const [author_about, setAuthor_about] = useState('')
     const [thumbnail, setThumbnail] = useState('')
-
+    const user = useSelector(state => state.session.user)
     const handleSubmit = async (e) => {
         e.preventDefault()
         const payload = {
@@ -19,7 +19,8 @@ export const FEBookForm = () => {
             author,
             summary,
             author_about,
-            thumbnail
+            thumbnail,
+            user_id: user.id
         }
         let createdBook = await dispatch(createBook(payload))
         if (createdBook) {

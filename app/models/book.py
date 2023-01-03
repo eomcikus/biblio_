@@ -1,4 +1,4 @@
-from .db import db, environment, SCHEMA
+from .db import db, environment, SCHEMA, add_prefix_for_prod
 # from ..models import Review
 
 class Book(db.Model):
@@ -12,7 +12,9 @@ class Book(db.Model):
     summary = db.Column(db.String(5000))
     author_about = db.Column(db.String(5000))
     thumbnail = db.Column(db.String(5000))
-
+    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
+    
+    user = db.relationship('User', back_populates='books')
     reviews = db.relationship('Review', back_populates='books', cascade='all' )
 
     def to_dict(self):
@@ -23,6 +25,7 @@ class Book(db.Model):
             "summary": self.summary,
             "author_about": self.author_about,
             "thumbnail": self.thumbnail,
+            "user": self.user
             # "star_avg": self.star_avg
         }
     # def star_avg(id):

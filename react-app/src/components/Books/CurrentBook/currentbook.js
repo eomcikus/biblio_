@@ -33,7 +33,7 @@ const OneBook = () => {
 
     }
 
-    console.log('one b/ook', book.starAvg)
+
 
     if (!book) return null
     return (

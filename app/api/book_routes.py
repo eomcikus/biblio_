@@ -45,7 +45,8 @@ def add_a_book():
             author = form.data['author'],
             summary = form.data['summary'],
             author_about = form.data['author_about'],
-            thumbnail = form.data['thumbnail']
+            thumbnail = form.data['thumbnail'],
+            user_id = form.data['user_id']
         )
         db.session.add(new_book)
         db.session.commit()
@@ -64,6 +65,7 @@ def edit_book(id):
         book.summary = book_to_edit['summary']
         book.author_about = book_to_edit['author_about']
         book.thumbnail = book_to_edit['thumbnail']
+        book.user_id = book_to_edit['user_id']
         db.session.commit()
         updatedbook = book.to_dict()
         print('--------------------', updatedbook)

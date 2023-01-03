@@ -9,7 +9,6 @@ const EditReview = ({ userReview }) => {
     const history = useHistory()
     // const { bookId } = useParams()
 
-    console.log('review passed in', userReview)
     const reviewsObj = useSelector(state => state.reviews.reviews)
 
     const currentReviews = useSelector(state => Object.values(state.reviews.reviews))
@@ -26,7 +25,7 @@ const EditReview = ({ userReview }) => {
         setStars(userReview1?.stars)
     }, [userReview1])
     // if (!userReview) return null
-    // if (!userReview) return null
+
     const handleSubmit = async (e) => {
         e.preventDefault()
         const payload = {
