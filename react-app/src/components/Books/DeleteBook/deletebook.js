@@ -10,14 +10,14 @@ const DeleteBook = () => {
     const dispatch = useDispatch()
     const handleDelete =   (e) =>{
         e.stopPropagation()
-        console.log('BOOKID', bookId)
+
         const deleted = dispatch(deleteBook(bookId))
         console.log(deleted)
         history.push('/books')
     }
     return (
         <button onClick={handleDelete}>
-            Delete
+            Delete book
         </button>
     )
 }

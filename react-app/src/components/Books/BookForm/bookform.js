@@ -14,6 +14,7 @@ export const FEBookForm = () => {
     const user = useSelector(state => state.session.user)
     const handleSubmit = async (e) => {
         e.preventDefault()
+        console.log('in line 17 handlesubmit')
         const payload = {
             title,
             author,

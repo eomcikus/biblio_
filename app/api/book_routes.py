@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request, json
 from ..models import Book, db, User, Review
 from ..forms import ReviewForm, BookForm 
-from flask_login import login_required
+from flask_login import login_required, current_user
 from .auth_routes import validation_errors_to_error_messages
 book_routes = Blueprint('books', __name__)
 
@@ -38,9 +38,11 @@ def get_one_book(id):
 @login_required
 def add_a_book():
     form = BookForm()
+    
     form['csrf_token'].data = request.cookies['csrf_token']
-    user = User.query.get()
-    print('==============================', user)
+    user = current_user.id
+    print('---------------', user)
+    form['user_id'].data = user
     if form.validate_on_submit():
         new_book = Book(
             title = form.data['title'],
@@ -54,7 +56,7 @@ def add_a_book():
         db.session.commit()
         return new_book.to_dict()
 
-@book_routes.route('/edit/<id>', methods=['PUT'])
+@book_routes.route('/edit/<id>/', methods=['PUT'])
 @login_required
 def edit_book(id):
     form = BookForm()

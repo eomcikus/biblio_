@@ -31,7 +31,7 @@ const edit = bookId => ({
 })
 //thunks
 export const getBooks = () => async (dispatch) => {
-    const response = await fetch('/api/books')
+    const response = await fetch('/api/books/')
     if (response.ok) {
         const books = await response.json()
         dispatch(load(books))
@@ -79,8 +79,8 @@ export const deleteBook = (bookId) => async (dispatch) => {
     return await response.json()
 }
 
-export const editBook = (form) => async (dispatch) => {
-    const response = await fetch(`/api/books/edit/${form.id}`, {
+export const editBook = (form, bookId, user) => async (dispatch) => {
+    const response = await fetch(`/api/books/edit/${bookId}/`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
@@ -91,7 +91,8 @@ export const editBook = (form) => async (dispatch) => {
             author: form.author,
             summary: form.summary,
             author_about: form.author_about,
-            thumbnail: form.thumbnail
+            thumbnail: form.thumbnail,
+            user_id: form.user_id
         }),
 
     })

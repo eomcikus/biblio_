@@ -9,6 +9,7 @@ const EditBook = () => {
     const history = useHistory()
     const { bookId } = useParams()
     const book = useSelector(state => state.books.allBooks)
+    const user = useSelector(state => state.session.user)
     // console.log(book, 'current book')
     const [title, setTitle] = useState(book.title)
     const [author, setAuthor] = useState(book.author)
@@ -26,6 +27,7 @@ const EditBook = () => {
         setSummary(book.summary)
         setAuthor_about(book.author_about)
         setThumbnail(book.thumbnail)
+
     }, [book])
 
 
@@ -37,12 +39,13 @@ const EditBook = () => {
             author,
             summary,
             author_about,
-            thumbnail
+            thumbnail,
+            user_id: user.id
         }
         let editedBook;
-        editedBook = await dispatch(editBook(payload))
+        editedBook = await dispatch(editBook(payload, bookId))
         if (editedBook) {
-            history.push('/books')
+            history.push('/books/')
 
         }
     }
