@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField
+from wtforms import StringField, IntegerField
 from wtforms.validators import DataRequired
 from app.models import Book
 
@@ -9,4 +9,5 @@ class BookForm(FlaskForm):
     summary = StringField('Summary', validators=[DataRequired()])
     author_about = StringField('About the Author', validators=[DataRequired()])
     thumbnail = StringField('Thumbnail photo of cover', validators=[DataRequired()])
+    user_id = IntegerField('book_id', validators=[DataRequired()])
     

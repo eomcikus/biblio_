@@ -39,6 +39,8 @@ def get_one_book(id):
 def add_a_book():
     form = BookForm()
     form['csrf_token'].data = request.cookies['csrf_token']
+    user = User.query.get()
+    print('==============================', user)
     if form.validate_on_submit():
         new_book = Book(
             title = form.data['title'],
@@ -46,7 +48,7 @@ def add_a_book():
             summary = form.data['summary'],
             author_about = form.data['author_about'],
             thumbnail = form.data['thumbnail'],
-            user_id = form.data['user_id']
+            user_id = user
         )
         db.session.add(new_book)
         db.session.commit()
