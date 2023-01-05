@@ -11,7 +11,7 @@ import  EditReview  from '../../Reviews/EditReview'
 const OneBook = () => {
     const dispatch = useDispatch()
     const { bookId } = useParams()
-    const book = useSelector(state => state.books.allBooks)
+    const book = useSelector(state => state.books.oneBook)
     console.log('onebook', book)
     const reviews = useSelector(state => state.reviews)
     const user = useSelector(state => state.session.user)

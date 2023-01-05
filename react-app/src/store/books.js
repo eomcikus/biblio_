@@ -103,7 +103,7 @@ export const editBook = (form, bookId, user) => async (dispatch) => {
 
 }
 
-let initialState = { allBooks: {} }
+let initialState = { allBooks: {}, oneBook: {} }
 //reducer. 
 export const booksReducer = (state = initialState, action) => {
     let newState;
@@ -120,7 +120,7 @@ export const booksReducer = (state = initialState, action) => {
     
         case VIEWONE: {
             newState = { ...state }
-            newState.allBooks = { ...action.book.book }
+            newState.oneBook = { ...action.book.book }
             return newState
         }
         case CREATE: {
