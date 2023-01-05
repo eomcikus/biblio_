@@ -19,13 +19,13 @@ const NavBar = () => {
             Home
           </NavLink>
         </div>
-        <div>
+        {/* <div>
           <NavLink to='/user/books'
           exact={true}
           className='nav-mybooks'>
             My Books
           </NavLink>
-        </div>
+        </div> */}
         <div>
           {!user && (
           <NavLink to='/login' 
