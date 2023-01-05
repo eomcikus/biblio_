@@ -18,18 +18,28 @@ export const Reviews = () => {
 
     return (
         <>
-            <div>{reviewsforBook.map(review => <div> {review.review} {review.stars}
-                {user && userReview &&( 
+            <div>{reviewsforBook.map(review => <div> {review.review} {review.stars}</div>)}
+             {user && !userReview && (
+                    <button>
+                        <NavLink to={`/books/${bookId}/reviews/add`}>Create a Review</NavLink>
+                    </button>
+                )}
+                {user && userReview.user_id === user.id &&( 
                 <button>
-                    <NavLink to={`/books/reviews/edit/${review.id}`} userReview={userReview}>
+                    <NavLink to={`/books/reviews/edit/${userReview.id}`} userReview={userReview}>
                     Edit
-                    </NavLink>
-
+                    </NavLink>                    
                 </button>
-                )}</div>)}
-            </div>
-            {/* <ReviewForm /> */}
+                )}
+                {user && userReview.user_id === user.id &&( 
+                <button>
+                    <NavLink to={`/books/reviews/${userReview.id}/delete`} userReview={userReview}>
+                    Delete Review
+                    </NavLink>                    
+                </button>
+                )}
+    </div>
         </>
-        //    <div></div>
+
     )
 }

@@ -37,7 +37,8 @@ export const getReviews = (bookId) => async dispatch => {
 }
 
 export const addReview = (form, bookId) => async dispatch => {
-    const response = await fetch(`/api/books/reviews/add`, {
+    console.log('bookId', bookId)
+    const response = await fetch(`/api/books/${bookId}/reviews/add`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

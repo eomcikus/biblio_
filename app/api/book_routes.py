@@ -101,9 +101,9 @@ def get_reviews_by_id(id):
     # print('-----------------------------', book_reviews)
     return {'book_reviews': [review.to_dict() for review in book_reviews]}
 
-@book_routes.route('/reviews/add', methods=['POST'])
+@book_routes.route('/<id>/reviews/add', methods=['POST'])
 @login_required
-def add_review():
+def add_review(id):
     form = ReviewForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():

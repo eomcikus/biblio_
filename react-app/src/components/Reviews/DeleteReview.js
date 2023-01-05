@@ -13,13 +13,17 @@ const DeleteReview = () => {
     const reviewArr = Object.values(reviews)
 
     const reviewByUser = reviewArr.find(review => review.user_id === user.id)
+    console.log(reviewByUser)
     const deleteReview = (e) => {
         e.preventDefault()
         dispatch(removeReview(reviewByUser.id))
+        history.push('/books/')
     }
     return (
         <div>
-            <button onClick={deleteReview}>Delete</button>
+         Are you sure? Deleting this will delete your entire review. You cannot undo this.
+            <button onClick={deleteReview}>I am sure, Delete</button>
+
         </div>
     )
 }

@@ -62,9 +62,9 @@ function App() {
           {/* <Reviews /> */}
           <ReviewForm />
           {/* <EditReview /> */}
-          <DeleteReview />
+        {/* <DeleteReview /> */}
 
-            
+
         </Route>
         {/* <Route path='/reviews/add' exact={true}>
           <ReviewForm />
@@ -72,13 +72,18 @@ function App() {
         <Route path='/books/edit/:bookId' exact={true}>
           <EditBook />
         </Route>
+        <Route path='/books/reviews/:reviewId/delete' exact={true}>
+          <DeleteReview />
+        </Route>
         <Route path='/books/reviews/edit/:reviewId' exact={true}>
           <EditReview />
         </Route>
         <Route path='/books/reviews' exact={true}>
           <Reviews />
         </Route>
-
+        <Route path='/books/:bookId/reviews/add' exact={true}>
+          <ReviewForm />
+        </Route>
       </Switch>
     </BrowserRouter>
   );

@@ -8,18 +8,19 @@ const ReviewForm = () => {
     const dispatch = useDispatch()
     const history = useHistory()
     const { bookId } = useParams()
-    const userId = useSelector(state => state.session.user.id)
     const [review, setReview] = useState('')
     const [stars, setStars] = useState('')
     const [validationErrors, setValidationErrors] = useState([])
     const [submit, setSubmit] = useState(false)
-
+    const userId = useSelector(state => state.session.user.id)
+    
     useEffect(() => {
         let errors = []
         if (!review) errors.push('You must have a review longer than 20 characters and less than 5000 characters to submit your review.')
         if (review.length < 20) errors.push('Review must be longer than 20 characters.')
         if (review.length > 5000) errors.push('Review must be less than 5000 characters. Revision is key my friend!')
     }, [review])
+    if (!userId) return null
     const handleSubmit = async (e) => {
         e.preventDefault()
         const payload = {
@@ -35,7 +36,6 @@ const ReviewForm = () => {
             return
         }
     }
-    if (!userId) return 
     return (
         <section>
             <form onSubmit={handleSubmit}>
