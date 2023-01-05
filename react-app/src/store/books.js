@@ -40,7 +40,6 @@ export const getBooks = () => async (dispatch) => {
 
 export const getOneBook = (bookId) => async (dispatch) => {
     const response = await fetch(`/api/books/${bookId}`)
-    console.log('in the thunk')
     if (response.ok) {
         const book = await response.json()
         dispatch(view(book))
