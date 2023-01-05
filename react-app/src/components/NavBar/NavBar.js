@@ -26,22 +26,26 @@ const NavBar = () => {
             My Books
           </NavLink>
         </div>
-        {/* <div>
+        <div>
+          {!user && (
           <NavLink to='/login' 
           exact={true} 
           activeClassName='active'
           className='nav-login'>
             Login
           </NavLink>
-        </div> */}
-        {/* <div>
+          )}
+        </div>
+        <div>
+          {!user && ( 
           <NavLink 
           to='/sign-up' 
           exact={true} 
           activeClassName='active'>
             Sign Up
           </NavLink>
-        </div> */}
+          )}
+        </div>
         {/* <div>
           <NavLink 
           to='/users' 

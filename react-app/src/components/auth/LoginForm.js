@@ -29,7 +29,11 @@ const LoginForm = () => {
   if (user) {
     return <Redirect to='/' />;
   }
-
+  const demo = async (e) => {
+    e.preventDefault()
+    await dispatch(login('harry@hogwarts.io', 'password'))
+    return
+  }
   return (
     <form onSubmit={onLogin}>
       <div>
@@ -57,6 +61,7 @@ const LoginForm = () => {
           onChange={updatePassword}
         />
         <button type='submit'>Login</button>
+        <button type='submit' onClick={demo}>Demo User</button>
       </div>
     </form>
   );
