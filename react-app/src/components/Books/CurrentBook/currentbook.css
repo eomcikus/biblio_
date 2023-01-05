@@ -31,5 +31,8 @@
     font-size: 16px;
     font-family:'Montserrat';
     font-weight: bolder;
+    width: 50%;
+    height: 50%;
+    overflow: scroll;
     /* border: 1px red solid; */
 }

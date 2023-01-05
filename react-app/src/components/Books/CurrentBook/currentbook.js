@@ -7,6 +7,7 @@ import { Reviews } from '../../Reviews/Reviews';
 import { useParams } from 'react-router-dom'
 import './currentbook.css'
 import DeleteBook from '../DeleteBook/deletebook';
+import { getReviews } from '../../../store/reviews';
 import  EditReview  from '../../Reviews/EditReview'
 const OneBook = () => {
     const dispatch = useDispatch()
@@ -21,6 +22,7 @@ const OneBook = () => {
     console.log(reviews)
     useEffect(() => {
         dispatch(getOneBook(bookId))
+
     }, [dispatch, bookId, reviews])
 
     if (reviewsArr.length) {
@@ -56,7 +58,7 @@ const OneBook = () => {
 
                         {/* <EditReview review={userReview} />  */}
                         {/* )} */}
-                        <Reviews book={book} />
+                    <Reviews book={book} />
                     {/* <DeleteBookButton book={book} /> */}
                 </div>
             </div>

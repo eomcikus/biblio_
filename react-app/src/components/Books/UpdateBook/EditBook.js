@@ -23,21 +23,21 @@ const EditBook = () => {
         dispatch(getOneBook(bookId))
     }, [dispatch, bookId])
 
+
     useEffect(() => {
         setTitle(book.title)
         setAuthor(book.author)
         setSummary(book.summary)
         setAuthor_about(book.author_about)
         setThumbnail(book.thumbnail)
-
     }, [book])
 
     useEffect(() => {
         let errors = []
         if (!title) errors.push('Book must have a title')
-        if (title.length < 5) errors.push('Book title must be at least 5 characters long.')
-        if (title.length > 2000) errors.push('Book title must be less than 2000 characters long.')
-        if (title.includes('  ')) errors.push('Book title must have letter and or number characters and cannot be only spaces.')
+        if (title?.length < 5) errors.push('Book title must be at least 5 characters long.')
+        if (title?.length > 2000) errors.push('Book title must be less than 2000 characters long.')
+        if (title?.includes('  ')) errors.push('Book title must have letter and or number characters and cannot be only spaces.')
         if (!author) errors.push('Book must have an author')
         if (author?.length < 5) errors.push('Author name must be at least 5 characters long.')
         if (author?.length > 1000) errors.push('Author name must be less than 1000 characters long.')
@@ -52,7 +52,6 @@ const EditBook = () => {
         if (!thumbnail?.includes('http://') && !thumbnail?.includes('https://')) errors.push('Please include "http://" or "https://" at the beginning of your photo URL')
         setValidationErrors(errors)
     }, [title, author, summary, author_about, thumbnail])
-    console.log('editbook', validationErrors)
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -67,13 +66,15 @@ const EditBook = () => {
         }
         let editedBook;
         setSubmit(true)
-        editedBook = await dispatch(editBook(payload, bookId))
         if (validationErrors.length){
-        window.alert('Cannot submit edits. Please check the handy error messages to make your changes!')
-        } else if (editedBook) history.push(`/books/${bookId}`)
-
-        
+            window.alert('Cannot submit edits. Please check the handy error messages to make your changes!')
+        } else {
+        (editedBook) = await dispatch(editBook(payload, bookId))
+        await dispatch(getOneBook(bookId))
+        history.push(`/books/${bookId}`)
+        }
     }
+   
     return (
 
         <section className='form-section'>

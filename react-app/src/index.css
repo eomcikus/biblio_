@@ -2,3 +2,14 @@
 * {
     font-family: 'Merriweather', Georgia, serif;
 }
+
+button {
+    background-color: B392AC;
+    color: white;
+    border: none;
+}
+
+button:hover {
+    background-color: rgb(126, 99, 154);
+
+}
