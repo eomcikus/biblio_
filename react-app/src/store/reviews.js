@@ -25,11 +25,10 @@ const editR = reviewId => ({
 })
 //Thunks
 export const getReviews = (bookId) => async dispatch => {
-    console.log('at least here')
+
     const response = await fetch(`/api/books/${bookId}/reviews`)
     if (response.ok) {
         const data = await response.json()
-        console.log('data', data)
         dispatch(load(data.book_reviews))
     } else {
         return null;
@@ -37,7 +36,6 @@ export const getReviews = (bookId) => async dispatch => {
 }
 
 export const addReview = (form, bookId) => async dispatch => {
-    console.log('bookId', bookId)
     const response = await fetch(`/api/books/${bookId}/reviews/add`, {
         method: 'POST',
         headers: {

@@ -13,8 +13,10 @@ const OneBook = () => {
     const dispatch = useDispatch()
     const { bookId } = useParams()
     const book = useSelector(state => state.books.oneBook)
-
-    const bookOwner = useSelector(state => state.books.oneBook.user_id)
+    let bookOwner;
+    if (book){
+        bookOwner = book['user_id']
+    }
     const reviews = useSelector(state => state.reviews)
     const user = useSelector(state => state.session.user)
     const reviewsArr = useSelector(state => Object.values(state.reviews.reviews))
