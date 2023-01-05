@@ -36,7 +36,6 @@ export const FEBookForm = () => {
         if (!thumbnail.includes('http://') && !thumbnail.includes('https://')) errors.push('Please include "http://" or "https://" at the beginning of your photo URL')
         setValidationErrors(errors)
     }, [title, author, summary, author_about, thumbnail])
-    console.log(validationErrors)
     const handleSubmit = async (e) => {
         e.preventDefault()
         const payload = {
@@ -116,7 +115,7 @@ export const FEBookForm = () => {
                     type='submit'
                     onSubmit={handleSubmit}>Submit</button>
                 <button type='button'
-                onSubmit={cancel}>Cancel</button>
+                onClick={cancel}>Cancel</button>
             </form>
         </section>
     )

@@ -64,7 +64,7 @@ const OneBook = () => {
                     {user && user.id === bookOwner && (
                     <EditBook book={book} />
                     )}
-                    {user && bookOwner && (
+                    {user && user.id === bookOwner && (
                     <DeleteBook book={book} />
                     )}
                     {/* {user && userReview && ( */}

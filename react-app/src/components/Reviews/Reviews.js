@@ -17,7 +17,7 @@ export const Reviews = () => {
     } else {
         userReview = 0
     }
-    console.log(userReview)
+
     useEffect(() => {
         dispatch(getReviews(bookId))
     }, [dispatch])

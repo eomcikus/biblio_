@@ -4,7 +4,9 @@ import { NavLink } from 'react-router-dom';
 import LogoutButton from '../auth/LogoutButton';
 import './navbar.css'
 import logo from './kidlit.png'
+import { useSelector } from 'react-redux';
 const NavBar = () => {
+  const user = useSelector(state => state.session.user)
   return (
     <nav className='navbar-container'>
       
@@ -49,7 +51,9 @@ const NavBar = () => {
           </NavLink>
         </div> */}
         <div>
+          {user && (
           <LogoutButton />
+          )}
         </div>
 
     </nav>

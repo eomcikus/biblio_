@@ -19,7 +19,6 @@ const ReviewForm = () => {
     if (reviewArr) {
         reviewByUser = reviewArr.find(review => +user.id === +review.user_id)
     }
-    console.log('reviewbyuser', reviewByUser)
     useEffect(() => {
         let errors = []
         if (!review) errors.push('You must have a review longer than 20 characters and less than 5000 characters to submit your review.')
