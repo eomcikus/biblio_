@@ -49,7 +49,8 @@ function App() {
           <User />
         </ProtectedRoute>
         <Route path='/' exact={true} >
-          <h1>My Home Page</h1>
+          <h1>KidLit</h1>
+          <AllBooks />
         </Route>
         <Route path='/books' exact={true}>
           <AllBooks />

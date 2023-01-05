@@ -10,7 +10,14 @@ export const Reviews = () => {
     const user = useSelector(state => state.session.user)
 
     let reviewsforBook = reviews.filter(review => +review.book_id === +bookId)
-    const userReview = reviews.find(review => review.user_id === user.id)
+ 
+    let userReview;
+    if (user) {
+        userReview = reviews.find(review => review.user_id === user.id)
+    } else {
+        userReview = 0
+    }
+    console.log(userReview)
     useEffect(() => {
         dispatch(getReviews(bookId))
     }, [dispatch])
@@ -19,26 +26,26 @@ export const Reviews = () => {
     return (
         <>
             <div>{reviewsforBook.map(review => <div> {review.review} {review.stars}</div>)}
-             {user && !userReview && (
-                    <button>
-                        <NavLink to={`/books/${bookId}/reviews/add`}>Create a Review</NavLink>
-                    </button>
-                )}
-                {user && userReview.user_id === user.id &&( 
+                {user && !userReview && (
+                <button>
+                    <NavLink to={`/books/${bookId}/reviews/add`}>Create a Review</NavLink>
+                </button>
+                 )}
+                {user && userReview &&(  
                 <button>
                     <NavLink to={`/books/reviews/edit/${userReview.id}`} userReview={userReview}>
-                    Edit
-                    </NavLink>                    
+                        Edit
+                    </NavLink>
                 </button>
-                )}
-                {user && userReview.user_id === user.id &&( 
+                    )}
+                {user && userReview &&(  
                 <button>
                     <NavLink to={`/books/reviews/${userReview.id}/delete`} userReview={userReview}>
-                    Delete Review
-                    </NavLink>                    
+                        Delete Review
+                    </NavLink>
                 </button>
-                )}
-    </div>
+                  )} 
+            </div>
         </>
 
     )

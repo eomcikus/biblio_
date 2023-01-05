@@ -17,6 +17,7 @@ const OneBook = () => {
     const reviews = useSelector(state => state.reviews)
     const user = useSelector(state => state.session.user)
     const reviewsArr = useSelector(state => Object.values(state.reviews.reviews))
+    console.log('reviewsArr', reviewsArr)
     const userReview = reviewsArr.filter(review => user.id === review.user_id)
     console.log('userreview', userReview)
     console.log(reviews)
@@ -32,9 +33,13 @@ const OneBook = () => {
             total += review.stars
         })
         let starAvg = total / reviewsArr.length
+        if (!starAvg) {
+            book['starAvg'] = 'No Reviews Yet'
+        } else { 
         book['starAvg'] = parseFloat(starAvg).toFixed(2)
+        }
+    } 
 
-    }
 
 
 

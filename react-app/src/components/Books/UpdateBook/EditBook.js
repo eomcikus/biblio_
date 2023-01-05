@@ -9,7 +9,7 @@ const EditBook = () => {
     const history = useHistory()
     const { bookId } = useParams()
     const book = useSelector(state => state.books.oneBook)
-    console.log('book', book)
+
     const user = useSelector(state => state.session.user)
     // console.log(book, 'current book')
     const [title, setTitle] = useState(book.title)
