@@ -58,7 +58,7 @@ function App() {
         </Route>
         <Route path='/books/:bookId' exact={true}>
           <OneBook />
-          <DeleteBook />
+          {/* <DeleteBook /> */}
           {/* <EditBook /> */}
           {/* <Reviews /> */}
           <ReviewForm />

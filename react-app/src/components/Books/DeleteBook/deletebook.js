@@ -17,7 +17,7 @@ const DeleteBook = () => {
     }
     return (
         <button onClick={handleDelete}>
-            Delete book
+            Delete book!
         </button>
     )
 }
