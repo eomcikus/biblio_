@@ -8,7 +8,7 @@ const AllBooks = () => {
     const books = useSelector(state => state.books.allBooks)
 
     const booksArray = Object.values(books)
-    console.log(booksArray)
+
     useEffect(() => {
         dispatch(getBooks())
     }, [dispatch,])

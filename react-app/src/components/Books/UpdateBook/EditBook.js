@@ -11,7 +11,7 @@ const EditBook = () => {
     const book = useSelector(state => state.books.oneBook)
 
     const user = useSelector(state => state.session.user)
-    // console.log(book, 'current book')
+
     const [title, setTitle] = useState(book.title)
     const [author, setAuthor] = useState(book.author)
     const [summary, setSummary] = useState(book.summary)

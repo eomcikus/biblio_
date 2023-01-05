@@ -13,7 +13,7 @@ const DeleteReview = () => {
     const reviewArr = Object.values(reviews)
 
     const reviewByUser = reviewArr.find(review => review.user_id === user.id)
-    console.log(reviewByUser)
+
     const deleteReview = (e) => {
         e.preventDefault()
         dispatch(removeReview(reviewByUser.id))

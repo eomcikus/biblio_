@@ -66,6 +66,7 @@ export const FEBookForm = () => {
         setAuthor_about('')
         setThumbnail('')
     }
+
     return (
         <section className='form-section'>
             <form onSubmit={handleSubmit} className='book-form'>
