@@ -34,7 +34,7 @@ export const Reviews = () => {
                 {user && userReview &&(  
                 <button>
                     <NavLink to={`/books/reviews/edit/${userReview.id}`} userReview={userReview}>
-                        Edit
+                        Edit Review
                     </NavLink>
                 </button>
                     )}

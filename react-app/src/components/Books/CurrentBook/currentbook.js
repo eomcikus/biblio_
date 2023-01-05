@@ -13,14 +13,14 @@ const OneBook = () => {
     const dispatch = useDispatch()
     const { bookId } = useParams()
     const book = useSelector(state => state.books.oneBook)
-    console.log('onebook', book)
+
     const reviews = useSelector(state => state.reviews)
     const user = useSelector(state => state.session.user)
     const reviewsArr = useSelector(state => Object.values(state.reviews.reviews))
-    console.log('reviewsArr', reviewsArr)
+ 
+    const bookOwner = book.user_id === user.id
     const userReview = reviewsArr.filter(review => user.id === review.user_id)
-    console.log('userreview', userReview)
-    console.log(reviews)
+
     useEffect(() => {
         dispatch(getOneBook(bookId))
 
@@ -45,6 +45,7 @@ const OneBook = () => {
 
     if (!book) return null
     return (
+        <>
         <div className='current-book-container'>
             <div className='current-book-thumb-container'>
                 <img className='current-book-thumbnail' src={book.thumbnail} /></div>
@@ -57,8 +58,12 @@ const OneBook = () => {
                     {book.summary}
                 </div>
                 <div>
+                    {user && bookOwner && (
                     <EditBook book={book} />
+                    )}
+                    {user && bookOwner && (
                     <DeleteBook book={book} />
+                    )}
                     {/* {user && userReview && ( */}
 
                         {/* <EditReview review={userReview} />  */}
@@ -68,6 +73,7 @@ const OneBook = () => {
                 </div>
             </div>
         </div>
+        </>
     )
 }
 

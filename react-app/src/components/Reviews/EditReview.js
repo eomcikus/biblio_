@@ -35,7 +35,7 @@ const EditReview = ({ userReview }) => {
             book_id: userReview1.id,
             user_id: user.id
         }
-        let updatedReview = await dispatch(editReview(payload))
+        let updatedReview = await dispatch(editReview(payload, userReview1))
         if (updatedReview) {
             history.push(`/books/${payload.book_id}`)
         }
