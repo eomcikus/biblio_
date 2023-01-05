@@ -29,7 +29,7 @@ const OneBook = () => {
 
     }, [dispatch, bookId, reviews])
 
-    if (reviewsArr.length) {
+    if (reviewsArr.length && book) {
         let total = 0
 
         reviewsArr.forEach(review => {
@@ -56,7 +56,7 @@ const OneBook = () => {
                 <div className='current-book-title'>
                     {book.title}     </div>
                 <div className='current-book-author'> {book.author} </div>
-                <div className='reviews'>{book.starAvg}</div>
+                <div className='reviews'>{book.starAvg ? parseFloat(book.starAvg).toFixed(2) : 'No Reviews'}</div>
                 <div className='current-book-summary'>
                     {book.summary}
                 </div>
