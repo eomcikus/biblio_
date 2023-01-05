@@ -11,10 +11,34 @@ export const FEBookForm = () => {
     const [summary, setSummary] = useState('')
     const [author_about, setAuthor_about] = useState('')
     const [thumbnail, setThumbnail] = useState('')
+    const [validationErrors, setValidationErrors] = useState([])
+    const [submit, setSubmit] = useState(false)
+
     const user = useSelector(state => state.session.user)
+
+    useEffect(() => {
+        let errors = []
+        if (!title) errors.push('Book must have a title')
+        if (title.length < 5) errors.push('Book title must be at least 5 characters long.')
+        if (title.length > 2000) errors.push('Book title must be less than 2000 characters long.')
+        if (title.includes('  ')) errors.push('Book title must have letter and or number characters and cannot be only spaces.')
+        if (!author) errors.push('Book must have an author')
+        if (author.length < 5) errors.push('Author name must be at least 5 characters long.')
+        if (author.length > 1000) errors.push('Author name must be less than 1000 characters long.')
+        if (!summary) errors.push('Book must have a summary that is between 200 and 5000 characters long.')
+        if (summary.length < 200) errors.push('Book must have a summary that is at least 200 characters.')
+        if (summary.length > 5000) errors.push('Book must have a summary that is less than 5000 characters. Revision is your friend!')
+        if (!author_about) errors.push('Please include an about the author section.')
+        if (author_about.length < 150) errors.push('Please make sure the about the author section is at least 150 characters.')
+        if (author_about.length > 5000) errors.push('Please make sure the about the author section is less than 5000 characters long.')
+        if (!thumbnail) errors.push('Please include a picture of the cover of your book!')
+        if (!thumbnail.includes('.png') && !thumbnail.includes('.jpg') && !thumbnail.includes('.jpeg')) errors.push('Picture of cover must be in .jpg, .jpeg, or .png format!')
+        if (!thumbnail.includes('http://') && !thumbnail.includes('https://')) errors.push('Please include "http://" or "https://" at the beginning of your photo URL')
+        setValidationErrors(errors)
+    }, [title, author, summary, author_about, thumbnail])
+    console.log(validationErrors)
     const handleSubmit = async (e) => {
         e.preventDefault()
-        console.log('in line 17 handlesubmit')
         const payload = {
             title,
             author,
@@ -22,6 +46,10 @@ export const FEBookForm = () => {
             author_about,
             thumbnail,
             user_id: user.id
+        }
+        setSubmit(true)
+        if (validationErrors.length){
+            return
         }
         let createdBook = await dispatch(createBook(payload))
         if (createdBook) {
@@ -32,7 +60,7 @@ export const FEBookForm = () => {
     }
     const cancel = async (e) => {
         // e.stopPropogation()
-        // e.preventDefault()
+        e.preventDefault()
         setTitle('')
         setAuthor('')
         setSummary('')
@@ -42,6 +70,13 @@ export const FEBookForm = () => {
     return (
         <section className='form-section'>
             <form onSubmit={handleSubmit} className='book-form'>
+                {submit && !!validationErrors.length && (
+                    <ul className='errors'>
+                    {validationErrors.map((error) => (
+                        <li key={error}>{error}</li>))}
+
+                    </ul>
+)}
                 <input
                     type="text"
                     placeholder="Title"
