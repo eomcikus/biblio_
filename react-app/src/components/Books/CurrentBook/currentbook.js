@@ -51,7 +51,7 @@ const OneBook = () => {
         <>
         <div className='current-book-container'>
             <div className='current-book-thumb-container'>
-                <img className='current-book-thumbnail' src={book.thumbnail} /></div>
+                <img className='current-book-thumbnail' src={book.thumbnail} onError={e => e.target.src = "https://t3.ftcdn.net/jpg/04/62/93/66/360_F_462936689_BpEEcxfgMuYPfTaIAOC1tCDurmsno7Sp.jpg"} /></div>
             <div className='current-book-info-container'>
                 <div className='current-book-title'>
                     {book.title}     </div>

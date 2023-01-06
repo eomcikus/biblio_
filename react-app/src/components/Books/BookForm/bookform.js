@@ -33,7 +33,6 @@ export const FEBookForm = () => {
         if (author_about.length > 5000) errors.push('Please make sure the about the author section is less than 5000 characters long.')
         if (!thumbnail) errors.push('Please include a picture of the cover of your book!')
         if (!thumbnail.includes('.png') && !thumbnail.includes('.jpg') && !thumbnail.includes('.jpeg')) errors.push('Picture of cover must be in .jpg, .jpeg, or .png format!')
-        if (!thumbnail.includes('http://') && !thumbnail.includes('https://')) errors.push('Please include "http://" or "https://" at the beginning of your photo URL')
         setValidationErrors(errors)
     }, [title, author, summary, author_about, thumbnail])
     const handleSubmit = async (e) => {
@@ -66,6 +65,7 @@ export const FEBookForm = () => {
         setAuthor_about('')
         setThumbnail('')
     }
+
 
     return (
         
@@ -109,9 +109,12 @@ export const FEBookForm = () => {
                 />
                 <input
                     type="text"
-                    placeholder="Cover of Book"
+                    className='badThumb'
+                    // placeholder="Cover of Book"
+                    // accept='image/png, image/jpeg, image/jpg'
                     // required
-                    value={thumbnail}
+                    src={thumbnail}
+                    onError={e => e.target.src = "https://t3.ftcdn.net/jpg/04/62/93/66/360_F_462936689_BpEEcxfgMuYPfTaIAOC1tCDurmsno7Sp.jpg"}
                     onChange={e => setThumbnail(e.target.value)}
                 />
                 <button
