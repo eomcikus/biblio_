@@ -64,7 +64,7 @@ function App() {
           {/* <DeleteBook /> */}
           {/* <EditBook /> */}
           {/* <Reviews /> */}
-          <ReviewForm />
+          {/* <ReviewForm /> */}
           {/* <EditReview /> */}
         {/* <DeleteReview /> */}
 

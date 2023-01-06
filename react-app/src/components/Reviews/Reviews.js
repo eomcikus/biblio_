@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { NavLink, useParams } from "react-router-dom";
 import { useEffect } from "react";
 import ReviewForm from "./ReviewForm";
+import './reviewcard.css'
 export const Reviews = () => {
     const { bookId } = useParams()
     const dispatch = useDispatch()
@@ -25,10 +26,10 @@ export const Reviews = () => {
 
     return (
         <>
-            <div>{reviewsforBook.map(review => <div> {review.review} {review.stars}</div>)}
+            <div>{reviewsforBook.map(review => <div className='reviewcard-container'><div className='review-text'>{review.review}</div> <div>{review.stars}</div></div>)}
                 {user && !userReview && (
                 <button>
-                    <NavLink to={`/books/${bookId}/reviews/add`}>Create a Review</NavLink>
+                    <NavLink className='create-review-navlink' to={`/books/${bookId}/reviews/add`}>Create a Review</NavLink>
                 </button>
                  )}
                 {user && userReview &&(  

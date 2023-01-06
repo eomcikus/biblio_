@@ -1,10 +1,12 @@
 
 import {NavLink} from 'react-router-dom'
+import './reviewcard.css'
+
 const ReviewCard = ({ review }) => {
     return (
         <div className='reviewcard-container'>
-            {review.review}
-            {review.stars}
+           <div className='review-text'> {review.review} </div>
+            <div className='review-stars'>{review.stars} </div>
             </div>
     )
 
