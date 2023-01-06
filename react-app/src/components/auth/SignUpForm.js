@@ -25,7 +25,7 @@ const SignUpForm = () => {
     if (password !== repeatPassword) errors.push('Passwords must match')
     setValidationErrors(errors)
   }, [username, email, password, repeatPassword])
-  console.log(validationErrors)
+
   const onSignUp = async (e) => {
 
     e.preventDefault();

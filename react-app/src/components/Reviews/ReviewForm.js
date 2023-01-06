@@ -52,7 +52,7 @@ const ReviewForm = () => {
             {!user && (
                 <div>Log in to leave a review!</div>
             )}
-            {user  && (
+            {user  && !reviewByUser  && (
             <form onSubmit={handleSubmit}>
                 {submit && !!validationErrors.length && (
                     <ul className='errors'>
