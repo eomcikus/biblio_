@@ -24,7 +24,7 @@ const AllBooks = () => {
                 ))}
             </div>
             {user && (
-                <button><NavLink to='/books/add'>Create a Book</NavLink></button>
+                <button><NavLink to='/books/add' className='book-button'>Create a Book</NavLink></button>
             )}
             
 </>
