@@ -73,7 +73,7 @@ export const FEBookForm = () => {
             {user && (
             <form onSubmit={handleSubmit} className='book-form'>
                 {submit && !!validationErrors.length && (
-                    <ul className='errors'>
+                    <ul className='bookform-errors'>
                     {validationErrors.map((error) => (
                         <li key={error}>{error}</li>))}
 
