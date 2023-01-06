@@ -68,7 +68,9 @@ export const FEBookForm = () => {
     }
 
     return (
+        
         <section className='form-section'>
+            {user && (
             <form onSubmit={handleSubmit} className='book-form'>
                 {submit && !!validationErrors.length && (
                     <ul className='errors'>
@@ -118,6 +120,7 @@ export const FEBookForm = () => {
                 <button type='button'
                 onClick={cancel}>Cancel</button>
             </form>
+            )}
         </section>
     )
 }
