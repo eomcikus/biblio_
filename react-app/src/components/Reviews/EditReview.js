@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams, Redirect } from 'react-router-dom';
-import { editReview } from '../../store/reviews';
-
+import { editReview, getReviews, } from '../../store/reviews';
+import { getOneBook } from '../../store/books';
 
 const EditReview = ({ userReview }) => {
     const dispatch = useDispatch()
@@ -17,6 +17,7 @@ const EditReview = ({ userReview }) => {
 
     const userReview1 = currentReviews.find(review => +review.user_id === +user.id)
 
+    
 
     const [review, setReview] = useState(userReview1?.review)
     const [stars, setStars] = useState(userReview1?.stars)
@@ -24,20 +25,26 @@ const EditReview = ({ userReview }) => {
         setReview(userReview1?.review)
         setStars(userReview1?.stars)
     }, [userReview1])
-    // if (!userReview) return null
+    if (!userReview1) return null
 
     const handleSubmit = async (e) => {
+        console.log('here')
         e.preventDefault()
         const payload = {
-            id: userReview1.id,
+            id: userReview1?.id,
             review,
             stars,
-            book_id: userReview1.id,
+            book_id: userReview1?.book_id,
             user_id: user.id
         }
+        console.log('in handlesubmit')
         let updatedReview = await dispatch(editReview(payload, userReview1))
+        console.log('updated review', updatedReview)
         if (updatedReview) {
-            history.push(`/books/${payload.book_id}`)
+            console.log('in updated statement')
+            // dispatch(getOneBook(payload.book_id))
+            console.log('payload', payload.book_id)
+            return history.push(`/books/${payload.book_id}`)
         }
     }
 
@@ -54,7 +61,7 @@ const EditReview = ({ userReview }) => {
                         max={5}
                         value={stars}
                         onChange={e => setStars(e.target.value)} />
-                    <button onSubmit={handleSubmit}>Edit Review</button>
+                    <button type='submit'>Edit Review</button>
                 </form>
             </section>
         </>

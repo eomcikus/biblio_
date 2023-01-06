@@ -66,7 +66,7 @@ export const removeReview = (reviewId) => async (dispatch) => {
 
 export const editReview = (form, userReview1) => async (dispatch) => {
 
-    const response = await fetch(`/api/books/reviews/edit/${userReview1.id}`, {
+    const response = await fetch(`/api/books/reviews/edit/${form.id}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
