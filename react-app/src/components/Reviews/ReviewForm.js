@@ -13,12 +13,8 @@ const ReviewForm = () => {
     const [validationErrors, setValidationErrors] = useState([])
     const [submit, setSubmit] = useState(false)
     const user = useSelector(state => state.session.user)
-    let userId = useSelector(state => state.session.user.id)
+
     const reviewArr = useSelector(state => Object.values(state.reviews.reviews))
-    let reviewByUser;
-    if (reviewArr) {
-        reviewByUser = reviewArr.find(review => +user.id === +review.user_id)
-    }
     useEffect(() => {
         let errors = []
         if (!review) errors.push('You must have a review longer than 20 characters and less than 5000 characters to submit your review.')
@@ -26,14 +22,18 @@ const ReviewForm = () => {
         if (review.length > 5000) errors.push('Review must be less than 5000 characters. Revision is key my friend!')
         setValidationErrors(errors)
     }, [review])
-    if (!userId) return null
+
+    let reviewByUser;
+    if (reviewArr && user) {
+        reviewByUser = reviewArr.find(review => +user.id === +review.user_id)
+    }
     const handleSubmit = async (e) => {
         e.preventDefault()
         const payload = {
             review,
             stars,
             book_id: bookId,
-            user_id: userId
+            user_id: user.id
         }
         setSubmit(true)
         if (validationErrors.length) {
@@ -48,29 +48,34 @@ const ReviewForm = () => {
     }
     return (
         <section>
-            {user && !reviewByUser && (
-                <form onSubmit={handleSubmit}>
-                    {submit && !!validationErrors.length && (
-                        <ul className='errors'>
-                            {validationErrors.map((error) => (
-                                <li key={error}>{error}</li>
-                            ))}
-                        </ul>
-                    )}
-                    <input type='text'
-                        value={review}
-                        onChange={e => setReview(e.target.value)} />
-                    <input
-                        type='number'
-                        min={1}
-                        max={5}
-                        value={stars}
-                        onChange={e => setStars(e.target.value)} />
-
+            <h2>Reviews</h2>
+            {!user && (
+                <div>Log in to leave a review!</div>
+            )}
+            {user  && (
+            <form onSubmit={handleSubmit}>
+                {submit && !!validationErrors.length && (
+                    <ul className='errors'>
+                        {validationErrors.map((error) => (
+                            <li key={error}>{error}</li>
+                        ))}
+                    </ul>
+                )}
+                <input type='text'
+                    value={review}
+                    onChange={e => setReview(e.target.value)} />
+                <input
+                    type='number'
+                    min={1}
+                    max={5}
+                    value={stars}
+                    onChange={e => setStars(e.target.value)} />
+                {/* {user  && ( */}
                     <button type='submit'
                         onSubmit={handleSubmit}>Submit Review</button>
-                    {/* <EditReview /> */}
-                </form>
+
+                {/* <EditReview /> */}
+            </form>
                 )}
         </section>
     )
