@@ -17,7 +17,7 @@ const DeleteReview = () => {
     const deleteReview = (e) => {
         e.preventDefault()
         dispatch(removeReview(reviewByUser.id))
-        history.push('/books/')
+        history.push(`/books/${reviewByUser.book_id}`)
     }
     return (
         <div>
