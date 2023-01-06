@@ -54,6 +54,9 @@ function App() {
         </Route>
         <Route path='/books' exact={true}>
           <AllBooks />
+          {/* <FEBookForm /> */}
+        </Route>
+        <Route path='/books/add' exact={true}>
           <FEBookForm />
         </Route>
         <Route path='/books/:bookId' exact={true}>
