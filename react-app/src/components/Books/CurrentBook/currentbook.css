@@ -1,7 +1,16 @@
+.whole-curr-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-left: 15%;
+}
+
 .current-book-container {
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: center;
 }
 
 .current-book-thumbnail {
@@ -31,8 +40,19 @@
     font-size: 16px;
     font-family:'Montserrat';
     font-weight: bolder;
-    width: 50%;
+    width: 60%;
     height: 50%;
     overflow: scroll;
     /* border: 1px red solid; */
+}
+
+.star-reviews {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.reviews-on-curr-book {
+    font-size: 24px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }

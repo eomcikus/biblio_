@@ -20,7 +20,7 @@ const DeleteReview = () => {
         history.push(`/books/${reviewByUser.book_id}`)
     }
     return (
-        <div>
+        <div className='delete-review-container'>
          Are you sure? Deleting this will delete your entire review. You cannot undo this.
             <button onClick={deleteReview}>I am sure, Delete</button>
 

@@ -68,7 +68,10 @@ export const FEBookForm = () => {
 
 
     return (
-        
+        <>
+        <div className='big-container'>
+            <h2>Don't see your favorite book?</h2>
+            <h3>Add it below</h3>
         <section className='form-section'>
             {user && (
             <form onSubmit={handleSubmit} className='book-form'>
@@ -110,20 +113,24 @@ export const FEBookForm = () => {
                 <input
                     type="text"
                     className='badThumb'
-                    // placeholder="Cover of Book"
+                    placeholder="URL to a photo of the cover of your book"
                     // accept='image/png, image/jpeg, image/jpg'
                     // required
                     src={thumbnail}
                     onError={e => e.target.src = "https://t3.ftcdn.net/jpg/04/62/93/66/360_F_462936689_BpEEcxfgMuYPfTaIAOC1tCDurmsno7Sp.jpg"}
                     onChange={e => setThumbnail(e.target.value)}
                 />
+                <div className='button-container'>
                 <button
                     type='submit'
                     onSubmit={handleSubmit}>Submit</button>
                 <button type='button'
                 onClick={cancel}>Cancel</button>
+                </div>
             </form>
             )}
         </section>
+        </div>
+        </>
     )
 }

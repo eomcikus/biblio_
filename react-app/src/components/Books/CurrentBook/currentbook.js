@@ -49,6 +49,7 @@ const OneBook = () => {
     if (!book) return null
     return (
         <>
+        <div className='whole-curr-container'>
         <div className='current-book-container'>
             <div className='current-book-thumb-container'>
                 <img className='current-book-thumbnail' src={book.thumbnail} onError={e => e.target.src = "https://t3.ftcdn.net/jpg/04/62/93/66/360_F_462936689_BpEEcxfgMuYPfTaIAOC1tCDurmsno7Sp.jpg"} /></div>
@@ -56,7 +57,7 @@ const OneBook = () => {
                 <div className='current-book-title'>
                     {book.title}     </div>
                 <div className='current-book-author'> {book.author} </div>
-                <div className='reviews'>{book.starAvg ? parseFloat(book.starAvg).toFixed(2) : 'No Reviews'}</div>
+                <div className='star-reviews'>{book.starAvg ? parseFloat(book.starAvg).toFixed(2) : 'No Reviews'}</div>
                 <div className='current-book-summary'>
                     {book.summary}
                 </div>
@@ -71,10 +72,12 @@ const OneBook = () => {
 
                         {/* <EditReview review={userReview} />  */}
                         {/* )} */}
+                    <div className='reviews-on-curr-book'> Reviews </div>
                     <Reviews book={book} />
                     {/* <DeleteBookButton book={book} /> */}
                 </div>
             </div>
+        </div>
         </div>
         </>
     )

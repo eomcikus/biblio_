@@ -5,9 +5,19 @@ input {
     margin: 4px;
     /* border: 1px red solid; */
 }
-
+.big-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+}
 .form-section {
     display: flex;
     flex-direction: column;
     width: 60%
+}
+.button-container { 
+    display: flex;
+    flex-direction: column;
+    width: 100%;
 }

@@ -34,14 +34,14 @@ export const Reviews = () => {
                  )}
                 {user && userReview &&(  
                 <button>
-                    <NavLink to={`/books/reviews/edit/${userReview.id}`} userReview={userReview}>
+                    <NavLink className='edit-review-navlink' to={`/books/reviews/edit/${userReview.id}`} userReview={userReview}>
                         Edit Review
                     </NavLink>
                 </button>
                     )}
                 {user && userReview &&(  
                 <button>
-                    <NavLink to={`/books/reviews/${userReview.id}/delete`} userReview={userReview}>
+                    <NavLink className='delete-review-navlink' to={`/books/reviews/${userReview.id}/delete`} userReview={userReview}>
                         Delete Review
                     </NavLink>
                 </button>

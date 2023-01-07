@@ -22,6 +22,9 @@ const AllBooks = () => {
                         <BookCard key={book.id} book={book} />
                     </div>
                 ))}
+                {!user && (
+                    <div></div>
+                )}
             </div>
             {user && (
                 <button><NavLink to='/books/add' className='book-button'>Create a Book</NavLink></button>
