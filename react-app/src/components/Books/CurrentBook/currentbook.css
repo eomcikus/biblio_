@@ -40,9 +40,10 @@
     font-size: 16px;
     font-family:'Montserrat';
     font-weight: bolder;
-    width: 60%;
+    width: 600px;
     height: 50%;
     overflow: scroll;
+    overflow-wrap: break-word;
     /* border: 1px red solid; */
 }
 
