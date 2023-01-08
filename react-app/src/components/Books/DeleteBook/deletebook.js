@@ -12,7 +12,6 @@ const DeleteBook = () => {
         e.stopPropagation()
 
         const deleted = dispatch(deleteBook(bookId))
-        console.log(deleted)
         history.push('/books')
     }
     return (
