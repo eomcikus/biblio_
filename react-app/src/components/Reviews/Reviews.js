@@ -46,6 +46,9 @@ export const Reviews = () => {
                     </NavLink>
                 </button>
                   )} 
+                {!user && (
+                    <div className='review-not-logged'>Login in now to write a review!</div>
+                )}
             </div>
         </>
 

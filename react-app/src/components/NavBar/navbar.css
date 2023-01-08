@@ -23,10 +23,21 @@
 }
 .nav-login {
     font-family: 'Montserrat';
+    text-decoration: none;
 }
-
+.nav-login:visited {
+    color: #1a9ea3;
+    text-decoration: none;
+    font-family: 'Montserrat'
+}
 .nav-signup {
     font-family: 'Montserrat';
+    text-decoration: none;
+}
+.nav-signup:visited {
+    color: #1a9ea3;
+    text-decoration: none;
+    font-family: 'Montserrat'
 }
 .welcome-text {
     font-family: 'Montserrat';

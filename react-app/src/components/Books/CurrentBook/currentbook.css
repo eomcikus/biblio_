@@ -45,18 +45,24 @@
     height: 50%;
     /* overflow: scroll; */
     overflow-wrap: break-word;
+    padding-top: 20px;
     /* border: 1px red solid; */
+}
+
+.edit-book-nav {
+    text-decoration: none;
+    color: white;
 }
 
 .star-reviews {
     padding-top: 10px;
-    padding-bottom: 10px;
+    padding-bottom: 30px;
 }
 
 .reviews-on-curr-book {
     font-size: 24px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 .author-about {

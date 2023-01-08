@@ -63,7 +63,7 @@ const OneBook = () => {
                 </div>
                 <div>
                     {user && user.id === bookOwner && (
-                    <button><NavLink to={`/books/edit/${bookId}`}>Edit My Book</NavLink></button>
+                    <button className='edit-book-nav'><NavLink className='edit-book-nav' to={`/books/edit/${bookId}`}>Edit My Book</NavLink></button>
                     )}
                     {user && user.id === bookOwner && (
                     <DeleteBook book={book} />

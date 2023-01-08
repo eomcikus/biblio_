@@ -67,13 +67,15 @@ const EditBook = () => {
         let editedBook;
         setSubmit(true)
         if (validationErrors.length){
-            window.alert('Cannot submit edits. Please check the handy error messages to make your changes!')
-        } else {
-        (editedBook) = await dispatch(editBook(payload, bookId))
+            // window.alert('Cannot submit edits. Please check the handy error messages to make your changes!')
+            return
+        } 
+        editedBook = await dispatch(editBook(payload, bookId))
         await dispatch(getOneBook(bookId))
         history.push(`/books/${bookId}`)
+        return
         }
-    }
+    
    
     return (
 

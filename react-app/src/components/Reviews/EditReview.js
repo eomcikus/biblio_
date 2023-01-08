@@ -17,14 +17,22 @@ const EditReview = ({ userReview }) => {
 
     const userReview1 = currentReviews.find(review => +review.user_id === +user.id)
 
-    
-
+    const [submit, setSubmit] = useState(false)
+    const [validationErrors, setValidationErrors] = useState([])
     const [review, setReview] = useState(userReview1?.review)
     const [stars, setStars] = useState(userReview1?.stars)
     useEffect(() => {
         setReview(userReview1?.review)
         setStars(userReview1?.stars)
     }, [userReview1])
+    
+    useEffect(() => {
+        let errors = []
+        if (!review) errors.push('You must have a review longer than 20 characters and less than 5000 characters to submit your review.')
+        if (review?.length < 20) errors.push('Review must be longer than 20 characters.')
+        if (review?.length > 5000) errors.push('Review must be less than 5000 characters. Revision is key my friend!')
+        setValidationErrors(errors)
+    }, [review])
     if (!userReview1) return null
 
     const handleSubmit = async (e) => {
@@ -36,7 +44,10 @@ const EditReview = ({ userReview }) => {
             book_id: userReview1?.book_id,
             user_id: user.id
         }
-  
+        setSubmit(true)
+        if (validationErrors.length){
+            return;
+        }
         let updatedReview = await dispatch(editReview(payload, userReview1))
 
         if (updatedReview) {
@@ -51,6 +62,13 @@ const EditReview = ({ userReview }) => {
         <div className='biggest-review'>
             <section className='whole-editr-page'>
                 <form onSubmit={handleSubmit}>
+                {submit && !!validationErrors.length && (
+                    <ul className='errors'>
+                        {validationErrors.map((error) => (
+                            <li key={error}>{error}</li>
+                        ))}
+                    </ul>
+                )}
                     <input type='text'
                         value={review}
                         onChange={e => setReview(e.target.value)} 
