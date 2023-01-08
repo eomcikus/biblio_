@@ -4,7 +4,7 @@ import { getOneBook } from '../../../store/books';
 import EditBook from '../UpdateBook/EditBook'
 import { DeleteBookButton } from '../DeleteBook';
 import { Reviews } from '../../Reviews/Reviews';
-import { useParams } from 'react-router-dom'
+import { useParams, NavLink } from 'react-router-dom'
 import './currentbook.css'
 import DeleteBook from '../DeleteBook/deletebook';
 import { getReviews } from '../../../store/reviews';
@@ -63,7 +63,7 @@ const OneBook = () => {
                 </div>
                 <div>
                     {user && user.id === bookOwner && (
-                    <EditBook book={book} />
+                    <button><NavLink to={`/books/edit/${bookId}`}>Edit My Book</NavLink></button>
                     )}
                     {user && user.id === bookOwner && (
                     <DeleteBook book={book} />
