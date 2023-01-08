@@ -89,35 +89,35 @@ const EditBook = () => {
                 <input
                     type="text"
                     // placeholder="Title"
-                    required
+                    // required
                     value={title}
                     onChange={e => setTitle(e.target.value)}
                 />
                 <input
                     type="text"
                     // placeholder="Author"
-                    required
+                    // required
                     value={author}
                     onChange={e => setAuthor(e.target.value)}
                 />
                 <input
                     type="text"
                     // placeholder="Summary"
-                    required
+                    // required
                     value={summary}
                     onChange={e => setSummary(e.target.value)}
                 />
                 <input
                     type="text"
                     // placeholder="About the author"
-                    required
+                    // required
                     value={author_about}
                     onChange={e => setAuthor_about(e.target.value)}
                 />
                 <input
                     type="text"
                     // placeholder="Cover of Book"
-                    required
+                    // required
                     value={thumbnail}
                     onChange={e => setThumbnail(e.target.value)}
                 />
