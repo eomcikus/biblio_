@@ -49,3 +49,28 @@
 .review-text {
     overflow-wrap: break-word;
 }
+
+
+.add-review-text {
+    width: 80%;
+}
+.add-review-number {
+    width: 80%;
+}
+.add-review-form {
+    display: flex;
+    flex-direction: column;
+    width: 60%
+}
+
+.add-review-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-left: 15%;
+}
+
+.submit-review-button {
+    width: 80%
+}

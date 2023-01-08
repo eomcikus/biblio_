@@ -47,13 +47,13 @@ const ReviewForm = () => {
         }
     }
     return (
-        <section>
+        <section className='add-review-container'>
             <h2>Reviews</h2>
             {!user && (
                 <div>Log in to leave a review!</div>
             )}
             {user  && !reviewByUser  && (
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className='add-review-form'>
                 {submit && !!validationErrors.length && (
                     <ul className='errors'>
                         {validationErrors.map((error) => (
@@ -62,16 +62,19 @@ const ReviewForm = () => {
                     </ul>
                 )}
                 <input type='text'
+                    className='add-review-text'
                     value={review}
                     onChange={e => setReview(e.target.value)} />
                 <input
                     type='number'
+                    className='add-review-number'
                     min={1}
                     max={5}
                     value={stars}
                     onChange={e => setStars(e.target.value)} />
                 {/* {user  && ( */}
                     <button type='submit'
+                    className='submit-review-button'
                         onSubmit={handleSubmit}>Submit Review</button>
 
                 {/* <EditReview /> */}
