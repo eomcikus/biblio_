@@ -48,20 +48,24 @@ const EditReview = ({ userReview }) => {
 
     return (
         <>
+        <div className='biggest-review'>
             <section className='whole-editr-page'>
                 <form onSubmit={handleSubmit}>
                     <input type='text'
                         value={review}
-                        onChange={e => setReview(e.target.value)} />
+                        onChange={e => setReview(e.target.value)} 
+                        className='review-input' />
                     <input
                         type='number'
                         min={1}
                         max={5}
                         value={stars}
-                        onChange={e => setStars(e.target.value)} />
-                    <button type='submit'>Edit Review</button>
+                        onChange={e => setStars(e.target.value)} 
+                        className='stars-input'/>
+                    <button type='submit' className='edit-review-button'>Edit Review</button>
                 </form>
             </section>
+            </div>
         </>
     )
 }

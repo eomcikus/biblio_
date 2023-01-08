@@ -1,19 +1,25 @@
 .reviewcard-container{ 
     /* border: 1px gray solid; */
     border-radius: 3%;
-    width: 60%;
+    width: 600px;
+    height: 100px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     padding: 10px;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     padding-bottom: 10px;
+    overflow-y:scroll;
+    overflow-wrap: break-word;
 }
 
 .review-text {
     font-weight: bold;
     /* border: 1px red solid; */
-    width: 70%
+    width: 70%;
+    /* overflow-wrap: break-word;
+    overflow-y: scroll; */
+    padding-top: 15px;
 }
 
 .create-review-navlink {
