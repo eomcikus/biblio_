@@ -6,8 +6,8 @@
 }
 
 .thumbnail {
-    width: 115px;
-    height: 180px;
+    width: 180px;
+    height: 250px;
     margin: 5px;
 }
 .thumbnail:hover{

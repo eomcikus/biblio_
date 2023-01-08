@@ -2,12 +2,80 @@
     display: flex;
     flex-direction: row;
     width: 100%;
-    overflow:scroll;
-    
+    overflow-x:scroll;
+    padding-top: 100px;
 }
 
 .book-button {
     text-decoration: none;
     color: white;
-    padding: 5px;
+    padding: 10px;
+    font-size: 20px;
+}
+
+.footer-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 90px;
+    align-items: center;
+    justify-content: center;
+    padding-top: 450px;
+
+}
+
+#about-icons {
+    height: 30px;
+    width: 30px;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+
+}
+
+.frontpage-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding-top: 30px;
+}
+.first-div {
+    padding: 10px;
+    /* border: 1px solid grey; */
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    width: 35%;
+    align-items: center;
+}
+.uge-div {
+    display: flex;
+    flex-direction: column;
+    /* align-items: ; */
+}
+
+.logged-in-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logged-in-text {
+    padding: 50px;
+    font-size: 36px;
+    align-items: center;
+}
+.intro-text {
+    font-size: 16px;
+    margin: 15px;
+    padding: 10px;
+}
+.intro-header {
+    font-size: 30px;
+    padding-bottom: 10px;
+    /* border: 1px red solid; */
+}
+.first-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }

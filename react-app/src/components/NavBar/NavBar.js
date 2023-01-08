@@ -10,7 +10,7 @@ const NavBar = () => {
   return (
     <nav className='navbar-container'>
       
-      <div><NavLink to='/'><img src={logo} /></NavLink></div> 
+      <div><NavLink to='/'><img className='logo' src={logo} /></NavLink></div> 
         <div>
           <NavLink to='/books' 
           exact={true} 
@@ -19,6 +19,13 @@ const NavBar = () => {
             Home
           </NavLink>
         </div>
+        <div className='libutton'>
+        <a href={'https://www.linkedin.com/in/erin-duffy-omcikus-5641004a/'} target='_blank'><img id='about-icons' src={"blacklinkedin.png"} /></a>
+        </div>
+        <div className='ghbutton'>
+        <a href={'https://github.com/eomcikus'} target='_blank'><img  id='about-icons' src={'github.png'} /></a>
+        </div>
+
         {/* <div>
           <NavLink to='/user/books'
           exact={true}
@@ -41,6 +48,7 @@ const NavBar = () => {
           <NavLink 
           to='/sign-up' 
           exact={true} 
+          className='nav-signup'
           activeClassName='active'>
             Sign Up
           </NavLink>
@@ -54,6 +62,11 @@ const NavBar = () => {
             Users
           </NavLink>
         </div> */}
+        <div>
+          {user && (
+            <div className='welcome-text'>Welcome back, {user.username}.</div>
+          )}
+        </div>
         <div>
           {user && (
           <LogoutButton />

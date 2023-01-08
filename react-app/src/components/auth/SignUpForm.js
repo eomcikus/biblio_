@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect, useHistory } from 'react-router-dom';
 import { signUp } from '../../store/session';
+import  './signupform.css'
 
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
@@ -63,7 +64,8 @@ const SignUpForm = () => {
   }
 
   return (
-    <form onSubmit={onSignUp}>
+    <div className='biggest-container'>
+    <form onSubmit={onSignUp} className='signup-container'>
       {submit && !!validationErrors.length && (
         <ul className='signup-errors'>
           {validationErrors.map((error) => (
@@ -108,8 +110,9 @@ const SignUpForm = () => {
           required={true}
         ></input>
       </div>
-      <button type='submit'>Sign Up</button>
+      <button className='signup-button-form' type='submit'>Sign Up</button>
     </form>
+    </div>
   );
 };
 

@@ -1,6 +1,7 @@
 .nav-home{
     font-family: 'Montserrat';
     text-decoration: none;
+    color: #1a9ea3
 }
 .nav-mybooks{
     font-family: 'Montserrat';
@@ -12,5 +13,24 @@
     width: 100%;
     justify-content: space-around;
     align-items: center;
-    font-family: 'Montserrat'
+    font-family: 'Montserrat';
+    border: 1px solid #1a9ea3;
+    border-radius: 5px;
+    /* box-shadow: #1a9ea3 1px 1px 1px 1px; */
+}
+.logo {
+    padding-top: 30px;
+}
+.nav-login {
+    font-family: 'Montserrat';
+}
+
+.nav-signup {
+    font-family: 'Montserrat';
+}
+.welcome-text {
+    font-family: 'Montserrat';
+}
+.logout-button-nav{ 
+    font-family: 'Montserrat';
 }

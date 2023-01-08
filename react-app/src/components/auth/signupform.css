@@ -1,0 +1,34 @@
+
+.signup-container {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    /* align-items:center; */
+    /* padding-top: 30px; */
+}
+.biggest-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 30px;
+}
+input {
+    width: 80%;
+    padding: 12px 5px 5px 12px;
+    margin: 0px;
+    justify-content: flex-start;
+    /* border: 1px solid red; */
+}
+
+.signup-button-form {
+    width: 103%;
+    justify-content: center;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: row
+}
+.login-login {
+    width: 108%
+}
