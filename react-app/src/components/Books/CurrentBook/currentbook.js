@@ -57,7 +57,7 @@ const OneBook = () => {
                 <div className='current-book-title'>
                     {book.title}     </div>
                 <div className='current-book-author'> {book.author} </div>
-                <div className='star-reviews'>{book.starAvg ? parseFloat(book.starAvg).toFixed(2) : 'No Reviews'}</div>
+                <div className='star-reviews-container'><div className='tinystar'>⭑</div> {book.starAvg ? parseFloat(book.starAvg).toFixed(2) : 'No Reviews'}</div>
                 <div className='current-book-summary'>
                     {book.summary}
                 </div>
@@ -75,7 +75,9 @@ const OneBook = () => {
                     <div className='reviews-on-curr-book'> Reviews </div>
                     <Reviews book={book} />
                     {/* <DeleteBookButton book={book} /> */}
-                </div>
+                 </div>
+                        {/* About the author
+                        <div className='author-about'>{book.author_about}</div>  */}
             </div>
         </div>
         </div>

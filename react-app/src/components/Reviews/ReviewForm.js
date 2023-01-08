@@ -48,7 +48,7 @@ const ReviewForm = () => {
     }
     return (
         <section className='add-review-container'>
-            <h2>Reviews</h2>
+            <h2 className='reviews-heading'>Reviews</h2>
             {!user && (
                 <div>Log in to leave a review!</div>
             )}
@@ -64,10 +64,12 @@ const ReviewForm = () => {
                 <input type='text'
                     className='add-review-text'
                     value={review}
+                    placeholder={'Write your review here'}
                     onChange={e => setReview(e.target.value)} />
                 <input
                     type='number'
                     className='add-review-number'
+                    placeholder={"Rate your book from 1 to 5 stars"}
                     min={1}
                     max={5}
                     value={stars}

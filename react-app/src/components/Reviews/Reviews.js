@@ -26,7 +26,7 @@ export const Reviews = () => {
 
     return (
         <>
-            <div>{reviewsforBook.map(review => <div className='reviewcard-container'><div className='review-text'>{review.review}</div> <div>{review.stars}</div></div>)}
+            <div>{reviewsforBook.map(review => <div key={review.id} className='reviewcard-container'><div className='review-text'>{review.review}</div> <div className='star-container'><div className='tinystar'>⭑</div>  {review.stars}</div></div>)}
                 {user && !userReview && (
                 <button>
                     <NavLink className='create-review-navlink' to={`/books/${bookId}/reviews/add`}>Create a Review</NavLink>

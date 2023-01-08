@@ -72,5 +72,19 @@
 }
 
 .submit-review-button {
-    width: 80%
+    width: 83%;
+}
+
+.reviews-heading {
+    align-items: center;
+    justify-content: center;
+    padding-right: 30px;
+}
+.tinystar {
+    color: #FFC000;
+    font-size: 16px;
+}
+.star-container {
+    display: flex;
+    flex-direction: row;
 }

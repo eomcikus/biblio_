@@ -37,13 +37,12 @@ const EditReview = ({ userReview }) => {
             book_id: userReview1?.book_id,
             user_id: user.id
         }
-        console.log('in handlesubmit')
+  
         let updatedReview = await dispatch(editReview(payload, userReview1))
-        console.log('updated review', updatedReview)
+
         if (updatedReview) {
-            console.log('in updated statement')
             // dispatch(getOneBook(payload.book_id))
-            console.log('payload', payload.book_id)
+           
             return history.push(`/books/${payload.book_id}`)
         }
     }
