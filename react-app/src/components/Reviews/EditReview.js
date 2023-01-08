@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams, Redirect } from 'react-router-dom';
 import { editReview, getReviews, } from '../../store/reviews';
 import { getOneBook } from '../../store/books';
-
+import './editreview.css'
 const EditReview = ({ userReview }) => {
     const dispatch = useDispatch()
     const history = useHistory()
@@ -28,7 +28,6 @@ const EditReview = ({ userReview }) => {
     if (!userReview1) return null
 
     const handleSubmit = async (e) => {
-        console.log('here')
         e.preventDefault()
         const payload = {
             id: userReview1?.id,
@@ -49,7 +48,7 @@ const EditReview = ({ userReview }) => {
 
     return (
         <>
-            <section>
+            <section className='whole-editr-page'>
                 <form onSubmit={handleSubmit}>
                     <input type='text'
                         value={review}

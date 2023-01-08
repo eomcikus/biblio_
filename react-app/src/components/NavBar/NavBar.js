@@ -4,6 +4,8 @@ import { NavLink } from 'react-router-dom';
 import LogoutButton from '../auth/LogoutButton';
 import './navbar.css'
 import logo from './kidlit.png'
+import linkedin from './blacklinkedin.png'
+import github from './github.png'
 import { useSelector } from 'react-redux';
 const NavBar = () => {
   const user = useSelector(state => state.session.user)
@@ -20,10 +22,10 @@ const NavBar = () => {
           </NavLink>
         </div>
         <div className='libutton'>
-        <a href={'https://www.linkedin.com/in/erin-duffy-omcikus-5641004a/'} target='_blank'><img id='about-icons' src={"blacklinkedin.png"} /></a>
+        <a href={'https://www.linkedin.com/in/erin-duffy-omcikus-5641004a/'} target='_blank'><img id='about-icons' src={linkedin} /></a>
         </div>
         <div className='ghbutton'>
-        <a href={'https://github.com/eomcikus'} target='_blank'><img  id='about-icons' src={'github.png'} /></a>
+        <a href={'https://github.com/eomcikus'} target='_blank'><img  id='about-icons' src={github} /></a>
         </div>
 
         {/* <div>
