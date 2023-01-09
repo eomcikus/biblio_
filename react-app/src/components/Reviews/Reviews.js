@@ -47,7 +47,7 @@ export const Reviews = () => {
                 </button>
                   )} 
                 {!user && (
-                    <div className='review-not-logged'>Login in now to write a review!</div>
+                    <div className='review-not-logged'>Login now to write a review!</div>
                 )}
             </div>
         </>
