@@ -24,6 +24,7 @@ const SignUpForm = () => {
     if (!email.includes('@')) errors.push('Email must be a valid email containing an @ sign')
     if (!email.endsWith('.com') && !email.endsWith('.io')) errors.push('Email must be a valid email ending with ".com" or ".io"')
     if (password !== repeatPassword) errors.push('Passwords must match')
+    // if ()
     setValidationErrors(errors)
   }, [username, email, password, repeatPassword])
 
@@ -35,6 +36,13 @@ const SignUpForm = () => {
       return
     }
     const data = await dispatch(signUp(username, email, password));
+
+    if (data) {
+      let fixedError = data.errors
+      fixedError = fixedError[0].split(' : ')
+      fixedError.splice(0, 1)
+     return setValidationErrors(fixedError)
+    }
     return
     // history.push('/books')
     // if (password === repeatPassword) {
