@@ -16,7 +16,7 @@ class Book(db.Model):
     
     users = db.relationship('User', back_populates='books')
     reviews = db.relationship('Review', back_populates='books', cascade='all' )
-    bookshelves = db.relationship('Bookshelf', back_populates='books', cascade='all')
+    shelves = db.relationship('Shelf', secondary='book_shelves', back_populates='books')
     def to_dict(self):
         return {
             "id": self.id,
