@@ -4,6 +4,8 @@ def seed_book_shelf():
     shelf1 = book_shelf(
         shelf_id = 1,
         book_id = 2,
+        book_id = 3,
+        book_id = 4,
     )
     shelf2 = book_shelf(
         shelf_id = 1,
