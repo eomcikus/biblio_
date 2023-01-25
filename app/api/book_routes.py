@@ -50,7 +50,7 @@ def add_a_book():
             summary = form.data['summary'],
             author_about = form.data['author_about'],
             thumbnail = form.data['thumbnail'],
-            user_id = user
+            # user_id = user --- current user 
         )
         db.session.add(new_book)
         db.session.commit()
@@ -99,12 +99,13 @@ def get_reviews_by_id(id):
     # print('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')
     book_reviews = Review.query.filter(Review.book_id == id)
     # print('-----------------------------', book_reviews)
-    return {'book_reviews': [review.to_dict() for review in book_reviews]}
+    return {'book_reviews': [review.to_dict() for review in book_reviews] }
 
 @book_routes.route('/<id>/reviews/add', methods=['POST'])
 @login_required
 def add_review(id):
     form = ReviewForm()
+
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         new_review = Review(
@@ -112,6 +113,7 @@ def add_review(id):
             stars = form.data['stars'],
             book_id = form.data['book_id'],
             user_id = form.data['user_id'],
+            
         )
         db.session.add(new_review)
         db.session.commit()
