@@ -2,6 +2,7 @@ from flask.cli import AppGroup
 from .users import seed_users, undo_users
 from .books import seed_books, undo_books
 from .reviews import seed_reviews, undo_reviews
+from .shelves import seed_shelves, undo_shelves
 from app.models.db import db, environment, SCHEMA
 
 # Creates a seed group to hold our commands
@@ -20,9 +21,11 @@ def seed():
         undo_users()
         undo_books()
         undo_reviews()
+        undo_shelves()
     seed_users()
     seed_books()
     seed_reviews()
+    seed_shelves()
     # Add other seed functions here
 
 
@@ -32,4 +35,5 @@ def undo():
     undo_users()
     undo_books()
     undo_reviews()
+    undo_shelves()
     # Add other undo functions here

@@ -10,7 +10,7 @@ class Shelf(db.Model):
     description = db.Column(db.String(2000), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
     
-    books = db.relationship('Book', secondary='book_shelves', back_populates='shelves')
+    books = db.relationship('Book', secondary='book_shelf', back_populates='shelves')
     users = db.relationship('User', back_populates='shelves')
     def to_dict(self):
         return {
@@ -18,5 +18,5 @@ class Shelf(db.Model):
             "name": self.title,
             "description": self.description,
             "user_id": self.user_id,
-            "books": []
+            "books": [book.id for book in self.books]
         }
