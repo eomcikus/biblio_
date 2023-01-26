@@ -1,10 +1,13 @@
 
 import {NavLink} from 'react-router-dom'
+import {useSelector} from 'react-redux'
 import './reviewcard.css'
 
 const ReviewCard = ({ review }) => {
+    
     return (
         <div className='reviewcard-container'>
+            <div className='user-container'></div>
            <div className='review-text'> {review.review} </div>
             <div className='review-stars'>dfasdf {review.stars} </div>
             </div>

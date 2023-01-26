@@ -13,6 +13,7 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
+    user_photo = db.Column(db.String(5000))
     books = db.relationship('Book', back_populates='users')
     reviews = db.relationship('Review', back_populates='users')
     shelves = db.relationship('Shelf', back_populates='users')
@@ -32,4 +33,5 @@ class User(db.Model, UserMixin):
             'id': self.id,
             'username': self.username,
             'email': self.email,
+            'user_photo': self.user_photo
         }
