@@ -18,5 +18,5 @@ class Shelf(db.Model):
             "name": self.title,
             "description": self.description,
             "user_id": self.user_id,
-            "books": [book.id for book in self.books]
+            "books": self.books
         }
