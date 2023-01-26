@@ -17,6 +17,7 @@ import { Reviews } from './components/Reviews/Reviews';
 import ReviewForm from './components/Reviews/ReviewForm'
 import DeleteReview from './components/Reviews/DeleteReview';
 import EditReview from './components/Reviews/EditReview';
+import { AllShelves } from './components/shelves/AllShelves';
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
@@ -68,8 +69,10 @@ function App() {
           {/* <EditReview /> */}
         {/* <DeleteReview /> */}
 
-
         </Route>
+      <Route path='/shelves/' exact={true}>
+        <AllShelves />
+      </Route>
         {/* <Route path='/reviews/add' exact={true}>
           <ReviewForm />
         </Route> */}
