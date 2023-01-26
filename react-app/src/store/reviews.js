@@ -18,7 +18,6 @@ const removeR = reviewId => ({
     type: DELETE,
     reviewId
 })
-
 const editR = reviewId => ({
     type: EDIT,
     reviewId
