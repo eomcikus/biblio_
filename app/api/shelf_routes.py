@@ -16,3 +16,6 @@ def get_all_shelves():
 def get_shelves_of_current_user():
     shelves = Shelf.query.filter(Shelf.user_id == current_user.id)
     return {'shelves': [shelf.to_dict() for shelf in shelves]}
+
+# @shelf_routes.routes('/add')
+# @login_required
