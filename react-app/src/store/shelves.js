@@ -9,7 +9,7 @@ const load = shelves => ({
 })
 
 export const getShelves = () => async (dispatch) => {
-    const response = await fetch('/api/shelves')
+    const response = await fetch('/api/shelves/')
     console.log('thunk')
     if (response.ok){
         const shelves = await response.json()
@@ -17,12 +17,12 @@ export const getShelves = () => async (dispatch) => {
         dispatch(load(shelves))
     }
 }
-let initialState = { shelves: {}, currentShelf: {}}
+let initialState = { shelves: {}}
 export const shelvesReducer = (state = initialState, action) => {
     let newState;
     switch (action.type){
         case LOAD: {
-            newState = { shelves: {}, currentShelf:{}}
+            newState = { shelves: {}}
             newState.shelves = {}
             action.shelves.forEach(shelf => {
                 newState.shelves[shelf.id] = shelf
