@@ -10,11 +10,10 @@ shelf_routes = Blueprint('/shelves', __name__)
 @login_required
 def get_shelf_by_user():
     """get books on shelf by user"""
-    print('------------------', current_user.id)
-    shelves = Shelf.query.filter(Shelf.user_id == current_user.id)
-    singleShelf = [shelf.to_dict() for shelf in shelves]
-    print('AAAAAAAAAAAAAA', singleShelf)
-    books = Book.query.filter(Book.shelf_id == singleShelf)
+    # shelves = Shelf.query.get(Shelf.user_id == current_user.id)
+
+    # print('AAAAAAAAAAAAAA', shelves)
+    books = Book.query.filter(Book.shelf_id == current_user.id)
 
     return  [book.to_dict() for book in books]
 
