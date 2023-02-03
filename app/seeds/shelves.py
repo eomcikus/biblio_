@@ -1,32 +1,26 @@
 from app.models import db, Shelf, environment, SCHEMA
 
 def seed_shelves():
-    kids = Shelf(
-        name="Favorite Children's Titles",
-        description="Some of our most well-loved children's titles",
-        user_id=1
-
+    shelf_1 = Shelf(
+        name='To be read',
+        description='books I want to read with my family',
+        user_id = 1
     )
-    wordless = Shelf(
-        name="Wordless Picture Books",
-        description="Wordless picture books are a great way to practice storytelling by letting your young reader take over. Ask them to organize their story into beginning, middle, and end.",
+    shelf_2 = Shelf(
+        name='Books to Read',
+        description='Books to read with my nephew',
         user_id=2
     )
-    thinkers = Shelf(
-        name="Books to Make You Think",
-        description="These books will have you and the readers you share them with scratching your head",
-        user_id=2
-    )
-    animals = Shelf(
-        name="Books with Animals as Characters",
-        description="The perfect collection for the young animal lover in your life",
+    shelf_3 = Shelf(
+        name='Books we love',
+        description='Books we enjoy as a family',
         user_id=3
     )
 
-    db.session.add(kids)
-    db.session.add(wordless)
-    db.session.add(thinkers)
-    db.session.add(animals)
+
+    db.session.add(shelf_1)
+    db.session.add(shelf_2)
+    db.session.add(shelf_3)
     db.session.commit()
 def undo_shelves():
     if environment == "production":

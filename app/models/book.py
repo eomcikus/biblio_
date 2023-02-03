@@ -13,10 +13,10 @@ class Book(db.Model):
     author_about = db.Column(db.String(5000))
     thumbnail = db.Column(db.String(5000))
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
-    
+    shelf_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('shelves.id')))
     users = db.relationship('User', back_populates='books')
     reviews = db.relationship('Review', back_populates='books', cascade='all' )
-    shelves = db.relationship('Shelf', secondary='book_shelf', back_populates='books')
+    shelves = db.relationship('Shelf',  back_populates='books')
     def to_dict(self):
         return {
             "id": self.id,
@@ -25,7 +25,8 @@ class Book(db.Model):
             "summary": self.summary,
             "author_about": self.author_about,
             "thumbnail": self.thumbnail,
-            "user_id": self.user_id
+            "user_id": self.user_id,
+            "shelf_id": self.shelf_id
             # "user": self.user
             # "star_avg": self.star_avg
         }
