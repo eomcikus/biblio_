@@ -7,9 +7,10 @@ from .auth_routes import validation_errors_to_error_messages
 shelf_routes = Blueprint('shelves', __name__)
 
 @shelf_routes.route('/')
-def get_all_shelves():
-    shelves = Shelf.query.join(Book).all()
-    return {'shelves': [shelf.to_dict() for shelf in shelves]}
+def get_shelf_by_user():
+    # shelves = Shelf.query.
+    # return {'shelves': [shelf.to_dict() for shelf in shelves]}
+    pass
 
 @shelf_routes.route('/user')
 @login_required
