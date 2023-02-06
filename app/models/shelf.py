@@ -18,8 +18,12 @@ class Shelf(db.Model):
             "name": self.name,
             "description": self.description,
             "user_id": self.user_id,
-            "books": [{'bookId': book.id, 'title': book.title, 
-            'author': book.author, 'summary': book.summary, 'thumbnail': book.thumbnail} for book in self.books]
+            "books": [
+                {'bookId': book.id, 
+                'title': book.title, 
+                'author': book.author, 
+                'summary': book.summary, 
+                'thumbnail': book.thumbnail} for book in self.books]
         }
 
         # def to_dict(self):
