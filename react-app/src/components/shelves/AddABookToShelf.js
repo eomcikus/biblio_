@@ -8,7 +8,8 @@ export const AddBook2Shelf = (book_id) => {
     const history = useHistory()
     // const book_id = useSelector(state=> state.books.oneBook.id)
     // const shelf_id = useSelector()
-    console.log('bookid', book_id)
+    let id = +book_id.book_id
+    // console.log('bookid', bookId)
     const shelf_id = useSelector(state => state.shelves.shelves.id)
     console.log(shelf_id)
     useEffect(() => {
@@ -22,7 +23,7 @@ export const AddBook2Shelf = (book_id) => {
             book_id,
             shelf_id
         }
-        let createdShelf = await dispatch(addBookToShelf(payload))
+        let createdShelf = await dispatch(addBookToShelf(payload, id, shelf_id))
         if (createdShelf){
             await dispatch(getUserShelf())
             history.push('/shelves/user')

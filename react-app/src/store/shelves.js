@@ -20,7 +20,7 @@ const add = shelf => ({
 export const getShelves = () => async (dispatch) => {
     const response = await fetch('/api/shelves/')
     console.log('thunk')
-    if (response.ok){
+    if (response.ok) {
         const shelves = await response.json()
         console.log('shelves thunk', shelves)
         dispatch(load(shelves))
@@ -29,50 +29,46 @@ export const getShelves = () => async (dispatch) => {
 
 export const getUserShelf = () => async (dispatch) => {
     const response = await fetch('/api/shelves/user')
-    if (response.ok){
+    if (response.ok) {
         const shelf = await response.json()
         dispatch(user(shelf))
     }
 }
 
-export const addBookToShelf = (shelf_id, book_id) => async (dispatch) => {
-    const response = await fetch('/api/shelves/add', {
+export const addBookToShelf = (payload, book_id) => async (dispatch) => {
+    const response = await fetch(`/api/shelves/${book_id}`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({
-            shelf_id: shelf_id,
-            book_id: book_id
-        })
     })
-    if (response.ok){
+    if (response.ok) {
         const shelf = response.json()
         dispatch(add(shelf))
         return shelf;
     }
 }
-let initialState = { shelves: {}}
+let initialState = { shelves: {} }
 export const shelvesReducer = (state = initialState, action) => {
     let newState;
-    switch (action.type){
+    switch (action.type) {
         case LOAD: {
-            newState = { shelves: {}}
+            newState = { shelves: {} }
             action.shelves.shelves.forEach(shelf => {
                 newState.shelves[shelf.id] = shelf
             })
             return newState;
         }
         case USER: {
-            newState = {shelves: {}}
-            newState= {...action.shelf}
+            newState = { shelves: {} }
+            newState = { ...action.shelf }
             return newState
         }
         case ADD: {
-            newState = {shelves: {}}
-            newState.shelves[action.shelf.id]= action.shelf
+            newState = { shelves: {} }
+            newState.shelves[action.shelf.id] = action.shelf
             return newState
-        }   
+        }
         default: return state
     }
 }
