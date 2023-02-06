@@ -2,7 +2,7 @@
 
 const LOAD = '/shelves/LOAD'
 const USER = '/shelves/USER'
-
+const ADD = '/shelves/ADD'
 const load = shelves => ({
     type: LOAD,
     shelves
@@ -13,7 +13,10 @@ const user = shelf => ({
     shelf
 })
 
-
+const add = shelf => ({
+    type: ADD,
+    shelf
+})
 export const getShelves = () => async (dispatch) => {
     const response = await fetch('/api/shelves/')
     console.log('thunk')
@@ -31,6 +34,23 @@ export const getUserShelf = () => async (dispatch) => {
         dispatch(user(shelf))
     }
 }
+
+export const addBookToShelf = (shelf_id, book_id) => async (dispatch) => {
+    const response = await fetch(`/api/shelves/add`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            'shelf_id': shelf_id,
+            'book_id': book_id
+        })
+    })
+    if (response.ok){
+        const shelf = response.json()
+        dispatch(add(shelf))
+    }
+}
 let initialState = { shelves: {}}
 export const shelvesReducer = (state = initialState, action) => {
     let newState;
@@ -44,10 +64,14 @@ export const shelvesReducer = (state = initialState, action) => {
         }
         case USER: {
             newState = {shelves: {}}
-            console.log('reducer', action.shelf)
             newState= {...action.shelf}
             return newState
         }
+        case ADD: {
+            newState = {shelves: {}}
+            newState.shelves[action.shelf.id]= action.shelf
+            return newState
+        }   
         default: return state
     }
 }
