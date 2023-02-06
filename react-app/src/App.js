@@ -18,6 +18,7 @@ import ReviewForm from './components/Reviews/ReviewForm'
 import DeleteReview from './components/Reviews/DeleteReview';
 import EditReview from './components/Reviews/EditReview';
 import { AllShelves } from './components/shelves/AllShelves';
+import { UserShelf } from './components/shelves/UserShelf';
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
@@ -72,6 +73,9 @@ function App() {
         </Route>
       <Route path='/shelves/' exact={true}>
         <AllShelves />
+      </Route>
+      <Route path='/shelves/user' exact={true}>
+        <UserShelf />
       </Route>
         {/* <Route path='/reviews/add' exact={true}>
           <ReviewForm />

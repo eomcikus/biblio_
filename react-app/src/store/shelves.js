@@ -44,7 +44,8 @@ export const shelvesReducer = (state = initialState, action) => {
         }
         case USER: {
             newState = {shelves: {}}
-            newState.userShelf = {...action.shelf}
+            console.log('reducer', action.shelf)
+            newState= {...action.shelf}
             return newState
         }
         default: return state
