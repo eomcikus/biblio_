@@ -5,13 +5,15 @@ import { getShelves } from "../../store/shelves";
 
 export const AllShelves = () => {
     let dispatch = useDispatch()
-    let shelves = useSelector(state => state.shelves)
-    console.log(shelves)
-    console.log('here')
+    let shelvesObj = useSelector(state => state.shelves.shelves)
+    console.log('obj', shelvesObj)
+    let shelves = Object.values(shelvesObj)
+
     useEffect(() => {
         dispatch(getShelves())
     }, [dispatch])
     return (
-        <div>{'hi'}</div>
-    )
+        <div>{shelves.map(shelf => <div key={shelf.id}> {shelf.name}</div>)}</div>
+
+        )
 }
