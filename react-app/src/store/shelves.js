@@ -36,19 +36,20 @@ export const getUserShelf = () => async (dispatch) => {
 }
 
 export const addBookToShelf = (shelf_id, book_id) => async (dispatch) => {
-    const response = await fetch(`/api/shelves/add`, {
+    const response = await fetch('/api/shelves/add', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            'shelf_id': shelf_id,
-            'book_id': book_id
+            shelf_id: shelf_id,
+            book_id: book_id
         })
     })
     if (response.ok){
         const shelf = response.json()
         dispatch(add(shelf))
+        return shelf;
     }
 }
 let initialState = { shelves: {}}

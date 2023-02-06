@@ -9,6 +9,7 @@ import './currentbook.css'
 import DeleteBook from '../DeleteBook/deletebook';
 import { getReviews } from '../../../store/reviews';
 import  EditReview  from '../../Reviews/EditReview'
+import { AddBook2Shelf } from '../../shelves/AddABookToShelf';
 const OneBook = () => {
     const dispatch = useDispatch()
     const { bookId } = useParams()
@@ -61,6 +62,7 @@ const OneBook = () => {
                 <div className='current-book-summary'>
                     {book.summary}
                 </div>
+                <div><AddBook2Shelf book_id={bookId}/></div>
                 <div>
                     {user && user.id === bookOwner && (
                     <button className='edit-book-nav'><NavLink className='edit-book-nav' to={`/books/edit/${bookId}`}>Edit My Book</NavLink></button>
