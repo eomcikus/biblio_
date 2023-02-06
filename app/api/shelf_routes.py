@@ -18,17 +18,27 @@ def get_shelves_of_current_user():
     shelves = Shelf.query.filter(Shelf.user_id == current_user.id)
     return {'shelves': shelf.to_dict() for shelf in shelves }
 
-@shelf_routes.route('/add', methods=['POST'])
+@shelf_routes.route('/<bookId>', methods=['POST'])
 @login_required
-def add_to_shelf(book_id, shelf_id):
-    shelves = Shelf.query.filter(Shelf.user_id == current_user.id)
-    new_bookshelf = book_shelf({
-        "shelf_id": shelf_id,
-        "book_id": book_id 
-    })
-    db.session.add(new_bookshelf)
+def add_to_shelf(bookId):
+    shelves = Shelf.query.filter(Shelf.user_id == current_user.id).first()
+    book = Book.query.filter(Book.id == bookId).first()
+    print ('bookId========================' , bookId)
+    print('book----------------------------------', book)
+    print ('shelf =-=-=-=-=-=-=-=-=-=-=-=-=-', shelves)
+    # insert_stmt = book_shelf.insert().values(book_id=bookId, shelf_id=shelves.id)
+    # book_shelf.insert().values(shelf_id=shelves.id)
+    # db.session.add(insert_stmt)
+    shelves.books.append(
+        book
+    )
+    # new_bookshelf = book_shelf.append({
+    #     "shelf_id": shelves.id,
+    #     "book_id": book.id
+    # })
+    # db.session.add(new_bookshelf)
     db.session.commit()
-    return {'shelves': shelf.to_dict() for shelf in shelves}
+    return {'shelves': shelves.to_dict()}
     # need book and shelf id's
     # new book_shelf?
     # db.session.add(newshelf)
