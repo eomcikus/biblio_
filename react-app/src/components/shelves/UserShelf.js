@@ -8,7 +8,7 @@ export const UserShelf = () => {
     // let shelf = useSelector(state => state.shelves.shelves)
     // console.log('shelf', shelf)
     let books1 = useSelector(state => state.shelves.shelves.books)
-    console.log('books12', books1)
+
     useEffect(() => {
         dispatch(getUserShelf())
     }, [dispatch])
