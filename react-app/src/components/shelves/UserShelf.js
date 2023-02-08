@@ -2,7 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { getUserShelf } from "../../store/shelves";
 import './usershelf.css'
-
+import DeleteBFromShelf from "./DeleteShelf";
 export const UserShelf = () => {
     let dispatch = useDispatch()
     // let shelf = useSelector(state => state.shelves.shelves)
@@ -17,7 +17,7 @@ export const UserShelf = () => {
         <>
         <div></div>
             {books1 && (
-            <div>{books1.map(book => <div key={book.id}><img className='shelf-thumbnail' src={book.thumbnail} />{book.title}</div>)}</div>
+            <div>{books1.map(book => <div key={book.id}><img className='shelf-thumbnail' src={book.thumbnail} />{book.title}<DeleteBFromShelf bookId={book.bookId} /></div>)}</div>
             )}
             </>
     )

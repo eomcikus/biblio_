@@ -45,3 +45,7 @@ def add_to_shelf(bookId):
     #db.session.commit
     #return the new bookshelf?
 
+@shelf_routes.route('/delete')
+@login_required
+def delete_a_book(bookId):
+    pass
