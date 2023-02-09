@@ -17,7 +17,7 @@ export const AddBook2Shelf = (book_id) => {
         // dispatch(addBookToShelf(book_id, shelf_id))
     }, [dispatch])
     const handleSubmit = async (e) => {
-        console.log('in handlesubmit')
+
         e.preventDefault()
         const payload = {
             book_id,
