@@ -12,13 +12,22 @@ export const UserShelf = () => {
     useEffect(() => {
         dispatch(getUserShelf())
     }, [dispatch])
-    if (!books1) return null;
+    // if (!books1) return null;
     return (
         <>
-        <div></div>
-            {books1 && (
-            <div>{books1.map(book => <div key={book.id}><img className='shelf-thumbnail' src={book.thumbnail} />{book.title}<DeleteBFromShelf bookId={book.bookId} /></div>)}</div>
-            )}
-            </>
+        <section className='shelf-layout'>
+            <div className='shelf-container'>
+                {books1 && (
+                    <div>{books1.map(book =>
+                        <div key={book.id}>
+                            <img className='shelf-thumbnail' src={book.thumbnail} />
+                            <DeleteBFromShelf bookId={book.bookId} /></div>)}</div>
+                )}
+                {!books1 && (
+                    <div>No books on your bookshelf...yet.</div>
+                )}
+            </div>
+            </section>
+        </>
     )
 }

@@ -14,7 +14,7 @@ class Shelf(db.Model):
     def to_dict(self):
         return {
             "id": self.id,
-            "description": self.description,
+            "name": self.name,
             "user_id": self.user_id,
             "books": [
                 {'bookId': book.id, 
