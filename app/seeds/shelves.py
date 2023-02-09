@@ -15,18 +15,23 @@ def seed_shelves():
     thinkers = Shelf(
         name="Books to Make You Think",
         description="These books will have you and the readers you share them with scratching your head",
-        user_id=2
-    )
-    animals = Shelf(
-        name="Books with Animals as Characters",
-        description="The perfect collection for the young animal lover in your life",
         user_id=3
     )
-
+    animals = Shelf(
+        name="To Be Read",
+        description="The perfect collection for the young animal lover in your life",
+        user_id=4
+    )
+    random = Shelf(
+        name="To Be Read",
+        description="Books to read with my kids",
+        user_id=5
+    )
     db.session.add(kids)
     db.session.add(wordless)
     db.session.add(thinkers)
     db.session.add(animals)
+    db.session.add(random)
     db.session.commit()
 def undo_shelves():
     if environment == "production":
