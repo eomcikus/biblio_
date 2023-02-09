@@ -1,17 +1,20 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react"
-import {useHistory, useParams} from 'react-router-dom'
-import { deleteBookFromShelf } from "../../store/shelves";
+import {useHistory, useParams, Redirect} from 'react-router-dom'
+import { deleteBookFromShelf, getUserShelf } from "../../store/shelves";
 
 const DeleteBFromShelf = ({bookId}) => {
     const dispatch = useDispatch()
-
+    const history = useHistory()
     const books = useSelector(state=> state.shelves.shelves.books)
     const book = books.find(book => book.bookId === bookId) 
 
-    const handleDelete = (e) => {
+
+    const handleDelete = async (e) => {
         e.preventDefault()
-        dispatch(deleteBookFromShelf(bookId))
+        await dispatch(deleteBookFromShelf(bookId))
+        await dispatch(getUserShelf())
+        return
     }
     return (
        <div><button onClick={handleDelete}>Delete</button></div> 
