@@ -11,7 +11,7 @@ export const AddBook2Shelf = (book_id) => {
     let id = +book_id.book_id
     // console.log('bookid', bookId)
     const shelf_id = useSelector(state => state.shelves.shelves.id)
-    console.log(shelf_id)
+
     useEffect(() => {
         dispatch(getUserShelf())
         // dispatch(addBookToShelf(book_id, shelf_id))
@@ -29,6 +29,7 @@ export const AddBook2Shelf = (book_id) => {
             history.push('/shelves/user')
         }
     }
+    if (!shelf_id) return null
     return (
        <button type='submit' onClick={handleSubmit}>Add to My Shelf</button>
     )

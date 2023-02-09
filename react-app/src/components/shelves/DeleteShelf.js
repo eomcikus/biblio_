@@ -8,7 +8,7 @@ const DeleteBFromShelf = ({bookId}) => {
 
     const books = useSelector(state=> state.shelves.shelves.books)
     const book = books.find(book => book.bookId === bookId) 
-    console.log('book', book)
+
     const handleDelete = (e) => {
         e.preventDefault()
         dispatch(deleteBookFromShelf(bookId))

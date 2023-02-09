@@ -4,7 +4,7 @@ from ..forms import shelf_form
 from flask_login import login_required, current_user
 from .auth_routes import validation_errors_to_error_messages
 from sqlalchemy.orm import joinedload
-shelf_routes = Blueprint('/shelves', __name__)
+shelf_routes = Blueprint('shelves', __name__)
 
 @shelf_routes.route('/')
 def get_all_shelves():
@@ -45,14 +45,12 @@ def add_to_shelf(bookId):
     #db.session.commit
     #return the new bookshelf?
 
-@shelf_routes.route('/delete')
+@shelf_routes.route('/<int:bookId>/delete', methods=['DELETE'])
 @login_required
 def delete_a_book(bookId):
     print('--------------------------')
     book = Book.query.filter(Book.id == bookId).first()
     shelves = Shelf.query.filter(Shelf.user_id == current_user.id).first()
-    shelves.books.delete(
-        book
-    )
+    shelves.books.remove(book)
     db.session.commit()
     return {'shelves': shelves.to_dict()}

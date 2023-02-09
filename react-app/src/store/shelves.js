@@ -55,7 +55,9 @@ export const addBookToShelf = (payload, book_id) => async (dispatch) => {
 }
 
 export const deleteBookFromShelf = (bookId) => async dispatch => {
-    const response = await fetch(`/api/shelves/${bookId}/delete`)
+    const response = await fetch(`/api/shelves/${bookId}/delete`, {
+        method: 'DELETE'
+    })
     console.log('response', response)
     if (response.ok){
         const book = await response.json()
@@ -86,7 +88,7 @@ export const shelvesReducer = (state = initialState, action) => {
         }
         case REMOVE: {
             newState = { shelves: {...state.shelves}}
-            delete newState.shelves.shelves.books[action.bookId]
+            delete newState.shelves.books[action.bookId]
             return newState
         }
         default: return state
