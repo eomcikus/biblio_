@@ -5,14 +5,13 @@ import { deleteBookFromShelf } from "../../store/shelves";
 
 const DeleteBFromShelf = ({bookId}) => {
     const dispatch = useDispatch()
-    console.log('bookid', bookId)
+
     const books = useSelector(state=> state.shelves.shelves.books)
     const book = books.find(book => book.bookId === bookId) 
-    console.log(books)
-    console.log(book)
+    console.log('book', book)
     const handleDelete = (e) => {
         e.preventDefault()
-        dispatch(deleteBookFromShelf(book.id))
+        dispatch(deleteBookFromShelf(bookId))
     }
     return (
        <div><button onClick={handleDelete}>Delete</button></div> 

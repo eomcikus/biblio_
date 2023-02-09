@@ -3,7 +3,7 @@
 const LOAD = '/shelves/LOAD'
 const USER = '/shelves/USER'
 const ADD = '/shelves/ADD'
-const DELETE = '/shelves/DELETE'
+const REMOVE = '/shelves/REMOVE'
 const load = shelves => ({
     type: LOAD,
     shelves
@@ -19,7 +19,7 @@ const add = shelf => ({
     shelf
 })
 const remove = bookId => ({
-    type: DELETE,
+    type: REMOVE,
     bookId
 })
 export const getShelves = () => async (dispatch) => {
@@ -48,18 +48,18 @@ export const addBookToShelf = (payload, book_id) => async (dispatch) => {
         },
     })
     if (response.ok) {
-        const shelf = response.json()
+        const shelf = await response.json()
         dispatch(add(shelf))
         return shelf;
     }
 }
 
 export const deleteBookFromShelf = (bookId) => async dispatch => {
-    const response = await fetch(`/api/shelves/delete`, {
-        method: 'DELETE'
-    })
+    const response = await fetch(`/api/shelves/${bookId}/delete`)
+    console.log('response', response)
     if (response.ok){
-        dispatch(remove(bookId))
+        const book = await response.json()
+        dispatch(remove(book.id))
         return
     }
 }
@@ -84,7 +84,7 @@ export const shelvesReducer = (state = initialState, action) => {
             newState.shelves[action.shelf.id] = action.shelf
             return newState
         }
-        case DELETE : {
+        case REMOVE: {
             newState = { shelves: {...state.shelves}}
             delete newState.shelves.shelves.books[action.bookId]
             return newState

@@ -48,4 +48,11 @@ def add_to_shelf(bookId):
 @shelf_routes.route('/delete')
 @login_required
 def delete_a_book(bookId):
-    pass
+    print('--------------------------')
+    book = Book.query.filter(Book.id == bookId).first()
+    shelves = Shelf.query.filter(Shelf.user_id == current_user.id).first()
+    shelves.books.delete(
+        book
+    )
+    db.session.commit()
+    return {'shelves': shelves.to_dict()}
