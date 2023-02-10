@@ -8,11 +8,16 @@ margin: 5px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    width: 900px;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    padding: 30px;
 }
 
-.shelf-layout {
+.shelf-holder {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
 }
