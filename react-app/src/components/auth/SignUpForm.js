@@ -11,6 +11,7 @@ const SignUpForm = () => {
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
   const [submit, setSubmit] = useState(false)
+  const [shelves, setShelves] = useState('')
   const [validationErrors, setValidationErrors] = useState([])
 
   const user = useSelector(state => state.session.user);
@@ -35,7 +36,7 @@ const SignUpForm = () => {
     if (validationErrors.length) {
       return
     }
-    const data = await dispatch(signUp(username, email, password));
+    const data = await dispatch(signUp(username, email, password, shelves));
 
     if (data) {
       let fixedError = data.errors

@@ -7,18 +7,29 @@ export const UserShelf = () => {
     let dispatch = useDispatch()
     // let shelf = useSelector(state => state.shelves.shelves)
     // console.log('shelf', shelf)
+    let shelves = useSelector(state => state.shelves)
+
     let books1 = useSelector(state => state.shelves.shelves.books)
 
     useEffect(() => {
         dispatch(getUserShelf())
     }, [dispatch])
-    if (!books1) return null;
+    // if (!books1) return null;
     return (
         <>
-        <div></div>
-            {books1 && (
-            <div>{books1.map(book => <div key={book.id}><img className='shelf-thumbnail' src={book.thumbnail} />{book.title}<DeleteBFromShelf bookId={book.bookId} /></div>)}</div>
-            )}
-            </>
+    
+            <div className='shelf-holder'>
+                {books1 && (
+                    <div className='shelf-container'>{books1.map(book =>
+                        <div key={book.id}>
+                            <img className='shelf-thumbnail' src={book.thumbnail} />
+                            <DeleteBFromShelf bookId={book.bookId} /></div>)}</div>
+                )}
+                {!books1 && (
+                    <div className="no-books-msg">No books on your bookshelf...yet.</div>
+                )}
+            </div>
+
+        </>
     )
 }

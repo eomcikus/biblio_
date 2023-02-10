@@ -17,7 +17,7 @@ const DeleteBFromShelf = ({bookId}) => {
         return
     }
     return (
-       <div><button onClick={handleDelete}>Delete</button></div> 
+       <div><button onClick={handleDelete}>Remove From Shelf</button></div> 
     )
 }
 
