@@ -70,7 +70,7 @@ export const logout = () => async (dispatch) => {
 };
 
 
-export const signUp = (username, email, password) => async (dispatch) => {
+export const signUp = (username, email, password, shelves) => async (dispatch) => {
   const response = await fetch('/api/auth/signup', {
     method: 'POST',
     headers: {
@@ -80,13 +80,13 @@ export const signUp = (username, email, password) => async (dispatch) => {
       username,
       email,
       password,
-
+      shelves
     }),
   });
   
   if (response.ok) {
     const data = await response.json();
-    console.log('data')
+    console.log('data', data)
     dispatch(setUser(data))
     return null;
   } else if (response.status < 500) {
@@ -107,7 +107,7 @@ export const sessionReducer = (state = initialState, action) => {
     case SET_USER:
       return { user: action.payload }
     case REMOVE_USER:
-      return { user: null }
+      return { user: null,  }
     default:
       return state;
   }

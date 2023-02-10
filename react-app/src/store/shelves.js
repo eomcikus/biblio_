@@ -37,7 +37,7 @@ export const getUserShelf = () => async (dispatch) => {
     if (response.ok) {
         const shelf = await response.json()
         dispatch(user(shelf))
-    }
+    } 
 }
 
 export const addBookToShelf = (payload, book_id) => async (dispatch) => {
@@ -78,8 +78,14 @@ export const shelvesReducer = (state = initialState, action) => {
         }
         case USER: {
             newState = { shelves: {} }
-            newState = { ...action.shelf }
-            return newState
+            console.log('action.shelf', action.shelf)
+            if (action.shelf){
+                newState = { ...action.shelf }
+                return newState
+            } else {
+                return newState.shelves.shelves.books = []
+            }
+            
         }
         case ADD: {
             newState = { shelves: {} }

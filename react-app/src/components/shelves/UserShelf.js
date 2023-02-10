@@ -7,6 +7,8 @@ export const UserShelf = () => {
     let dispatch = useDispatch()
     // let shelf = useSelector(state => state.shelves.shelves)
     // console.log('shelf', shelf)
+    let shelves = useSelector(state => state.shelves)
+
     let books1 = useSelector(state => state.shelves.shelves.books)
 
     useEffect(() => {

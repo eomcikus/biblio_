@@ -73,11 +73,15 @@ def sign_up():
         db.session.commit()
         created_user = User.query.filter(User.email == form.data['email']).first()
         print('===============================', created_user.to_dict())
-        shelf = Shelf ()
-        created_user['shelves'] = shelf
+        shelf = Shelf (
+            name='To be read',
+            user_id = user.id
+        )
+        user.shelves = shelf
         db.session.commit()
         login_user(user)
         return user.to_dict()
+
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
