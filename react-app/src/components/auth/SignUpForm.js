@@ -36,7 +36,7 @@ const SignUpForm = () => {
     if (validationErrors.length) {
       return
     }
-    const data = await dispatch(signUp(username, email, password, shelves));
+    const data = await dispatch(signUp(username, email, password));
 
     if (data) {
       let fixedError = data.errors
