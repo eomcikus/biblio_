@@ -24,7 +24,7 @@ export const UserShelf = () => {
                             <DeleteBFromShelf bookId={book.bookId} /></div>)}</div>
                 )}
                 {!books1 && (
-                    <div>No books on your bookshelf...yet.</div>
+                    <div className="no-books-msg">No books on your bookshelf...yet.</div>
                 )}
             </div>
 
