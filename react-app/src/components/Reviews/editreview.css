@@ -25,3 +25,12 @@
     justify-content: center;
 
 }
+.add-review-container {
+    margin-bottom: 20px;
+}
+.reviews-heading {
+    color: black;
+}
+.submit-review-button {
+    margin-left: 20px;
+}
