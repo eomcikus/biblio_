@@ -70,8 +70,8 @@ export const FEBookForm = () => {
     return (
         <>
         <div className='big-container'>
-            <h2>Don't see your favorite book?</h2>
-            <h3>Add it below</h3>
+            <h2 className='add-book-header'>Don't see your favorite book?</h2>
+            <h3 className='add-book-h3'>Add it below</h3>
         <section className='form-section'>
             {user && (
             <form onSubmit={handleSubmit} className='book-form'>
