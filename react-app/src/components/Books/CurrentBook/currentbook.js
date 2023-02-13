@@ -10,6 +10,7 @@ import DeleteBook from '../DeleteBook/deletebook';
 import { getReviews } from '../../../store/reviews';
 import  EditReview  from '../../Reviews/EditReview'
 import { AddBook2Shelf } from '../../shelves/AddABookToShelf';
+import AddReviewModal from '../../Reviews/AddReview';
 const OneBook = () => {
     const dispatch = useDispatch()
     const { bookId } = useParams()

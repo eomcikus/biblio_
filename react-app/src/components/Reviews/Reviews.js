@@ -2,7 +2,8 @@ import { getReviews } from "../../store/reviews";
 import { useSelector, useDispatch } from 'react-redux'
 import { NavLink, useParams } from "react-router-dom";
 import { useEffect } from "react";
-import ReviewForm from "./ReviewForm";
+import ReviewForm from "./AddReview/ReviewForm";
+import AddReviewModal from "./AddReview";
 import './reviewcard.css'
 export const Reviews = () => {
     const { bookId } = useParams()
@@ -29,7 +30,8 @@ export const Reviews = () => {
             <div>{reviewsforBook.map(review => <div key={review.id} className='reviewcard-container'><div className='review-text'>{review.review}</div> <div className='star-container'><div className='tinystar'>⭑</div>  {review.stars}</div></div>)}
                 {user && !userReview && (
                 <button>
-                    <NavLink className='create-review-navlink' to={`/books/${bookId}/reviews/add`}>Create a Review</NavLink>
+                    {/* <NavLink className='create-review-navlink' to={`/books/${bookId}/reviews/add`}>Create a Review</NavLink> */}
+                    <AddReviewModal className='create-review-navlink'/>
                 </button>
                  )}
                 {user && userReview &&(  

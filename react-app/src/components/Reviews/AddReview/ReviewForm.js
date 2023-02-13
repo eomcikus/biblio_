@@ -2,8 +2,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react'
 import { useHistory, useParams } from 'react-router-dom';
 // import { addReview } from '../../../store/reviews';
-import { getReviews, addReview } from '../../store/reviews';
-import EditReview from './EditReview';
+import { getReviews, addReview } from '../../../store/reviews';
+import EditReview from '../EditReview';
+import '../editreview.css'
 const ReviewForm = () => {
     const dispatch = useDispatch()
     const history = useHistory()

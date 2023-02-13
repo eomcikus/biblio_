@@ -14,7 +14,7 @@ import { FEBookForm } from './components/Books/BookForm/bookform';
 import DeleteBook from './components/Books/DeleteBook/deletebook';
 import EditBook from './components/Books/UpdateBook/EditBook';
 import { Reviews } from './components/Reviews/Reviews';
-import ReviewForm from './components/Reviews/ReviewForm'
+import ReviewForm from './components/Reviews/AddReview/ReviewForm'
 import DeleteReview from './components/Reviews/DeleteReview';
 import EditReview from './components/Reviews/EditReview';
 import { AllShelves } from './components/shelves/AllShelves';
