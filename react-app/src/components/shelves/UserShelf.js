@@ -21,9 +21,11 @@ export const UserShelf = () => {
             <div className='shelf-holder'>
                 {books1 && (
                     <div className='shelf-container'>{books1.map(book =>
-                        <div key={book.id}>
+                      
+                        <div key={book.id} className='wrapper'>
                             <img className='shelf-thumbnail' src={book.thumbnail} />
-                            <DeleteBFromShelf bookId={book.bookId} /></div>)}</div>
+                            <div className='on-hover'>
+                            <DeleteBFromShelf bookId={book.bookId} /></div></div>)}</div>
                 )}
                 {!books1 && (
                     <div className="no-books-msg">No books on your bookshelf...yet.</div>

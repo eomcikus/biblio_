@@ -1,7 +1,37 @@
 .shelf-thumbnail{
-width: 180px;
-height: 250px;
-margin: 5px;
+    width: 180px;
+    height: 250px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 5px;
+}
+.shelf-thumbnail:hover {
+    opacity: 0.5;
+}
+.wrapper {
+    height: 250px;
+    margin: 5px;
+    width: 180px;
+    position: relative;
+}
+.on-hover {
+    display: none;
+
+}
+.wrapper:hover .shelf-thumbnail{
+    opacity: 0.5;
+}
+.wrapper:hover .on-hover {
+    display: inline-block;
+    position: absolute;
+    /* height: 100%; */
+    left: 2%;
+    right: 0;
+    top: 10%;
+    width: 100%;
+    /* bottom: 50px; */
+    /* margin-bottom: 60px; */
+    text-align: center;
 }
 
 .shelf-container {
@@ -27,3 +57,4 @@ margin: 5px;
     width: 80%;
     font-size: 24px;
 }
+
