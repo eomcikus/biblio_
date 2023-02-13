@@ -3,6 +3,7 @@ import { useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
 import { getBooks } from '../../../store/books';
 import BookCard from './bookcard';
+import AddBookModal from '../BookForm';
 import './allbooks.css'
 const AllBooks = () => {
     const dispatch = useDispatch()
@@ -28,7 +29,7 @@ const AllBooks = () => {
                 <>
                 <div className='logged-in-container'>
                 <div className='logged-in-text'>Share the magic of your favorite book.</div>
-                <button><NavLink to='/books/add' className='book-button'>Add a Book</NavLink></button>
+                <AddBookModal />
                 </div>
             </>
             )}
