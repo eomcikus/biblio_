@@ -1,0 +1,10 @@
+.are-you-sure-shelf{
+    color: black;
+    text-align: center;
+}
+
+.delete-book-modal {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
