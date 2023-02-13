@@ -71,14 +71,15 @@ def sign_up():
         # print('AAAAAASAAAAAAAAAAAAAAAAA', user)
         db.session.add(user)
         db.session.commit()
-        # created_user = User.query.filter(User.email == form.data['email']).first()
-        # print('===============================', created_user.to_dict())
-        # shelf = Shelf (
-        #     name='To be read',
-        #     user_id = user.id
-        # )
-        # user.shelves = shelf
-        # db.session.commit()
+        created_user = User.query.filter(User.email == form.data['email']).first()
+        print('===============================', created_user.to_dict())
+        shelf = Shelf (
+            name='To be read',
+            user_id = user.id
+        )
+        user.shelves = shelf
+        db.session.commit()
+        print('--------------------------', user.shelves.to_dict())
         login_user(user)
         return user.to_dict()
 
