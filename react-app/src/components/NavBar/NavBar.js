@@ -14,7 +14,7 @@ const NavBar = () => {
     <nav className='navbar-container'>
       
       <div><NavLink to='/'><img className='logo' src={logo} /></NavLink></div> 
-        <div>
+        {/* <div>
           <NavLink to='/books' 
           exact={true} 
           activeClassName='active' 
@@ -27,7 +27,7 @@ const NavBar = () => {
         </div>
         <div className='ghbutton'>
         <a href={'https://github.com/eomcikus'} target='_blank'><img  id='about-icons' src={github} /></a>
-        </div> 
+        </div>  */}
 
         {/* <div>
           <NavLink to='/user/books'
@@ -68,7 +68,7 @@ const NavBar = () => {
         <div>
           {user && (
             // <div className='welcome-text'>Welcome back, {user.username}.</div>
-            <ProfileButton />
+            <ProfileButton className='profbutton' />
           )}
         </div>
         {/* <div> */}
