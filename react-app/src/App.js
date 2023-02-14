@@ -16,7 +16,7 @@ import EditBook from './components/Books/UpdateBook/EditBook';
 import { Reviews } from './components/Reviews/Reviews';
 import ReviewForm from './components/Reviews/AddReview/ReviewForm'
 import DeleteReview from './components/Reviews/DeleteReview';
-import EditReview from './components/Reviews/EditReview';
+import EditReview from './components/Reviews/EditReview/EditReview';
 import { AllShelves } from './components/shelves/AllShelves';
 import { UserShelf } from './components/shelves/UserShelf';
 import { AddBook2Shelf } from './components/shelves/AddABookToShelf';
@@ -69,18 +69,18 @@ function App() {
           {/* <Reviews /> */}
           {/* <ReviewForm /> */}
           {/* <EditReview /> */}
-        {/* <DeleteReview /> */}
+          {/* <DeleteReview /> */}
 
         </Route>
-      <Route path='/shelves/' exact={true}>
-        <AllShelves />
-      </Route>
-      <Route path='/shelves/user' exact={true}>
-        <UserShelf />
-      </Route>
-      <Route path='/shelves/add' exact={true}>
-        <AddBook2Shelf />
-      </Route>
+        <Route path='/shelves/' exact={true}>
+          <AllShelves />
+        </Route>
+        <Route path='/shelves/user' exact={true}>
+          <UserShelf />
+        </Route>
+        <Route path='/shelves/add' exact={true}>
+          <AddBook2Shelf />
+        </Route>
         {/* <Route path='/reviews/add' exact={true}>
           <ReviewForm />
         </Route> */}

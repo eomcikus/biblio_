@@ -1,22 +1,21 @@
 import React, { useState } from 'react';
 import { Modal } from '../../../context/Modal';
-// import { FEBookForm } from './bookform';
-import DeleteBook from './deletebook';
+import EditReview from './EditReview';
 // import LoginForm from './LoginForm';
 
-function DeleteBookModal() {
+function EditReviewModal() {
   const [showModal, setShowModal] = useState(false);
 
   return (
     <>
-      <button onClick={() => setShowModal(true)}>Delete Book</button>
+      <button onClick={() => setShowModal(true)}>Edit Review</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <DeleteBook setShowModal={setShowModal}/>
+          <EditReview setShowModal={setShowModal}/>
         </Modal>
       )}
     </>
   );
 }
 
-export default DeleteBookModal;
+export default EditReviewModal;

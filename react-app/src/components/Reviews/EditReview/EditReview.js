@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams, Redirect } from 'react-router-dom';
-import { editReview, getReviews, } from '../../store/reviews';
-import { getOneBook } from '../../store/books';
-import './editreview.css'
+import { editReview, getReviews, } from '../../../store/reviews';
+import { getOneBook } from '../../../store/books';
+import '../editreview.css'
 const EditReview = ({ userReview }) => {
     const dispatch = useDispatch()
     const history = useHistory()
@@ -25,7 +25,7 @@ const EditReview = ({ userReview }) => {
         setReview(userReview1?.review)
         setStars(userReview1?.stars)
     }, [userReview1])
-    
+
     useEffect(() => {
         let errors = []
         if (!review) errors.push('You must have a review longer than 20 characters and less than 5000 characters to submit your review.')
@@ -45,44 +45,44 @@ const EditReview = ({ userReview }) => {
             user_id: user.id
         }
         setSubmit(true)
-        if (validationErrors.length){
+        if (validationErrors.length) {
             return;
         }
         let updatedReview = await dispatch(editReview(payload, userReview1))
 
         if (updatedReview) {
             // dispatch(getOneBook(payload.book_id))
-           
+
             return history.push(`/books/${payload.book_id}`)
         }
     }
 
     return (
         <>
-        <div className='biggest-review'>
-            <section className='whole-editr-page'>
-                <form onSubmit={handleSubmit}>
-                {submit && !!validationErrors.length && (
-                    <ul className='errors'>
-                        {validationErrors.map((error) => (
-                            <li key={error}>{error}</li>
-                        ))}
-                    </ul>
-                )}
-                    <input type='text'
-                        value={review}
-                        onChange={e => setReview(e.target.value)} 
-                        className='review-input' />
-                    <input
-                        type='number'
-                        min={1}
-                        max={5}
-                        value={stars}
-                        onChange={e => setStars(e.target.value)} 
-                        className='stars-input'/>
-                    <button type='submit' className='edit-review-button'>Edit Review</button>
-                </form>
-            </section>
+            <div className='biggest-review'>
+                <section className='whole-editr-page'>
+                    <form onSubmit={handleSubmit}>
+                        {submit && !!validationErrors.length && (
+                            <ul className='errors'>
+                                {validationErrors.map((error) => (
+                                    <li key={error}>{error}</li>
+                                ))}
+                            </ul>
+                        )}
+                        <input type='text'
+                            value={review}
+                            onChange={e => setReview(e.target.value)}
+                            className='review-input' />
+                        <input
+                            type='number'
+                            min={1}
+                            max={5}
+                            value={stars}
+                            onChange={e => setStars(e.target.value)}
+                            className='stars-input' />
+                        <button type='submit' className='edit-review-button'>Edit Review</button>
+                    </form>
+                </section>
             </div>
         </>
     )
