@@ -1,0 +1,16 @@
+.profile-dropdown {
+    position: absolute;
+    overflow: hidden;
+    border-radius: 10%;
+    background-color: white;
+    width: 200px;
+    top: 105px;
+    right: 40px;
+    padding-left: 1%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0, 0.2);
+    z-index: 10;
+}
+
+.your-shelf {
+    text-decoration: none; 
+}
