@@ -7,6 +7,7 @@ import logo from './kidlit.png'
 import linkedin from './blacklinkedin.png'
 import github from './github.png'
 import { useSelector } from 'react-redux';
+import ProfileButton from './ProfileButton';
 const NavBar = () => {
   const user = useSelector(state => state.session.user)
   return (
@@ -26,7 +27,7 @@ const NavBar = () => {
         </div>
         <div className='ghbutton'>
         <a href={'https://github.com/eomcikus'} target='_blank'><img  id='about-icons' src={github} /></a>
-        </div>
+        </div> 
 
         {/* <div>
           <NavLink to='/user/books'
@@ -66,14 +67,15 @@ const NavBar = () => {
         </div> */}
         <div>
           {user && (
-            <div className='welcome-text'>Welcome back, {user.username}.</div>
+            // <div className='welcome-text'>Welcome back, {user.username}.</div>
+            <ProfileButton />
           )}
         </div>
-        <div>
-          {user && (
+        {/* <div> */}
+          {/* {user && (
           <LogoutButton />
           )}
-        </div>
+        {/* </div> */}
 
     </nav>
   );
