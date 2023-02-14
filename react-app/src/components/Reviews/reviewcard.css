@@ -30,6 +30,9 @@
 .edit-review-navlink {
     text-decoration: none;
     color: white;
+    width: 101px;
+    height: 26px;
+    border: 1px red solid;
 }
 
 .delete-review-navlink {
@@ -98,4 +101,21 @@
 .review-not-logged {
     padding: 25px;
     font-size: 26px;
+}
+
+.editnavlink {
+    border: 1px solid red;
+}
+.edit-review-navlink {
+    border: 1px solid red;
+}
+
+.delete-review-button {
+    height: 45px;
+    width: 86px;
+}
+
+.delete-review-navlink {
+    height: 45px;
+    width: 86px;
 }

@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react"
 import {useHistory, useParams} from 'react-router-dom'
 import { removeReview } from "../../store/reviews";
-
+import './reviewcard.css'
 
 const DeleteReview = () => {
     const dispatch = useDispatch()
@@ -22,7 +22,7 @@ const DeleteReview = () => {
     return (
         <div className='delete-review-container'>
          Are you sure? Deleting this will delete your entire review. You cannot undo this.
-            <button onClick={deleteReview}>I am sure, Delete</button>
+            <button className='delete-review-button' onClick={deleteReview}>I am sure, Delete</button>
 
         </div>
     )
