@@ -41,7 +41,7 @@ function ProfileButton() {
   return (
     <>
       <button onClick={openMenu} className='profile-button'>
-      <i class="fa-solid fa-book"></i>
+      <i class="fa-solid fa-book" id='book-icon'></i>
       </button>
       {showMenu && sessionUser && (
         <div className="profile-dropdown">
