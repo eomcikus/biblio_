@@ -61,7 +61,7 @@ const EditReview = ({ userReview }) => {
         <>
             <div className='biggest-review'>
                 <section className='whole-editr-page'>
-                    <form onSubmit={handleSubmit}>
+                    <form onSubmit={handleSubmit} id='editformmodal'>
                         {submit && !!validationErrors.length && (
                             <ul className='errors'>
                                 {validationErrors.map((error) => (

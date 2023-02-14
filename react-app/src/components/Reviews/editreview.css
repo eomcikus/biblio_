@@ -1,11 +1,16 @@
 .whole-editr-page {
     display: flex;
     flex-direction: column;
-    padding-top: 30px;
+    padding-top: 3px;
     width: 800px;
     padding-left: 30%;
 }
-
+#editformmodal {
+    display: flex;
+    width: 450px;
+    flex-direction: column;
+    align-items: flex-end;
+}
 .stars-input {
     width: 50%;
 }
@@ -21,9 +26,10 @@
 }
 .edit-review-button {
     display: flex;
-    width: 53%;
+    width: 57%;
     justify-content: center;
-    border: 1px red solid;
+    margin-bottom: 20px;
+    /* border: 1px red solid; */
 }
 .add-review-container {
     margin-bottom: 20px;
