@@ -14,7 +14,7 @@ const DeleteBFromShelf = ({ bookId, setShowModal }) => {
         e.preventDefault()
         await dispatch(deleteBookFromShelf(bookId))
         await dispatch(getUserShelf())
-        // setShowModal(false)
+        setShowModal(false)
         return
     }
     return (
