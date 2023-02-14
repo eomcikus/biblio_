@@ -4,6 +4,7 @@ import { NavLink, useParams } from "react-router-dom";
 import { useEffect } from "react";
 import ReviewForm from "./AddReview/ReviewForm";
 import AddReviewModal from "./AddReview";
+import EditReviewModal from "./EditReview";
 import './reviewcard.css'
 export const Reviews = () => {
     const { bookId } = useParams()
@@ -36,9 +37,10 @@ export const Reviews = () => {
                  )}
                 {user && userReview &&(  
                 <button>
-                    <NavLink className='edit-review-navlink' to={`/books/reviews/edit/${userReview.id}`} userReview={userReview}>
+                    {/* <NavLink className='edit-review-navlink' to={`/books/reviews/edit/${userReview.id}`} userReview={userReview}>
                         Edit Review
-                    </NavLink>
+                    </NavLink> */}
+                    <EditReviewModal className='edit-review-navlink' userReview={userReview} />
                 </button>
                     )}
                 {user && userReview &&(  

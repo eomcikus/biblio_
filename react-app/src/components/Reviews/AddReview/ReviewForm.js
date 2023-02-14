@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import { useHistory, useParams } from 'react-router-dom';
 // import { addReview } from '../../../store/reviews';
 import { getReviews, addReview } from '../../../store/reviews';
-import EditReview from '../EditReview';
+import EditReview from '../EditReview/EditReview';
 import '../editreview.css'
 const ReviewForm = () => {
     const dispatch = useDispatch()
@@ -53,36 +53,36 @@ const ReviewForm = () => {
             {!user && (
                 <div>Log in to leave a review!</div>
             )}
-            {user  && !reviewByUser  && (
-            <form onSubmit={handleSubmit} className='add-review-form'>
-                {submit && !!validationErrors.length && (
-                    <ul className='errors'>
-                        {validationErrors.map((error) => (
-                            <li key={error}>{error}</li>
-                        ))}
-                    </ul>
-                )}
-                <input type='text'
-                    className='add-review-text'
-                    value={review}
-                    placeholder={'Write your review here'}
-                    onChange={e => setReview(e.target.value)} />
-                <input
-                    type='number'
-                    className='add-review-number'
-                    placeholder={"Rate your book from 1 to 5 stars"}
-                    min={1}
-                    max={5}
-                    value={stars}
-                    onChange={e => setStars(e.target.value)} />
-                {/* {user  && ( */}
+            {user && !reviewByUser && (
+                <form onSubmit={handleSubmit} className='add-review-form'>
+                    {submit && !!validationErrors.length && (
+                        <ul className='errors'>
+                            {validationErrors.map((error) => (
+                                <li key={error}>{error}</li>
+                            ))}
+                        </ul>
+                    )}
+                    <input type='text'
+                        className='add-review-text'
+                        value={review}
+                        placeholder={'Write your review here'}
+                        onChange={e => setReview(e.target.value)} />
+                    <input
+                        type='number'
+                        className='add-review-number'
+                        placeholder={"Rate your book from 1 to 5 stars"}
+                        min={1}
+                        max={5}
+                        value={stars}
+                        onChange={e => setStars(e.target.value)} />
+                    {/* {user  && ( */}
                     <button type='submit'
-                    className='submit-review-button'
+                        className='submit-review-button'
                         onSubmit={handleSubmit}>Submit Review</button>
 
-                {/* <EditReview /> */}
-            </form>
-                )}
+                    {/* <EditReview /> */}
+                </form>
+            )}
         </section>
     )
 }
