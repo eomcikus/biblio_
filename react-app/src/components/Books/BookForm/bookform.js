@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom';
 import { createBook, getBooks } from '../../../store/books';
 import './bookform.css'
-export const FEBookForm = () => {
+export const FEBookForm = ({setShowModal}) => {
     const dispatch = useDispatch()
     const history = useHistory()
     const [title, setTitle] = useState('')
@@ -53,6 +53,7 @@ export const FEBookForm = () => {
         if (createdBook) {
             await dispatch(getBooks())
             history.push('/books')
+            setShowModal(false)
             return
         }
     }
