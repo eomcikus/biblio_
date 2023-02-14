@@ -10,6 +10,8 @@ button {
     padding: 5px;
     margin: 5px;
     border-radius: 3px;
+    /* height: 45px;
+    width: 35%; */
 }
 
 button:hover {
