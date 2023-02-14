@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { addBookToShelf, getUserShelf } from "../../store/shelves";
 import { NavLink, useHistory } from "react-router-dom";
 
-export const AddBook2Shelf = (book_id) => {
+export const AddBook2Shelf = (book_id, setShowModal) => {
     const dispatch = useDispatch()
     const history = useHistory()
     // const book_id = useSelector(state=> state.books.oneBook.id)
@@ -28,6 +28,7 @@ export const AddBook2Shelf = (book_id) => {
         if (createdShelf){
             await dispatch(getUserShelf())
             history.push('/shelves/user')
+            setShowModal(false)
         }
     }
     if (!shelf_id) return null
