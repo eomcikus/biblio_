@@ -7,7 +7,7 @@ const DeleteBFromShelf = ({ bookId, setShowModal }) => {
     const dispatch = useDispatch()
     const history = useHistory()
     const books = useSelector(state => state.shelves.shelves.books)
-    const book = books.find(book => book.bookId === bookId)
+    const thebook = books.find(book => book.bookId === book.id)
 
 
     const handleDelete = async (e) => {
