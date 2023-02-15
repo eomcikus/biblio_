@@ -4,7 +4,7 @@ import { useHistory, useParams, Redirect } from 'react-router-dom';
 import { editReview, getReviews, } from '../../../store/reviews';
 import { getOneBook } from '../../../store/books';
 import '../editreview.css'
-const EditReview = ({ userReview }) => {
+const EditReview = ({ userReview, setShowModal }) => {
     const dispatch = useDispatch()
     const history = useHistory()
     // const { bookId } = useParams()
@@ -16,6 +16,7 @@ const EditReview = ({ userReview }) => {
     const user = useSelector(state => state.session.user)
 
     const userReview1 = currentReviews.find(review => +review.user_id === +user.id)
+    console.log('=============',userReview1)
 
     const [submit, setSubmit] = useState(false)
     const [validationErrors, setValidationErrors] = useState([])
@@ -52,7 +53,7 @@ const EditReview = ({ userReview }) => {
 
         if (updatedReview) {
             // dispatch(getOneBook(payload.book_id))
-
+            setShowModal(false)
             return history.push(`/books/${payload.book_id}`)
         }
     }

@@ -23,14 +23,15 @@ const OneBook = () => {
     const reviews = useSelector(state => state.reviews)
     const user = useSelector(state => state.session.user)
     const reviewsArr = useSelector(state => Object.values(state.reviews.reviews))
+    console.log('reviewsarr', reviewsArr)
     let userReview;
     if (user && reviewsArr) {
         userReview = reviewsArr.filter(review => user.id === review.user_id)
     }
     useEffect(() => {
         dispatch(getOneBook(bookId))
-
-    }, [dispatch, bookId, reviews])
+        dispatch(getReviews(bookId))
+    }, [dispatch, bookId])
 
     if (reviewsArr.length && book) {
         let total = 0
