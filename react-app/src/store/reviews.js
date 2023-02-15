@@ -18,9 +18,9 @@ const removeR = reviewId => ({
     type: DELETE,
     reviewId
 })
-const editR = reviewId => ({
+const editR = review => ({
     type: EDIT,
-    reviewId
+    review
 })
 //Thunks
 export const getReviews = (bookId) => async dispatch => {
@@ -82,8 +82,8 @@ export const editReview = (form, userReview1) => async (dispatch) => {
     })
     if (response.ok) {
         // const updatedReview = await response.json()
-        dispatch(editR(form.id))
-        return await response.json()
+        dispatch(editR(form))
+        return response.json()
     }
 }
 
@@ -117,7 +117,8 @@ export const reviewReducer = (state = initialState, action) => {
         }
         case EDIT: {
             newState = { ...state, reviews: { ...state.reviews } }
-            newState.reviews[action.reviewId] = action.reviewId
+            console.log('action.review', action)
+            newState.reviews[action.review.id] = action.review
             return newState
         }
         default: return state
