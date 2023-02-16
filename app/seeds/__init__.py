@@ -4,6 +4,8 @@ from .books import seed_books, undo_books
 from .reviews import seed_reviews, undo_reviews
 from .shelves import seed_shelves, undo_shelves
 from .bookshelves import seed_book_shelves, undo_book_shelves
+from .tags import seed_tags, undo_tags
+from .booktags import seed_book_tags, undo_book_tags
 from app.models.db import db, environment, SCHEMA
 
 # Creates a seed group to hold our commands
@@ -24,11 +26,15 @@ def seed():
         undo_reviews()
         undo_shelves()
         undo_book_shelves()
+        undo_tags()
+        undo_book_tags()
     seed_users()
     seed_books()
     seed_reviews()
     seed_shelves()
     seed_book_shelves()
+    seed_tags()
+    undo_book_tags()
     # Add other seed functions here
 
 
@@ -40,4 +46,6 @@ def undo():
     undo_reviews()
     undo_shelves()
     undo_book_shelves()
+    undo_tags()
+    undo_book_tags()
     # Add other undo functions here

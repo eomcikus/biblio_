@@ -17,6 +17,7 @@ class Book(db.Model):
     users = db.relationship('User', back_populates='books')
     reviews = db.relationship('Review', back_populates='books', cascade='all' )
     shelves = db.relationship('Shelf', secondary='book_shelf', back_populates='books')
+    tags = db.relationship('Tag', secondary='book_tag', back_populates='books')
     def to_dict(self):
         return {
             "id": self.id,
@@ -32,3 +33,12 @@ class Book(db.Model):
     # def star_avg(id):
     #     reviews = Review.query.filter(id == Review.book_id).all()
     #     if reviews == 0:
+tags = Tag.query.all()
+if Tags.length
+tag_of_books = []
+
+        for tag in Tags
+            one_book_list = [book.to_dict() for book in tag.books]
+            one_tag_of_books = {tag.id: one_book_list}
+            tag_of_books.append(one_tag_of_books)
+        return jsonify(tag_of_books)
