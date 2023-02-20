@@ -9,7 +9,7 @@ shelf_routes = Blueprint('shelves', __name__)
 @shelf_routes.route('/')
 def get_all_shelves():
     shelves = Shelf.query.all()
-    # print('books---------------------------', books)
+
     return {'shelves': [shelf.to_dict() for shelf in shelves]}
 
 @shelf_routes.route('/user')
@@ -23,9 +23,7 @@ def get_shelves_of_current_user():
 def add_to_shelf(bookId):
     shelves = Shelf.query.filter(Shelf.user_id == current_user.id).first()
     book = Book.query.filter(Book.id == bookId).first()
-    print ('bookId========================' , bookId)
-    print('book----------------------------------', book)
-    print ('shelf =-=-=-=-=-=-=-=-=-=-=-=-=-', shelves)
+
     # insert_stmt = book_shelf.insert().values(book_id=bookId, shelf_id=shelves.id)
     # book_shelf.insert().values(shelf_id=shelves.id)
     # db.session.add(insert_stmt)
@@ -48,7 +46,7 @@ def add_to_shelf(bookId):
 @shelf_routes.route('/<int:bookId>/delete', methods=['DELETE'])
 @login_required
 def delete_a_book(bookId):
-    print('--------------------------')
+
     book = Book.query.filter(Book.id == bookId).first()
     shelves = Shelf.query.filter(Shelf.user_id == current_user.id).first()
     shelves.books.remove(book)

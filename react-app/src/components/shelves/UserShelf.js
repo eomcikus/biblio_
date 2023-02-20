@@ -9,7 +9,7 @@ export const UserShelf = () => {
     let dispatch = useDispatch()
     const history = useHistory()
     // let shelf = useSelector(state => state.shelves.shelves)
-    // console.log('shelf', shelf)
+
     let shelves = useSelector(state => state.shelves)
 
     let books1 = useSelector(state => state.shelves.shelves.books)
@@ -30,7 +30,7 @@ export const UserShelf = () => {
                     <div className='shelf-container'>{books1.map(book =>
 
                         <div key={book.id} className='wrapper'>
-                            {console.log(book)}
+    
                             <img className='shelf-thumbnail' src={book.thumbnail} onClick={() => history.push(`/books/${book.bookId}`)}/>
                             <div className='on-hover'>
                         

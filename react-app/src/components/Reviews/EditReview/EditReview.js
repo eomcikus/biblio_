@@ -16,7 +16,6 @@ const EditReview = ({ userReview, setShowModal }) => {
     const user = useSelector(state => state.session.user)
 
     const userReview1 = currentReviews.find(review => +review.user_id === +user.id)
-    console.log('=============',userReview1)
 
     const [submit, setSubmit] = useState(false)
     const [validationErrors, setValidationErrors] = useState([])

@@ -5,7 +5,6 @@ import DeleteBFromShelf from './DeleteShelf';
 
 function DeleteBookModal({bookId}) {
   const [showModal, setShowModal ] = useState(false);
-  console.log(bookId)
   return (
     <>
       <button onClick={() => setShowModal(true)}>Remove Book</button>

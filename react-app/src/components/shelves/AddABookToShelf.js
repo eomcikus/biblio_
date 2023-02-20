@@ -9,10 +9,9 @@ export const AddBook2Shelf = (book_id) => {
     // const book_id = useSelector(state=> state.books.oneBook.id)
     // const shelf_id = useSelector()
     let id = +book_id.book_id
-    // console.log('bookid', bookId)
+ 
     const shelf_id = useSelector(state => state.shelves.shelves.id)
-    console.log('shelf', shelf_id)
-    console.log('shelf+', shelf_id)
+
     useEffect(() => {
         dispatch(getUserShelf())
         // dispatch(addBookToShelf(book_id, shelf_id))

@@ -24,10 +24,8 @@ const remove = bookId => ({
 })
 export const getShelves = () => async (dispatch) => {
     const response = await fetch('/api/shelves/')
-    console.log('thunk')
     if (response.ok) {
         const shelves = await response.json()
-        console.log('shelves thunk', shelves)
         dispatch(load(shelves))
     }
 }
@@ -58,7 +56,7 @@ export const deleteBookFromShelf = (bookId) => async dispatch => {
     const response = await fetch(`/api/shelves/${bookId}/delete`, {
         method: 'DELETE'
     })
-    console.log('response', response)
+
     if (response.ok){
         const book = await response.json()
         dispatch(remove(book.id))
@@ -78,7 +76,6 @@ export const shelvesReducer = (state = initialState, action) => {
         }
         case USER: {
             newState = { shelves: {} }
-            console.log('action.shelf', action.shelf)
             if (action.shelf){
                 newState = { ...action.shelf }
                 return newState
