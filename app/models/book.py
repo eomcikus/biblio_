@@ -33,12 +33,3 @@ class Book(db.Model):
     # def star_avg(id):
     #     reviews = Review.query.filter(id == Review.book_id).all()
     #     if reviews == 0:
-tags = Tag.query.all()
-if Tags.length
-tag_of_books = []
-
-        for tag in Tags
-            one_book_list = [book.to_dict() for book in tag.books]
-            one_tag_of_books = {tag.id: one_book_list}
-            tag_of_books.append(one_tag_of_books)
-        return jsonify(tag_of_books)
