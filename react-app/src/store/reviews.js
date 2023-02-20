@@ -117,7 +117,6 @@ export const reviewReducer = (state = initialState, action) => {
         }
         case EDIT: {
             newState = { ...state, reviews: { ...state.reviews } }
-            console.log('action.review', action)
             newState.reviews[action.review.id] = action.review
             return newState
         }

@@ -29,9 +29,7 @@ def get_one_book(id):
     #     avg += review.stars
     #     print(avg) 
     # book.star_avg = avg/review_length
-    # print(';;;;;;;;;;;', avg)
-    # print('---------------------', review_length)
-    # print('======================', reviews)
+
     return {'book': book.to_dict()}
 
 @book_routes.route('/add', methods=['POST'])
@@ -41,7 +39,7 @@ def add_a_book():
     
     form['csrf_token'].data = request.cookies['csrf_token']
     user = current_user.id
-    print('---------------', user)
+
     form['user_id'].data = user
     if form.validate_on_submit():
         new_book = Book(
@@ -72,7 +70,7 @@ def edit_book(id):
         book.user_id = book_to_edit['user_id']
         db.session.commit()
         updatedbook = book.to_dict()
-        print('--------------------', updatedbook)
+
         return updatedbook
 
 
@@ -96,9 +94,7 @@ def delete_a_book(id):
 def get_reviews_by_id(id):
     """ query all reviews and return them in a list of dictionaries ordered by id num
     """
-    # print('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')
     book_reviews = Review.query.filter(Review.book_id == id)
-    # print('-----------------------------', book_reviews)
     return {'book_reviews': [review.to_dict() for review in book_reviews]}
 
 @book_routes.route('/<id>/reviews/add', methods=['POST'])
@@ -141,7 +137,7 @@ def edit_review(id):
         review.book_id = review_to_edit['book_id']
         db.session.commit()
         updatedreview = review.to_dict()
-        print('--------------------', updatedreview)
+
         return updatedreview
     return {'errors': validation_errors_to_error_messages(form.errors)}
 

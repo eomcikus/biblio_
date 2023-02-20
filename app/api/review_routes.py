@@ -10,7 +10,6 @@ review_routes = Blueprint('reviews', __name__)
 # def get_reviews_by_id(book_id):
 #     """ query all reviews and return them in a list of dictionaries ordered by id num
 #     """
-#     print('BBBBBBBBBBBBBBBBBBBBBBB')
 #     book_reviews = Review.query.filter(Review.book_id == book_id)
 #     # book_reviews = Review.query.get(id)
 #     return {'book_reviews': [review.to_dict for review in book_reviews]}

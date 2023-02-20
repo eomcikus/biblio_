@@ -86,15 +86,12 @@ export const signUp = (username, email, password, shelves) => async (dispatch) =
   
   if (response.ok) {
     const data = await response.json();
-    console.log('data', data)
+
     dispatch(setUser(data))
     return null;
   } else if (response.status < 500) {
     const data = await response.json();
-    // console.log('data', data)
-    // if (data.errors) {
-    //   console.log('data e', data.errors)
-    //   return data.errors;
+
     return data
     // }
   } else {
@@ -105,7 +102,6 @@ export const signUp = (username, email, password, shelves) => async (dispatch) =
 export const sessionReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_USER:
-      console.log('actionpayload', action.payload)
       return { user: action.payload }
     case REMOVE_USER:
       return { user: null,  }

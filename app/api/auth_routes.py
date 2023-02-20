@@ -34,7 +34,6 @@ def login():
     Logs a user in
     """
     form = LoginForm()
-    print('--------------------')
     # Get the csrf_token from the request cookie and put it into the
     # form manually to validate_on_submit can be used
     form['csrf_token'].data = request.cookies['csrf_token']
@@ -68,18 +67,15 @@ def sign_up():
             email=form.data['email'],
             password=form.data['password'],
         )
-        # print('AAAAAASAAAAAAAAAAAAAAAAA', user)
         db.session.add(user)
         db.session.commit()
         created_user = User.query.filter(User.email == form.data['email']).first()
-        print('===============================', created_user.to_dict())
         shelf = Shelf (
             name='To be read',
             user_id = user.id
         )
         user.shelves = shelf
         db.session.commit()
-        print('--------------------------', user.shelves.to_dict())
         login_user(user)
         return user.to_dict()
 
