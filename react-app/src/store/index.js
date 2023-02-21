@@ -4,11 +4,13 @@ import {sessionReducer }from './session'
 import { reviewReducer } from './reviews';
 import { booksReducer } from './books';
 import { shelvesReducer } from './shelves';
+import { tagsReducer } from './tags';
 const rootReducer = combineReducers({
   session: sessionReducer,
   books: booksReducer,
   reviews: reviewReducer,
-  shelves: shelvesReducer
+  shelves: shelvesReducer,
+  tags: tagsReducer
 });
 
 

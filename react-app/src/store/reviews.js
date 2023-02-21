@@ -20,6 +20,7 @@ const removeR = reviewId => ({
 })
 const editR = review => ({
     type: EDIT,
+    
     review
 })
 //Thunks
