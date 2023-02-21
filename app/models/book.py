@@ -17,6 +17,7 @@ class Book(db.Model):
     users = db.relationship('User', back_populates='books')
     reviews = db.relationship('Review', back_populates='books', cascade='all' )
     shelves = db.relationship('Shelf', secondary='book_shelf', back_populates='books')
+    tags = db.relationship('Tag', secondary='book_tag', back_populates='books')
     def to_dict(self):
         return {
             "id": self.id,
