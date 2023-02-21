@@ -22,10 +22,12 @@ export const tagsReducer = (state = initialState, action) => {
     switch (action.type) {
         case LOAD: {
             newState = { tags: {} }
+            console.log('action.tags', action.tags)
             action.tags.forEach(tag => {
                 newState.tags[tag.id] = tag
             })
             return newState;
         }
+        default: return state;
     }
 }

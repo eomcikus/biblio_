@@ -12,6 +12,7 @@ import EditReview from '../../Reviews/EditReview/EditReview'
 import { AddBook2Shelf } from '../../shelves/AddABookToShelf';
 import AddReviewModal from '../../Reviews/AddReview';
 import DeleteBookModal from '../DeleteBook';
+import AllTags from '../../Tags/AllTags';
 const OneBook = () => {
     const dispatch = useDispatch()
     const { bookId } = useParams()
@@ -65,6 +66,7 @@ const OneBook = () => {
                         <div className='current-book-summary'>
                             {book.summary}
                         </div>
+                        <div><AllTags /></div>
                         <div><AddBook2Shelf book_id={bookId} /></div>
                         <div>
                             {user && user.id === bookOwner && (
