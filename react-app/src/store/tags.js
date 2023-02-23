@@ -8,6 +8,7 @@ const load = tags => ({
 })
 
 export const getTags = (bookId) => async dispatch => {
+    console.log('greetings')
     const response = await fetch(`/api/tags/${bookId}`)
     if (response.ok) {
         const data = await response.json()

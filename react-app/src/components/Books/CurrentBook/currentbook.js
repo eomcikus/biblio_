@@ -66,7 +66,7 @@ const OneBook = () => {
                         <div className='current-book-summary'>
                             {book.summary}
                         </div>
-                        <div><AllTags /></div>
+                        <div><AllTags book_id={bookId} /></div>
                         <div><AddBook2Shelf book_id={bookId} /></div>
                         <div>
                             {user && user.id === bookOwner && (
