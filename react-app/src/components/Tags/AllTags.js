@@ -4,13 +4,14 @@ import { getTags } from "../../store/tags";
 import { useParams } from "react-router-dom";
 
 
-const AllTags = () => {
+const AllTags = ({book_id}) => {
     const dispatch = useDispatch()
-    const { bookId } = useParams()
+    console.log('bookid in alltags',book_id)
+    // const { bookId } = useParams()
     const tags = useSelector(state => state.tags)
     useEffect(() => {
-        dispatch(getTags(bookId))
-    })
+        dispatch(getTags(book_id))
+    }, [dispatch])
     console.log('----------------tags', tags)
     return (
         <div></div>
