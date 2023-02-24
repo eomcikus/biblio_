@@ -20,6 +20,7 @@ import EditReview from './components/Reviews/EditReview/EditReview';
 import { AllShelves } from './components/shelves/AllShelves';
 import { UserShelf } from './components/shelves/UserShelf';
 import { AddBook2Shelf } from './components/shelves/AddABookToShelf';
+import AllTags from './components/Tags/AllTags';
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
@@ -99,6 +100,9 @@ function App() {
         <Route path='/books/:bookId/reviews/add' exact={true}>
           <ReviewForm />
         </Route>
+        {/* <Route path='/tags/:bookId' exact={true}>
+          <AllTags />
+        </Route> */}
       </Switch>
     </BrowserRouter>
   );
