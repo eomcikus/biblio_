@@ -149,5 +149,6 @@ def get_review_by_user_id():
 @book_routes.route('/<id>/tags')
 def get_tags_of_current_book(id):
     tags = Tag.query.all()
+    print('hihihihihihihihihihihih')
     print('---------------------------', tags)
-    return
+    return tags.to_dict()
