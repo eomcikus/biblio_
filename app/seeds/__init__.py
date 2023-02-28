@@ -34,7 +34,7 @@ def seed():
     seed_shelves()
     seed_book_shelves()
     seed_tags()
-    undo_book_tags()
+    seed_book_tags()
     # Add other seed functions here
 
 
