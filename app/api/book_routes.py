@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, request, json
-from ..models import Book, db, User, Review, Tag
+from ..models import Book, db, User, Review, Tag, book_tag
 from ..forms import ReviewForm, BookForm 
 from flask_login import login_required, current_user
 from .auth_routes import validation_errors_to_error_messages
@@ -153,6 +153,8 @@ def get_review_by_user_id():
 @book_routes.route('/<id>/tags')
 def get_tags_of_current_book(id):
     tags = Tag.query.all()
-    print('hihihihihihihihihihihih')
-    print('---------------------------', tags)
+    book = Book.query.get(id)
+    # print('hihihihihihihihihihihih')
+    print('---------------------------', book.to_dict())
+    print('AAAAAAAAAAAAAAAAAAAAAAAAAAA', tags)
     return  [tag.to_dict() for tag in tags]

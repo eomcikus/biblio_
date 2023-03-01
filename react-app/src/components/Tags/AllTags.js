@@ -14,7 +14,9 @@ const AllTags = ({book_id}) => {
     }, [dispatch])
     console.log('----------------tags', tags)
     return (
-        <div></div>
+        <div>
+            
+        </div>
     )
 }
 
