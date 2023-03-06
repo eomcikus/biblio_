@@ -154,6 +154,7 @@ def get_review_by_user_id():
 def get_tags_of_current_book(id):
     tags = Tag.query.all()
     book = Book.query.get(id)
+
     # print('hihihihihihihihihihihih')
     print('---------------------------', book.to_dict())
     print('AAAAAAAAAAAAAAAAAAAAAAAAAAA', tags)
