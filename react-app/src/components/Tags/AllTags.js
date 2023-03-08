@@ -16,7 +16,7 @@ const AllTags = ({book_id}) => {
     console.log('----------------tags', tagsArr)
     return (
         <div>
-            {tagsArr.forEach(tag => <button>{tag}</button>)}
+            {tagsArr.map(tag => <button>{`${tag}`}</button>)}
             
         </div>
     )
