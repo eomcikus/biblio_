@@ -158,4 +158,4 @@ def get_tags_of_current_book(id):
     # print('hihihihihihihihihihihih')
     print('---------------------------', book.to_dict())
     print('AAAAAAAAAAAAAAAAAAAAAAAAAAA', tags)
-    return  [tag.to_dict() for tag in tags]
+    return  book.to_dict()
