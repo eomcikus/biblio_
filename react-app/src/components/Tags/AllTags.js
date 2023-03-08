@@ -9,13 +9,14 @@ const AllTags = ({book_id}) => {
     console.log('bookid in alltags',book_id)
     // const { bookId } = useParams()
     const tags = useSelector(state => state.tags)
+    const tagsArr = Object.values(tags)
     useEffect(() => {
         dispatch(getTags(book_id))
     }, [dispatch])
     console.log('----------------tags', tags)
     return (
         <div>
-            
+            {tagsArr.forEach(tag => <div>{tag['tag']}</div>)}
         </div>
     )
 }

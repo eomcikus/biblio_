@@ -24,9 +24,7 @@ export const tagsReducer = (state = initialState, action) => {
         case LOAD: {
             newState = { tags: {} }
             console.log('action.tags', action.tags)
-            action.tags.forEach(tag => {
-                newState.tags[tag.id] = tag
-            })
+            newState = { ...action.tags.tags }
             return newState;
         }
         default: return state;
