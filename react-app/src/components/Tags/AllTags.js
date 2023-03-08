@@ -13,10 +13,11 @@ const AllTags = ({book_id}) => {
     useEffect(() => {
         dispatch(getTags(book_id))
     }, [dispatch])
-    console.log('----------------tags', tags)
+    console.log('----------------tags', tagsArr)
     return (
         <div>
-            {tagsArr.forEach(tag => <div>{tag['tag']}</div>)}
+            {tagsArr.forEach(tag => <button>{tag}</button>)}
+            
         </div>
     )
 }

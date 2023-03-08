@@ -28,7 +28,7 @@ class Book(db.Model):
             "thumbnail": self.thumbnail,
             "user_id": self.user_id,
             "tags": [
-                {'tag': tag.name} for tag in self.tags
+                tag.name for tag in self.tags 
             ]
             # "user": self.user
             # "star_avg": self.star_avg
