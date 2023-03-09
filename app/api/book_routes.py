@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, request, json
-from ..models import Book, db, User, Review
+from ..models import Book, db, User, Review, Tag, book_tag
 from ..forms import ReviewForm, BookForm 
 from flask_login import login_required, current_user
 from .auth_routes import validation_errors_to_error_messages
@@ -145,3 +145,13 @@ def edit_review(id):
 @login_required
 def get_review_by_user_id():
     reviews = Review.query.all()
+
+@book_routes.route('/<id>/tags')
+def get_tags_of_current_book(id):
+    tags = Tag.query.all()
+    book = Book.query.get(id)
+
+    # print('hihihihihihihihihihihih')
+    print('---------------------------', book.to_dict())
+    print('AAAAAAAAAAAAAAAAAAAAAAAAAAA', tags)
+    return  book.to_dict()
