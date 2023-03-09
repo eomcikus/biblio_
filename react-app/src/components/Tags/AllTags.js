@@ -2,8 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getTags } from "../../store/tags";
 import { useParams } from "react-router-dom";
-
-
+import './alltags.css'
 const AllTags = ({book_id}) => {
     const dispatch = useDispatch()
     console.log('bookid in alltags',book_id)
@@ -16,7 +15,7 @@ const AllTags = ({book_id}) => {
     console.log('----------------tags', tagsArr)
     return (
         <div>
-            {tagsArr.map(tag => <button>{`${tag}`}</button>)}
+            {tagsArr.map(tag => <button className='tags-button'>{`${tag}`}</button>)}
             
         </div>
     )
