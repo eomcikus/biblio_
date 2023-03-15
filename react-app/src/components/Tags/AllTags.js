@@ -12,7 +12,7 @@ const AllTags = ({book_id}) => {
     useEffect(() => {
         dispatch(getTags(book_id))
     }, [dispatch])
-    console.log('----------------tags', tagsArr)
+
     return (
         <div>
             {tagsArr.map(tag => <button className='tags-button'>{`${tag}`}</button>)}
