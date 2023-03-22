@@ -78,3 +78,8 @@
 .tinystar {
     color: #FFC000;
 }
+
+#book-actions {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}

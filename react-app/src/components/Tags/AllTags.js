@@ -15,7 +15,9 @@ const AllTags = ({book_id}) => {
 
     return (
         <div>
+            <h3 id="tags-header">Tags</h3>
             {tagsArr.map(tag => <button className='tags-button'>{`${tag}`}</button>)}
+            {/* <hr></hr> */}
             
         </div>
     )
