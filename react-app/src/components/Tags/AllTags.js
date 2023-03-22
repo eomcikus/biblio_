@@ -12,10 +12,12 @@ const AllTags = ({book_id}) => {
     useEffect(() => {
         dispatch(getTags(book_id))
     }, [dispatch])
-    console.log('----------------tags', tagsArr)
+
     return (
         <div>
+            <h3 id="tags-header">Tags</h3>
             {tagsArr.map(tag => <button className='tags-button'>{`${tag}`}</button>)}
+            {/* <hr></hr> */}
             
         </div>
     )

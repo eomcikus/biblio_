@@ -17,3 +17,15 @@ def get_tags_of_current_book(id):
     #     one_tag_of_books = {tag.id: one_book_list}
     #     tag_of_books.append(one_tag_of_books)
     # return jsonify(tag_of_books)
+
+@tag_routes.route('/<id>')
+def get_books_with_tag(id):
+    tag = Tag.query.filter(id == Tag.id)
+    return [book.to_dict() for book in tag.books]
+
+@tag_routes.route('/add')
+def add_tag_to_book(id):
+    book = Book.query.filter(id == Book.id)
+    tag = Tag.query.filter()
+    return 
+

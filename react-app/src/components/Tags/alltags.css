@@ -3,3 +3,8 @@
     color: #1a9ea3;
     border: 1px #1a9ea3 solid;
 }
+
+#tags-header {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
