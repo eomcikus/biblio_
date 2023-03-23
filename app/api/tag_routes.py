@@ -26,6 +26,6 @@ def get_books_with_tag(id):
 @tag_routes.route('/add')
 def add_tag_to_book(id):
     book = Book.query.filter(id == Book.id)
-    tag = Tag.query.filter()
+    tag = Tag.query.filter(id == Tag.id)
     return 
 
