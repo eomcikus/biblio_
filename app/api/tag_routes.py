@@ -29,3 +29,7 @@ def add_tag_to_book(id):
     tag = Tag.query.filter(id == Tag.id)
     return 
 
+@tag_routes.route('/delete')
+def delete_tag_to_book():
+    book = Book.query.filter(id == Book.id)
+    return
