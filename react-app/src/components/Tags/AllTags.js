@@ -15,9 +15,9 @@ const AllTags = ({book_id}) => {
 
     return (
         <div>
+            <hr id='hr-alltags'></hr>
             <h3 id="tags-header">Tags</h3>
             {tagsArr.map(tag => <button className='tags-button'>{`${tag}`}</button>)}
-            {/* <hr></hr> */}
             
         </div>
     )
