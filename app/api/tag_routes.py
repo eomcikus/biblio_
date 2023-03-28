@@ -6,7 +6,7 @@ tag_routes = Blueprint('/tags', __name__)
 
 @tag_routes.route('/<id>')
 def get_tags_of_current_book(id):
-    tags = Tag.query.all()
+    tags = Tag.query.all(id)
     print('---------------------------', tags)
     return
     # if tags.length:
